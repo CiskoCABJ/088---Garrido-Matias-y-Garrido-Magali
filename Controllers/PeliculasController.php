@@ -27,12 +27,13 @@ class PeliculasController {
     function showGenero($genero){
         $peliculasByGenero = $this->model->getPeliculasByGenero($genero);
         $this->view->renderHome($peliculasByGenero);
+       
     }
 
     function showDetalle($pelicula){
         $detallePelicula = $this->model->getDetallePelicula($pelicula);
         $this->view->renderDetallePelicula($detallePelicula);
-
+       
     }
 
 

@@ -22,4 +22,9 @@ class PeliculasView{
         $this->smarty->assign('detallePelicula', $detallePelicula);
         $this->smarty->display('templates/peliculaDetalle.tpl');
     }
+
+    function showHomeLocation(){
+        header("Location: ".BASE_URL."home");
+    }
+
 }

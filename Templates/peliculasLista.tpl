@@ -1,3 +1,4 @@
+{include file='templates/header.tpl'}
 {foreach from=$peliculas item=$pelicula}
     
     <div>

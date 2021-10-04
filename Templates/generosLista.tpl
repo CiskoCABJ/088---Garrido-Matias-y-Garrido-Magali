@@ -1,8 +1,9 @@
+{include file='templates/header.tpl'}
 <section>
-{foreach from=$generos item=$genero }
+    {foreach from=$generos item=$genero }
 
-<a href="genero/{$genero->id_genero}">{$genero->genero}</a>
-    
-{/foreach}
+      <a href="genero/{$genero->id_genero}">{$genero->genero}</a>
+        
+    {/foreach}
 
 </section>

@@ -1,3 +1,4 @@
+{include file='templates/header.tpl'}
 <div>
     <img src="{$detallePelicula->img}">
     <h1>{$detallePelicula->titulo}</h1>
