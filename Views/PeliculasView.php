@@ -10,6 +10,13 @@ class PeliculasView{
 
     function renderHome($peliculas){
         $this->smarty->assign('peliculas', $peliculas);
+        $this->smarty->assign('titulo', "Estrenos");
+        $this->smarty->display('templates/peliculasLista.tpl');
+    }
+
+    function renderPeliculas($peliculas){
+        $this->smarty->assign('peliculas', $peliculas);
+        $this->smarty->assign('titulo', "Peliculas");
         $this->smarty->display('templates/peliculasLista.tpl');
     }
 

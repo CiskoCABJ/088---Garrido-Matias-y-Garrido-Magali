@@ -14,6 +14,14 @@ class PeliculasModel {
         return $peliculas;
     }
 
+    function getPeliculasEstreno(){
+        $date = date("Y");
+        $consulta = $this->db->prepare("SELECT * FROM peliculas WHERE estreno='$date'");
+        $consulta->execute();
+        $peliculasEstreno = $consulta->fetchAll(PDO::FETCH_OBJ);
+        return $peliculasEstreno;
+    }
+
     function getGeneros(){
         $consulta = $this->db->prepare('SELECT * FROM generos');
         $consulta->execute();

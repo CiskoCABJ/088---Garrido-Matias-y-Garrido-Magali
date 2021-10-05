@@ -11,13 +11,16 @@ class PeliculasController {
     }
 
     function showHome(){
-        $peliculasHome = $this->model->getPeliculas();
+        $peliculasHome = $this->model->getPeliculasEstreno();
         $this->view->renderHome($peliculasHome);
 
     }
     function showPeliculas(){
+        $peliculas = $this->model->getPeliculas();
+        $this->view->renderPeliculas($peliculas);
 
     }
+
     function showGeneros(){
         $generos = $this->model->getGeneros();
         $this->view->renderGeneros($generos);
