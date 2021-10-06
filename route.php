@@ -39,6 +39,12 @@ switch($params[0]){
     case 'verify':
         $loginController->verify();
         break;
+    case 'registro':
+        $loginController->register();
+        break;
+    case 'verifyregister':
+        $loginController->verifyRegister();
+        break;    
     default:
         echo('404 Page not found :(');
         break;
