@@ -20,5 +20,5 @@ class UserModel{
    function newUser($usuario, $mail, $pass){
        $consulta = $this->db->prepare('INSERT INTO usuarios (id_usuario, usuario, mail, pass, rol) VALUES (?, ? ,?, ? ,?)');
        $consulta->execute(["",$usuario, $mail, $pass, "10"]);
-}
+    }
 }

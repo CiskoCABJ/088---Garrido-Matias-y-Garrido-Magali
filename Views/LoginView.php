@@ -21,6 +21,7 @@ class LoginView{
 
     function showHomeLocation(){
         header("Location: ".BASE_URL."home");
+        $this->smarty->assign('state', )
     }
-    
+
 }

@@ -1,0 +1,2 @@
+cambiar de login a logout y viseversa en el nav.
+darle importancia a los roles de los usuarios

@@ -24,7 +24,7 @@ class LoginController{
             if ($user && password_verify($pass, ($user->pass))){
                 session_start();
                 $_SESSION["usuario"] = $usuario;
-                $this->view->showHomeLocation();
+                $this->view->showHomeLocation($state);
             }  
             else{
                 $this->view->showLogin('Acceso denegado');

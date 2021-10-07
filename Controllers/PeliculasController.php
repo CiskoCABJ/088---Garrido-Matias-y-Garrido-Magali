@@ -11,6 +11,7 @@ class PeliculasController {
     }
 
     function showHome(){
+        checkLoggedIn()
         $peliculasHome = $this->model->getPeliculasEstreno();
         $this->view->renderHome($peliculasHome);
 
@@ -39,5 +40,8 @@ class PeliculasController {
        
     }
 
+    function checkLoggedIn(){
+        
+    }
 
 }
