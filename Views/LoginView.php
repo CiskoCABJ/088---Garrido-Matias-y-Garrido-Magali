@@ -15,7 +15,7 @@ class LoginView{
 
     }
 
-    function showRegister($error="", $state){
+    function showRegister($state,$error=""){
         $this->smarty->assign('titulo', 'Crear cuenta');
         $this->smarty->assign('error', $error);
         $this->smarty->assign('state' , $state); 

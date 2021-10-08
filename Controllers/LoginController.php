@@ -50,7 +50,7 @@ class LoginController{
     }
 
     function register(){
-        $this->view->showRegister();
+        $this->view->showRegister($this->stateHellper->showState());
     }
 
    function verifyRegister(){
