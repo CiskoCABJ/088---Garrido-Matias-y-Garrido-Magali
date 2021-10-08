@@ -8,25 +8,33 @@ class PeliculasView{
         $this->smarty = new Smarty();
     }
 
-    function renderHome($peliculas){
+    function renderHome($peliculas, $state){
         $this->smarty->assign('peliculas', $peliculas);
+        $this->smarty->assign('state' , $state);
+        
         $this->smarty->assign('titulo', "Estrenos");
         $this->smarty->display('templates/peliculasLista.tpl');
     }
 
-    function renderPeliculas($peliculas){
+    function renderPeliculas($peliculas, $state){
         $this->smarty->assign('peliculas', $peliculas);
+        $this->smarty->assign('state' , $state);
+
         $this->smarty->assign('titulo', "Peliculas");
         $this->smarty->display('templates/peliculasLista.tpl');
     }
 
-    function renderGeneros($generos){
+    function renderGeneros($generos, $state){
         $this->smarty->assign('generos', $generos);
+        $this->smarty->assign('state' , $state);
+
         $this->smarty->display('templates/generosLista.tpl');
     }
 
-    function renderDetallePelicula($detallePelicula){
+    function renderDetallePelicula($detallePelicula, $state){
         $this->smarty->assign('detallePelicula', $detallePelicula);
+        $this->smarty->assign('state' , $state);
+        
         $this->smarty->display('templates/peliculaDetalle.tpl');
     }
 

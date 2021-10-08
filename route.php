@@ -6,7 +6,7 @@ require_once('Controllers/LoginController.php');
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 } else {
-    $action = 'home'; // acción por defecto si no envían
+    $action = 'home'; // accion por defecto si no envian
 }
 
 $loginController = new LoginController();
@@ -34,7 +34,7 @@ switch($params[0]){
         $loginController->login();
         break;
     case 'logout':
-        logout();
+        $loginController->logout();
         break;
     case 'verify':
         $loginController->verify();

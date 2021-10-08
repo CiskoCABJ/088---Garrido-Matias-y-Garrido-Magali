@@ -2,17 +2,31 @@
 require_once './Models/UserModel.php';
 require_once './Views/LoginView.php';
 
+
+require_once './Hellpers/StateHellper.php';
+
+
+
 class LoginController{
     private $model;
     private $view;
+    private $stateHellper;
 
     function __construct(){
         $this->model = new UserModel();
         $this->view = new LoginView();
+        $this->stateHellper = new StateHellper();
+    }
+
+    function logout(){
+        session_start();
+        session_destroy();
+        $this->view->showLogin($this->stateHellper->showState(),"Te deslogueaste!");
+
     }
 
     function login(){
-        $this->view->showLogin();
+        $this->view->showLogin($this->stateHellper->showState());
     }
 
     function verify(){
@@ -24,7 +38,7 @@ class LoginController{
             if ($user && password_verify($pass, ($user->pass))){
                 session_start();
                 $_SESSION["usuario"] = $usuario;
-                $this->view->showHomeLocation($state);
+                $this->view->showHomeLocation();
             }  
             else{
                 $this->view->showLogin('Acceso denegado');

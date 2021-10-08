@@ -1,2 +1,22 @@
 cambiar de login a logout y viseversa en el nav.
+// lo resolvi llamando en todos los renderizados a la funcion showState de.
+//StateHellper en Hellpers en donde consulto si existe una session activa, 
+//de ser asi retorno Logout como string para renderizar en nuestro nav, log 
+//in en caso de que no haya una session activa.
+
+
 darle importancia a los roles de los usuarios
+    rol 1 adm/ todos los derechos
+
+    rol 3 admContenido / editar-cargar-borrar contenido
+
+    rol 5 editor/ editar contenido
+
+    rol 10 users / solo ver
+
+
+
+stylos
+
+
+
