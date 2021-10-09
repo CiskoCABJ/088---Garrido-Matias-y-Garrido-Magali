@@ -41,11 +41,11 @@ class LoginController{
                 $this->view->showHomeLocation();
             }  
             else{
-                $this->view->showLogin('Acceso denegado');
+                $this->view->showLogin($this->stateHellper->showState(),'Acceso denegado');
             }  
         }
         else {
-            $this->view->showLogin('Camplos incompletos');
+            $this->view->showLogin($this->stateHellper->showState(),'Camplos incompletos');
         }
     }
 
@@ -62,17 +62,17 @@ class LoginController{
 
             $mailUsuario = $this->model->getUser($mail);
             if ($mailUsuario){
-                $this->view->showRegister('El mail ya se encuentra en uso');
+                $this->view->showRegister($this->stateHellper->showState(),'El mail ya se encuentra en uso');
             }
             else {
                 $user = $this->model->getUser($usuario);
                 if ($user){
-                    $this->view->showRegister('El usuario ya esta en uso');
+                    $this->view->showRegister($this->stateHellper->showState(),'El usuario ya esta en uso');
                 }
                 else{
                     $this->model->newUser($usuario, $mail, $pass);
 
-                    $this->view->showRegister('Cuenta creada!');
+                    $this->view->showRegister($this->stateHellper->showState(),'Cuenta creada!');
                 }
             }
         }    

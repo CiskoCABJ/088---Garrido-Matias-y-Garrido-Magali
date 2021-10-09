@@ -6,10 +6,10 @@ class StateHellper{
     function showState(){
         session_start();
         if(!isset($_SESSION["usuario"])){
-            return "login";
+            return "Login";
         }else{
       
-            return "logout";
+            return "Logout";
         } 
     }
 }

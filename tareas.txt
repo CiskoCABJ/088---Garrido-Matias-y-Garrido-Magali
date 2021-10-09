@@ -5,6 +5,8 @@ cambiar de login a logout y viseversa en el nav.
 //in en caso de que no haya una session activa.
 
 
+
+
 darle importancia a los roles de los usuarios
     rol 1 adm/ todos los derechos
 
@@ -18,7 +20,58 @@ darle importancia a los roles de los usuarios
 
 stylos
 
-Prueba para subir en git
+
+
+
+
+PAUTAS:
+
+deben existir diferentes secciones donde se muestre el contendio dinamicamente
+desde la base de datos.
+COMPLETADA
+
+ACCESO PUBLICO :
+
+estas secciones pueden ser accedidas de manera publica, sin necesidad de 
+logearse
+
+listado de items.
+detelle de item
+listadod de categorias
+listado de item por categorias
+
+COMPLETADA
+
+IMPORTANTE  en cada item debe mostrarse el mombre de la categorias
+
+//cambie la tabla de generos, como la teniamos armada no podiamos acceder al nombre del genero
+solo teniamos el ID desde la tabla peliculas,y para mostrarlo junto al detalle de cada pelicula no 
+nos servia, por eso la cambie xD
+
+COMPLETADA
+
+
+ACCESO ADMINISTRADOR DE DATOS:
+
+seccion solo accedida a los usuarios administrador.
+el adm debe logearse con usuario y pass
+se puede deslogear
+solo los logeados pueden modificar las categorias y los items
+ABM para los adm de items y de categorias
+
+FALTA
+
+DEMAS: 
+
+Todos los HTML deben mostrarse con Smarty
+
+patron MVC 
+
+URL semantica
+
+Archivo sql para instalar la base de datos
+
+POR AHORA TODO EN ORDEN
 
 
 

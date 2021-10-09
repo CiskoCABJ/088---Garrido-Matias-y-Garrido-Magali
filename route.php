@@ -30,10 +30,10 @@ switch($params[0]){
     case 'pelicula':
         $peliculasController->showDetalle($params[1]);
         break;
-    case 'login':
+    case 'Login':
         $loginController->login();
         break;
-    case 'logout':
+    case 'Logout':
         $loginController->logout();
         break;
     case 'verify':
