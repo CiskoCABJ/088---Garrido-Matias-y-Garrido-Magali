@@ -2,45 +2,58 @@
 require_once './Models/PeliculasModel.php';
 require_once './Views/PeliculasView.php';
 
-require_once './Hellpers/StateHellper.php';
+require_once './Hellpers/SessionHellper.php';
 class PeliculasController {
     private $model;
     private $view;
-    private $stateHellper;
+    private $sessionHellper;
 
     function __construct(){
         $this->model = new PeliculasModel();
         $this->view = new PeliculasView();
-        $this->stateHellper = new StateHellper();
+        $this->sessionHellper = new SessionHellper();
     }
 
     function showHome(){
+        $state = $this->sessionHellper->showState();
+        $rol = $this->sessionHellper->showRol();
   
         $peliculasHome = $this->model->getPeliculasEstreno();
-        $this->view->renderHome($peliculasHome, $this->stateHellper->showState());
+        $this->view->renderHome($peliculasHome, $state, $rol);
 
     }
     function showPeliculas(){
+        $rol = $this->sessionHellper->showRol();
+     
+        $state = $this->sessionHellper->showState();
+
         $peliculas = $this->model->getPeliculas();
-        $this->view->renderPeliculas($peliculas, $this->stateHellper->showState());
+        $this->view->renderPeliculas($peliculas, $state,$rol);
 
     }
 
     function showGeneros(){
+        $state = $this->sessionHellper->showState();
+
         $generos = $this->model->getGeneros();
-        $this->view->renderGeneros($generos, $this->stateHellper->showState());
+        $this->view->renderGeneros($generos, $state);
 
     }
 
     function showGenero($genero){
+        $rol = $this->sessionHellper->showRol();
+        $state = $this->sessionHellper->showState();
+
         $peliculasByGenero = $this->model->getPeliculasByGenero($genero);
-        $this->view->renderPeliculas($peliculasByGenero, $this->stateHellper->showState());
+        $this->view->renderPeliculas($peliculasByGenero, $state, $rol);
        
     }
 
     function showDetalle($pelicula){
+        $state = $this->sessionHellper->showState();
+
         $detallePelicula = $this->model->getDetallePelicula($pelicula);
-        $this->view->renderDetallePelicula($detallePelicula, $this->stateHellper->showState());
+        $this->view->renderDetallePelicula($detallePelicula, $state);
        
     }
 

@@ -3,30 +3,30 @@ require_once './Models/UserModel.php';
 require_once './Views/LoginView.php';
 
 
-require_once './Hellpers/StateHellper.php';
+require_once './Hellpers/SessionHellper.php';
 
 
 
 class LoginController{
     private $model;
     private $view;
-    private $stateHellper;
+    private $sessionHellper;
 
     function __construct(){
         $this->model = new UserModel();
         $this->view = new LoginView();
-        $this->stateHellper = new StateHellper();
+        $this->sessionHellper = new SessionHellper();
     }
 
     function logout(){
         session_start();
         session_destroy();
-        $this->view->showLogin($this->stateHellper->showState(),"Te deslogueaste!");
+        $this->view->showLogin($this->sessionHellper->showState(),"Te deslogueaste!");
 
     }
 
     function login(){
-        $this->view->showLogin($this->stateHellper->showState());
+        $this->view->showLogin($this->sessionHellper->showState());
     }
 
     function verify(){
@@ -37,43 +37,41 @@ class LoginController{
             $user = $this->model->getUser($usuario);
             if ($user && password_verify($pass, ($user->pass))){
                 session_start();
-                $_SESSION["usuario"] = $usuario;
+
+                $_SESSION["usuario"] = $user->usuario;                
+                $_SESSION["rol"] = $user->rol;
+                
                 $this->view->showHomeLocation();
             }  
             else{
-                $this->view->showLogin($this->stateHellper->showState(),'Acceso denegado');
+                $this->view->showLogin($this->sessionHellper->showState(),'Acceso denegado');
             }  
         }
         else {
-            $this->view->showLogin($this->stateHellper->showState(),'Camplos incompletos');
+            $this->view->showLogin($this->sessionHellper->showState(),'Camplos incompletos');
         }
     }
 
     function register(){
-        $this->view->showRegister($this->stateHellper->showState());
+        $this->view->showRegister($this->sessionHellper->showState());
     }
 
    function verifyRegister(){
         if (!empty($_POST['usuario']) && !empty($_POST['pass']) && !empty($_POST['mail'])){
+
             $usuario = $_POST['usuario'];
             $pass = password_hash($_POST['pass'], PASSWORD_BCRYPT);
-
             $mail = $_POST['mail'];
 
-            $mailUsuario = $this->model->getUser($mail);
-            if ($mailUsuario){
-                $this->view->showRegister($this->stateHellper->showState(),'El mail ya se encuentra en uso');
+            $user = $this->model->getUser($usuario);
+            $session = $this->sessionHellper->showState();
+               
+            if ($user){
+                $this->view->showRegister($session,'El usuario ya esta en uso');
             }
-            else {
-                $user = $this->model->getUser($usuario);
-                if ($user){
-                    $this->view->showRegister($this->stateHellper->showState(),'El usuario ya esta en uso');
-                }
-                else{
-                    $this->model->newUser($usuario, $mail, $pass);
-
-                    $this->view->showRegister($this->stateHellper->showState(),'Cuenta creada!');
-                }
+            else{
+                $this->model->newUser($usuario, $mail, $pass);
+                $this->view->showRegister($session,'Cuenta creada!');
             }
         }    
     } 

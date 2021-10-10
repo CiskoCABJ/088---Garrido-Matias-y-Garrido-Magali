@@ -5,6 +5,9 @@ cambiar de login a logout y viseversa en el nav.
 //in en caso de que no haya una session activa.
 
 
+impedir que puedan logiar una vez logiados
+
+
 
 
 darle importancia a los roles de los usuarios
@@ -14,8 +17,10 @@ darle importancia a los roles de los usuarios
 
     rol 5 editor/ editar contenido
 
-    rol 10 users / solo ver
-
+    rol 10 users / solo ver ATRIBUTO NULL = SIN PERMISOS
+QUE DIFICILLL AJJA
+ POR AHORA LOS USUARIOS CON ROL NULO ACCEDEN SIN PERMISOS
+ LOS USUARIOS QUE EN SU ROL TENGAN ALGO TIENEN ACCESO A LA EDICION
 
 
 stylos

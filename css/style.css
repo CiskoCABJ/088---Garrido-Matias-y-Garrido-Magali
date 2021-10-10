@@ -1,0 +1,30 @@
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.pelicula {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50vh;
+    width: 90%;
+    margin: 5%;
+}
+
+.detalle-pelicula {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 30%;
+}
+
+.img-pelicula {
+    width: 100%;
+    height: 70%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}

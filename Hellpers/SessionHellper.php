@@ -1,5 +1,5 @@
 <?php
-class StateHellper{
+class SessionHellper{
     function __construct(){
     }
 
@@ -11,5 +11,14 @@ class StateHellper{
       
             return "Logout";
         } 
+    }
+
+    function showRol(){
+        session_start();
+        if(isset($_SESSION["usuario"])){
+            return $_SESSION["rol"];
+        }     
+        return ;
+        
     }
 }
