@@ -7,7 +7,7 @@
     <input type="password" name="pass" placeholder="Contraseña" value="">
      
 <input type="submit" value="CREAR" >
-<a href="login">Ya tenes cuenta? Ingresa</a>
+<a href="Login">Ya tenes cuenta? Ingresa</a>
 
 
 <h4>{$error}</h4>

@@ -2,7 +2,7 @@
 <section>
     {foreach from=$generos item=$genero }
 
-      <a href="genero/{$genero->id_genero}">{$genero->genero}</a>
+      <a href="genero/{$genero->genero}">{$genero->genero}</a>
         
     {/foreach}
 
