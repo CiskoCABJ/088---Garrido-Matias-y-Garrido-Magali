@@ -23,9 +23,10 @@ class PeliculasController {
 
     }
     function showPeliculas(){
-        $rol = $this->sessionHellper->showRol();
+        
      
         $state = $this->sessionHellper->showState();
+        $rol = $this->sessionHellper->showRol();
 
         $peliculas = $this->model->getPeliculas();
         $this->view->renderPeliculas($peliculas, $state,$rol);
@@ -41,8 +42,9 @@ class PeliculasController {
     }
 
     function showGenero($genero){
-        $rol = $this->sessionHellper->showRol();
+        
         $state = $this->sessionHellper->showState();
+        $rol = $this->sessionHellper->showRol();
 
         $peliculasByGenero = $this->model->getPeliculasByGenero($genero);
         $this->view->renderPeliculas($peliculasByGenero, $state, $rol);
@@ -50,6 +52,7 @@ class PeliculasController {
     }
 
     function showDetalle($pelicula){
+        
         $state = $this->sessionHellper->showState();
 
         $detallePelicula = $this->model->getDetallePelicula($pelicula);

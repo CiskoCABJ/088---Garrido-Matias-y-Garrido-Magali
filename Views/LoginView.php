@@ -10,6 +10,7 @@ class LoginView{
         $this->smarty->assign('titulo', 'Log In');
         $this->smarty->assign('error', $error);
         $this->smarty->assign('state' , $state);
+     
 
         $this->smarty->display('templates/login.tpl');
 

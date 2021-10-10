@@ -12,6 +12,7 @@ class PeliculasView{
         $this->smarty->assign('peliculas', $peliculas);
         $this->smarty->assign('state' , $state);
         $this->smarty->assign('rol' , $rol);
+
         
         $this->smarty->assign('titulo', "Estrenos");
         $this->smarty->display('templates/peliculasLista.tpl');

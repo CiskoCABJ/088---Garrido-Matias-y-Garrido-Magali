@@ -19,14 +19,18 @@ class LoginController{
     }
 
     function logout(){
-        session_start();
-        session_destroy();
-        $this->view->showLogin($this->sessionHellper->showState(),"Te deslogueaste!");
+        
+        $this->sessionHellper->logout();
+           
+     $this->view->showHomeLocation();
+    
 
     }
 
     function login(){
+       
         $this->view->showLogin($this->sessionHellper->showState());
+    
     }
 
     function verify(){
@@ -36,15 +40,13 @@ class LoginController{
 
             $user = $this->model->getUser($usuario);
             if ($user && password_verify($pass, ($user->pass))){
-                session_start();
 
-                $_SESSION["usuario"] = $user->usuario;                
-                $_SESSION["rol"] = $user->rol;
-                
+                $this->sessionHellper->login($user);
+             
                 $this->view->showHomeLocation();
             }  
             else{
-                $this->view->showLogin($this->sessionHellper->showState(),'Acceso denegado');
+                $this->view->showLogin("",'Acceso denegado');
             }  
         }
         else {
@@ -53,7 +55,9 @@ class LoginController{
     }
 
     function register(){
-        $this->view->showRegister($this->sessionHellper->showState());
+        if(!$this->sessionHellper->is_session_started()){
+            $this->view->showRegister($this->sessionHellper->showState());
+        }
     }
 
    function verifyRegister(){
