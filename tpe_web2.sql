@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-10-2021 a las 06:17:53
+-- Tiempo de generación: 10-10-2021 a las 22:39:20
 -- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.6
+-- Versión de PHP: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,13 +37,13 @@ CREATE TABLE `generos` (
 
 INSERT INTO `generos` (`genero`) VALUES
 ('Accion'),
-('Drama'),
-('Romanticas'),
-('Terror'),
-('Suspenso'),
 ('Ciencia Ficcion'),
 ('Comedia'),
-('Infantiles');
+('Drama'),
+('Infantiles'),
+('Romanticas'),
+('Suspenso'),
+('Terror');
 
 -- --------------------------------------------------------
 
@@ -79,7 +79,7 @@ INSERT INTO `peliculas` (`id`, `titulo`, `descripcion`, `duracion`, `reparto`, `
 (15, 'Shrek 2', 'Cuando Shrek y la princesa Fiona regresan de su luna de miel, los padres de ella los invitan a visitar el reino de Muy Muy Lejano para celebrar la boda. Para Shrek, al que nunca abandona su fiel amigo Asno, esto constituye un gran problema. Los padres de Fiona, por su parte, no esperaban que su yerno tuviera un aspecto semejante y, mucho menos, que su hija hubiera cambiado tanto.', 93, 'Shrek', 'img\\Shrek2.jpg', 'Accion', 2004),
 (16, 'Capitana Marvel', 'La historia sigue a Carol Danvers mientras ella se convierte en uno de los héroes más poderosos del universo cuando la Tierra se encuentre atrapada en medio de una guerra galáctica entre dos razas alienígenas. Situada en los años 90, Captain Marvel es una historia nueva de un período de tiempo nunca antes visto en la historia del Universo Cinematográfico de Marvel.', 129, 'Abigaille Ozrey, Adam Hart, Akira Akbar, Algenis Perez Soto,', 'img\\CaptainMarvel.jpg', 'Accion', 2019),
 (17, 'IT : Capitulo 2', '27 años después, los ex-miembros del Club de los Perdedores, que crecieron y se mudaron lejos de Derry, vuelven a unirse tras una devastadora llamada telefónica.', 169, 'Andy Bean, Ari Cohen, Bill Hader, Bill Skarsgård,', 'img\\it2.jpg', 'Accion', 2019),
-(18, 'The Starling', 'Tras sufrir una pérdida, una mujer se las tiene que ver con un pájaro peleón que se ha apoderado de su jardín… y un marido que no encuentra la forma de seguir adelante.', 103, 'Chris O\'Dowd, Daveed Diggs, Don McManus, Edi Patterson.', '', 'Accion', 2021),
+(18, 'The Starling', 'Tras sufrir una pérdida, una mujer se las tiene que ver con un pájaro peleón que se ha apoderado de su jardín… y un marido que no encuentra la forma de seguir adelante.', 103, 'Chris O\'Dowd, Daveed Diggs, Don McManus, Edi Patterson.', './img/thestarling.jpg', 'Accion', 2021),
 (20, 'Harry Potter y la piedra filosofal', 'Harry Potter es un huérfano que vive con sus desagradables tíos, los Dursley, y su repelente primo Dudley. Pocos días antes de su cumpleaños, una serie de misteriosas cartas dirigidas a él y escritas con una estridente tinta verde rompen la monotonía de su vida: Harry es un mago y sus padres también lo eran.', 152, 'Adrian Rawlins, Alan Rickman, Alfred Enoch, Ben Borowiecki.', 'img\\harrypotterpiedra.jpg', 'Accion', 2001),
 (21, 'Un pequeño contratiempo', 'Teddy se despierta la mañana después de su boda para descubrir que ha avanzado un año en su vida hasta su primer aniversario. Atrapado en un ciclo interminable de saltos en el tiempo, transportado un año más cada pocos minutos, se enfrenta a una carrera contrarreloj mientras su vida se desmorona a su alrededor.', 90, 'Dena Kaplan, Josh Lawson, Noni Hazlehurst, Rafe Spall, Ronny Chieng, Zahra Newman.', 'img\\unpequeñocontratiempo.jpg', 'Accion', 2021),
 (22, 'Long Weekend', 'Un escritor que pasa por un bache conoce a una enigmática mujer que entra en su vida justo en el momento adecuado.', 91, ' Casey Wilson, Damon Wayans Jr., Finn Wittrock, Jim Rash, Wendi McLendon-Covey, Zoe Chao.', 'img\\longweekend.jpg', 'Accion', 2021),
@@ -104,9 +104,30 @@ INSERT INTO `peliculas` (`id`, `titulo`, `descripcion`, `duracion`, `reparto`, `
 CREATE TABLE `usuarios` (
   `id_usuario` int(10) NOT NULL,
   `usuario` varchar(20) NOT NULL,
-  `password` varchar(400) NOT NULL,
-  `rol` int(1) NOT NULL
+  `mail` varchar(40) NOT NULL,
+  `pass` varchar(400) NOT NULL,
+  `rol` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `usuario`, `mail`, `pass`, `rol`) VALUES
+(1, '1', 'maatigarrido@gmail.com', '$2y$10$bKOaPaeslD9r4Cwu5WcGC.kbHyERnLs6SDS1A3T.9m4TAlU4WLerq', 1),
+(2, '2', 'maatigarrido@gmail.comA', '$2y$10$OAgj2Caq50zh9j1uitAsjeohGxKqjAiMPDguUZTLAh5LZtZO5yCXS', 10),
+(3, '123', '123', '$2y$10$DPtGt.eytSC5b5Dz1L7NkepscIgfWEKW6W2.HTEHAmF52b9JtkuPm', NULL),
+(4, '111', '111', '$2y$10$RHsHF7S1Cx6lEeN1bjqMI.Q.DnJr6Yx3JH4vR7OncStSfRo/oSE3m', NULL),
+(5, '222', '222', '$2y$10$lxI2xoAtb7U/z6Yk08/JGea8yHc964NPq5t0o6sHhA2EmWtsGuce2', NULL),
+(6, '333', '333', '$2y$10$.UkOWggXdV5A8XVp2QQLIuzvFV9fnsm8bjaOoPrWeZoGRBkLM5ybW', NULL),
+(7, '555', '4445', '$2y$10$mBAgexsNY5vSyeGKRyrwN.frpDqeY95xio0C/1ksgyJ/ET9TkeMQm', NULL),
+(8, 'aaa', 'aaa', '$2y$10$pNLy4jeAayTyFlfzkFNX4OHb0E3TWayNiyxQaFQnSeaDoncctjyyO', NULL),
+(9, 'zzz', 'zzz', '$2y$10$cWKB6glr9yZYGwT6tuNuxu7ynccv9JH82szH2ZFaU6JJfjqG8MrV2', NULL),
+(10, 'sss', 'sss', '$2y$10$bZr2EAMOO2bW6sE3KyfI4.X3nEXMRN6cmngHVQJVyqIAFj2j9MnWO', NULL),
+(11, 'fff', 'fff', '$2y$10$pIdh89HZH9b6rvHNDvu/AOnOr/Egls8kZF9T5/AJsuQIN20R/Ay5a', NULL),
+(12, 'asdaa', 'asdasdasd', '$2y$10$dkU06eG3nHxO9bQqpeeEdujNMwm5QA5lTHD1c4XyWBhzCaSS3PTxG', NULL),
+(13, 'qwer', 'maatigarrido@gmail.com', '$2y$10$Rw7NbijHFc6U68G88JGtkOCJ2Hd5yJ6MXd2KcktR6oOGW6LB.dZaS', NULL),
+(14, '123123', '123123123', '$2y$10$WGUE.KA.SZF7bt7iz4isIOZ3SWaZAWFD2dajBjPlZXUZDVU7yICWS', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -145,7 +166,7 @@ ALTER TABLE `peliculas`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Restricciones para tablas volcadas
