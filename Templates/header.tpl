@@ -9,6 +9,9 @@
     <title>Document</title>
 </head>
 <header>
+    {if isset($usuario)}
+        <h2> Hola {$usuario}!</h2>
+    {/if}
     <nav>
         <a href="home">Inicio</a>
         <a href="generos">Generos</a>

@@ -5,9 +5,7 @@ cambiar de login a logout y viseversa en el nav.
 //in en caso de que no haya una session activa.
 
 
-impedir que puedan logiar una vez logiados
-
-
+impedir que puedan logiar una vez logiados COMPLETADA
 
 
 darle importancia a los roles de los usuarios

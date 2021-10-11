@@ -51,13 +51,34 @@ class PeliculasController {
        
     }
 
-    function showDetalle($pelicula){
-        
+    function showDetalle($idpelicula){
         $state = $this->sessionHellper->showState();
+        $generos = $this->model->getGeneros();
 
-        $detallePelicula = $this->model->getDetallePelicula($pelicula);
-        $this->view->renderDetallePelicula($detallePelicula, $state);
-       
+        $pelicula = $this->model->getPelicula($idpelicula);
+        $this->view->renderPelicula($pelicula, $generos, $state);
+    }
+
+    function deletePelicula($idpelicula){
+        if($this->sessionHellper->showRol()){
+            $this->model->deletePelicula($idpelicula);
+            
+        }
+        $this->view->showHomeLocation();    
+    }
+
+    function updatePelicula($idpelicula){ 
+        $state = $this->sessionHellper->showState();
+            $peliculaUpdate = $this->model->getPelicula($idpelicula);
+            $generos = $this->model->getGeneros();
+            $this->view->renderPeliculaUpdate($peliculaUpdate, $generos, $state);
+        
+         //$this->view->showHomeLocation();
+    }
+
+    function editPelicula($idpelicula){
+        $this->model->updatePelicula($idpelicula , $_POST['inp_img'],$_POST['inp_titulo'],$_POST['inp_genero'],$_POST['inp_descripcion'],$_POST['inp_duracion'],$_POST['inp_reparto']);
+        $this->view->showHomeLocation();
     }
 
   

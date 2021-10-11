@@ -1,11 +1,19 @@
 <?php
 require_once('./libs/smarty-3.1.39/libs/Smarty.class.php');
+require_once('./Hellpers/SessionHellper.php');
 class PeliculasView{
 
     private $smarty;
 
     function __construct(){
+      
+        $sessionHellper = new SessionHellper();
+        $userLogged = $sessionHellper->getLoggedUser();
+
         $this->smarty = new Smarty();
+        $this->smarty->assign('usuario',$userLogged);
+
+
     }
 
     function renderHome($peliculas, $state, $rol){
@@ -35,11 +43,20 @@ class PeliculasView{
         $this->smarty->display('templates/generosLista.tpl');
     }
 
-    function renderDetallePelicula($detallePelicula, $state){
-        $this->smarty->assign('detallePelicula', $detallePelicula);
+    function renderPelicula($pelicula,$generos, $state){
+        $this->smarty->assign('pelicula', $pelicula);
         $this->smarty->assign('state' , $state);
+        $this->smarty->assign('generos', $generos);
         
         $this->smarty->display('templates/peliculaDetalle.tpl');
+    }
+
+    function renderPeliculaUpdate($pelicula, $generos, $state){
+        $this->smarty->assign('pelicula', $pelicula);
+        $this->smarty->assign('generos', $generos);
+        $this->smarty->assign('state' , $state);
+
+        $this->smarty->display('templates/peliculaUpdate.tpl');
     }
 
     function showHomeLocation(){

@@ -45,7 +45,18 @@ switch($params[0]){
         break;
     case 'verifyregister':
         $loginController->verifyRegister();
-        break;    
+        break;   
+    case 'borrar':
+        $peliculasController->deletePelicula($params[1]);
+        break;   
+    case 'editar':
+        $peliculasController->updatePelicula($params[1]);
+        //function igual con showDetalle ver si simplifico o dejamos ambas entradas
+        break;   
+    case 'edicion' :
+        $peliculasController->editPelicula($params[1]);
+        break;
+        
     default:
         echo('404 Page not found :(');
         break;

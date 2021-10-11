@@ -37,10 +37,20 @@ class PeliculasModel {
         return $peliculasByGenero;
     }
 
-    function getDetallePelicula($pelicula){
-        $consulta = $this->db->prepare("SELECT * FROM peliculas WHERE titulo=?");
-        $consulta->execute(array($pelicula));
+    function getPelicula($idpelicula){
+        $consulta = $this->db->prepare("SELECT * FROM peliculas WHERE id=?");
+        $consulta->execute(array($idpelicula));
         $detallePelicula = $consulta->fetch(PDO::FETCH_OBJ);
         return $detallePelicula;
+    }
+
+    function deletePelicula($idpelicula){
+        $consulta = $this->db->prepare("DELETE FROM peliculas WHERE id=?");
+        $consulta->execute(array($idpelicula));
+    }
+
+    function updatePelicula($idpelicula, $img , $titulo , $genero , $descripcion , $duracion, $reparto){
+        $sentencia = $this->db->prepare("UPDATE peliculas SET titulo='$titulo', genero='$genero' , descripcion='$descripcion', img='$img' ,duracion='$duracion' , reparto = '$reparto' WHERE id =?");
+        $sentencia->execute(array($idpelicula));
     }
 }

@@ -1,7 +1,6 @@
 <?php
 class SessionHellper{
     function __construct(){
-       
     }
 
 
@@ -12,28 +11,33 @@ class SessionHellper{
     }
 
     public function logout() {
-        session_start();
+        if (session_status() != PHP_SESSION_ACTIVE)
+            session_start();
         session_destroy();
     }
 
     public function checkLoggedIn() {
-        session_start();
-        if (!isset($_SESSION['usuario'])) {
-            header('Location: ' . LOGIN);
-            die();
-        }       
-    }
-
-    public function getLoggedUserName() {
         if (session_status() != PHP_SESSION_ACTIVE)
             session_start();
-        return $_SESSION['usuario'];
+        if (isset($_SESSION['usuario'])) {
+            header('Location: ' . BASE_URL);
+            die();
+        }
+        session_destroy();       
+    }
+
+    public function getLoggedUser() {
+        if (session_status() != PHP_SESSION_ACTIVE)
+            session_start();
+        if(isset($_SESSION['usuario']))
+            return $_SESSION['usuario'];
     }
 
 
 
     function showState(){
-        session_start();
+        if (session_status() != PHP_SESSION_ACTIVE)
+            session_start();
         if (isset($_SESSION['usuario'])){
             return "Logout";
         }else{
@@ -42,7 +46,8 @@ class SessionHellper{
         
     }
     function showRol(){
-       
+        if (session_status() != PHP_SESSION_ACTIVE)
+        session_start();
         if(isset($_SESSION["usuario"])){
             return $_SESSION["rol"];
         }     

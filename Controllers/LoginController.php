@@ -18,17 +18,13 @@ class LoginController{
         $this->sessionHellper = new SessionHellper();
     }
 
-    function logout(){
-        
+    function logout(){ 
         $this->sessionHellper->logout();
-           
-     $this->view->showHomeLocation();
-    
-
+        $this->view->showLogin($this->sessionHellper->showState());
     }
 
     function login(){
-       
+        $this->sessionHellper->checkLoggedIn();
         $this->view->showLogin($this->sessionHellper->showState());
     
     }
@@ -55,9 +51,9 @@ class LoginController{
     }
 
     function register(){
-        if(!$this->sessionHellper->is_session_started()){
-            $this->view->showRegister($this->sessionHellper->showState());
-        }
+        $this->sessionHellper->checkLoggedIn();
+        $this->view->showRegister($this->sessionHellper->showState());
+        
     }
 
    function verifyRegister(){
