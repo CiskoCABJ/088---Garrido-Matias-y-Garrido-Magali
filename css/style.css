@@ -1,14 +1,60 @@
-.contenedor {
+html {
+    width: 90%;
+    background-color: white;
+}
+
+.cabecera-logo {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+.cabecera-logo h1 {
+    align-items: left;
+    margin: 0 5%;
+    color: tomato;
+    font-size: 5rem;
+}
+
+.cabecera-logo h2 {
+    align-items: right;
+    margin: 0 5%;
+    color: black;
+    font-weight: 200;
+}
+
+.navegador {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navegador a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3rem;
+    margin: 0 5%;
+    padding: 15px;
+}
+
+.navegador a:hover {
+    background-color: rgb(106, 185, 209);
+}
+
+.contenedor-peliculas {
+    margin: 0 5%;
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .pelicula {
+    width: 250px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     height: 50vh;
-    width: 90%;
     margin: 5%;
 }
 
@@ -27,4 +73,26 @@
 * {
     margin: 0;
     padding: 0;
+}
+
+.titulo-seccion {
+    margin: 0 5%;
+    text-align: center;
+    padding: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.contenedor-generos {
+    display: flex;
+    justify-content: space-between;
+    margin: 5%;
+    background-color: turquoise;
+}
+
+.contenedor-generos a {
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
 }

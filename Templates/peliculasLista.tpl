@@ -1,7 +1,8 @@
     {include file='templates/header.tpl'}
-    <h1>{$titulo}</h1>
 
-    <div class="contenedor">
+    <h1 class="titulo-seccion">{$titulo}</h1>
+
+    <div class="contenedor-peliculas">
 
         {foreach from=$peliculas item=$pelicula}
         
