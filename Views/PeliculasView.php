@@ -27,10 +27,11 @@ class PeliculasView{
         $this->smarty->display('templates/peliculasLista.tpl');
     }
 
-    function renderGeneros($generos, $state, $rol){
+    function renderGeneros($generos, $titulo, $state, $rol){
         $this->smarty->assign('generos', $generos);
         $this->smarty->assign('state' , $state);
         $this->smarty->assign('rol' , $rol);
+        $this->smarty->assign('titulo', $titulo);
 
         $this->smarty->display('templates/generosLista.tpl');
     }

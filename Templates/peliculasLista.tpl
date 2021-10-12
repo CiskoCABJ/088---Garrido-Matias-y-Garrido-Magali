@@ -30,16 +30,16 @@
         
             <div class="pelicula">
 
-            {if $rol neq ""}
-            <div class="d-flex-row jc-right">
-                <a class="icono" href="editar/{$pelicula->id}">
-                    <img src="./img/editar.png" >
-                </a>
-                <a class="icono" href="borrar/{$pelicula->id}">
-                    <img src="./img/eliminar.png" >
-                </a>
+                {if $rol neq ""}
+                <div class="d-flex-row jc-right">
+                    <a class="icono" href="editar/{$pelicula->id}">
+                        <img src="./img/editar.png" >
+                    </a>
+                    <a class="icono" href="borrar/{$pelicula->id}">
+                        <img src="./img/eliminar.png" >
+                    </a>
                 </div>
-            {/if}
+                {/if}
                 <img class="img-pelicula" src="{$pelicula->img}">
                 <div class="detalle-pelicula">
                     <h2>{$pelicula->titulo}</h2>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-10-2021 a las 05:51:31
+-- Tiempo de generación: 13-10-2021 a las 00:14:14
 -- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.6
+-- Versión de PHP: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,11 +36,12 @@ CREATE TABLE `generos` (
 --
 
 INSERT INTO `generos` (`genero`) VALUES
-('Accion'),
+(''),
 ('Ciencia Ficcion'),
 ('Comedia'),
 ('Drama'),
 ('Infantil'),
+('Perro'),
 ('Romance'),
 ('Suspenso'),
 ('Terror');
@@ -74,7 +75,7 @@ INSERT INTO `peliculas` (`id`, `titulo`, `descripcion`, `duracion`, `reparto`, `
 (8, 'Cowboys', 'Troy y su joven hijo transgénero Joe están huyendo de su madre conservadora en el desierto de Montana, con un detective en la persecución.', 83, 'Ann Dowd, Bob Stephenson, Chris Coy, Gary Farmer, Jillian Bell, John Beasley, John Reynolds, Sasha Knight, Steve Zahn', 'img/Cowboys.jpg', 'Drama', 2020),
 (14, 'Curse of Humpty Dumpty', 'Humpty Dumpty tuvo una gran caída, y ha vuelto en forma de muñeco que pertenece a una mujer con demencia que empieza a recordar su oscuro pasado.', 92, 'Antonia Johnstone, Antonia Whillans, Chris Cordell, Danielle Scott, Kate Milner Evans, Kate Sandison, Nicola Wright, Richard Harfst, Sian Altman', 'img/HumptyDumpty.jpg', 'Terror', 2021),
 (15, 'Shrek 2', 'Cuando Shrek y la princesa Fiona regresan de su luna de miel, los padres de ella los invitan a visitar el reino de Muy Muy Lejano para celebrar la boda. Para Shrek, al que nunca abandona su fiel amigo Asno, esto constituye un gran problema. Los padres de Fiona, por su parte, no esperaban que su yerno tuviera un aspecto semejante y, mucho menos, que su hija hubiera cambiado tanto.', 93, 'Shrek', 'img/Shrek2.jpg', 'Infantil', 2004),
-(16, 'Capitana Marvel', 'La historia sigue a Carol Danvers mientras ella se convierte en uno de los héroes más poderosos del universo cuando la Tierra se encuentre atrapada en medio de una guerra galáctica entre dos razas alienígenas. Situada en los años 90, Captain Marvel es una historia nueva de un período de tiempo nunca antes visto en la historia del Universo Cinematográfico de Marvel.', 129, 'Abigaille Ozrey, Adam Hart, Akira Akbar, Algenis Perez Soto,', 'img\\CaptainMarvel.jpg', 'Accion', 2019),
+(16, 'Capitana Marvel', 'La historia sigue a Carol Danvers mientras ella se convierte en uno de los héroes más poderosos del universo cuando la Tierra se encuentre atrapada en medio de una guerra galáctica entre dos razas alienígenas. Situada en los años 90, Captain Marvel es una historia nueva de un período de tiempo nunca antes visto en la historia del Universo Cinematográfico de Marvel.', 129, 'Abigaille Ozrey, Adam Hart, Akira Akbar, Algenis Perez Soto,', 'img/CaptainMarvel.jpg', '', 2019),
 (17, 'IT : Capitulo 2', '27 años después, los ex-miembros del Club de los Perdedores, que crecieron y se mudaron lejos de Derry, vuelven a unirse tras una devastadora llamada telefónica.', 169, 'Andy Bean, Ari Cohen, Bill Hader, Bill Skarsgård,', 'img/it2.jpg', 'Terror', 2019),
 (18, 'The Starling', 'Tras sufrir una pérdida, una mujer se las tiene que ver con un pájaro peleón que se ha apoderado de su jardín… y un marido que no encuentra la forma de seguir adelante.', 103, 'Chris ODowd, Daveed Diggs, Don McManus, Edi Patterson.', 'img/thestarling.jpg', 'Drama', 2021),
 (20, 'Harry Potter y la piedra filosofal', 'Harry Potter es un huérfano que vive con sus desagradables tíos, los Dursley, y su repelente primo Dudley. Pocos días antes de su cumpleaños, una serie de misteriosas cartas dirigidas a él y escritas con una estridente tinta verde rompen la monotonía de su vida: Harry es un mago y sus padres también lo eran.', 152, 'Adrian Rawlins, Alan Rickman, Alfred Enoch, Ben Borowiecki.', 'img/harrypotterpiedra.jpg', 'Ciencia Ficcion', 2001),
@@ -86,7 +87,7 @@ INSERT INTO `peliculas` (`id`, `titulo`, `descripcion`, `duracion`, `reparto`, `
 (27, 'Cruella', 'Londres, años 70. Decidida a convertirse en una exitosa diseñadora de moda, una joven y creativa estafadora llamada Estella (Emma Stone) se asocia con un par de ladrones para sobrevivir en las calles de la capital británica.', 134, 'Emma Stone, Emma Thompson, Joel Fry, Paul Walter Hauser, John McCrea, Emily Beecham, Mark Strong, Kayvan Novak, Kirby Howell-Baptiste', 'img/cruella.jpg', 'Drama', 2021),
 (28, 'The Hangover', 'Historia de una desmadrada despedida de soltero en la que el novio y tres amigos se montan una gran juerga en Las Vegas. Como era de esperar, a la mañana siguiente tienen una resaca tan monumental que no pueden recordar nada de lo ocurrido la noche anterior.', 100, 'Bradley Cooper, Ed Helms, Zach Galifianakis, Justin Bartha, Heather Graham, Sasha Barrese, Jeffrey Tambor', 'img/hangover.jpg', 'Comedia', 2009),
 (29, 'Siete Almas', 'Ben Thomas (Will Smith), un inspector de Hacienda de Los Ángeles, se pone en contacto con algunas personas para ayudarlas, pero las razones que lo mueven a actuar así son un misterio. Sin embargo, cuando conoce a Emily Posa (Rosario Dawson), una joven enferma investigada por hacienda y empieza a sentirse atraído por ella, sus inconfesables planes se tambalean. ', 118, 'Will Smith, Rosario Dawson, Woody Harrelson, Barry Pepper, Elpidia Carrillo, Connor Cruise, Michael Ealy, Robinne Lee.', 'img/sietealmas.jpg', 'Drama', 2008),
-(31, 'Focus', 'Un veterano estafador acoge a una atractiva joven bajo su protectorado, pero las cosas se complican cuando ambos comienzan un romance. ', 104, 'Will Smith, Margot Robbie, Rodrigo Santoro, Stephanie Honore, BD Wong, Adrian Martinez, Robert Taylor.', 'img\\focus.jpg', 'Accion', 2015),
+(31, 'Focus', 'Un veterano estafador acoge a una atractiva joven bajo su protectorado, pero las cosas se complican cuando ambos comienzan un romance. ', 104, 'Will Smith, Margot Robbie, Rodrigo Santoro, Stephanie Honore, BD Wong, Adrian Martinez, Robert Taylor.', 'img\\focus.jpg', '', 2015),
 (32, 'I am  Legend', 'Año 2012. Robert Neville (Will Smith) es el último hombre vivo que hay sobre la Tierra, pero no está solo. Los demás seres humanos se han convertido en vampiros y todos ansían beber su sangre. ', 100, 'Will Smith, Alice Braga, Salli Richardson-Whitfield, Paradox Pollack, Charlie Tahan, Darrell Foster, Emma Thompson, Courtney Munch, Willow Smith.', 'img/soyleyenda.jpg', 'Drama', 2007),
 (33, 'Spirit: El indomable', 'La vida de Lucky Prescott cambia para siempre cuando se muda de su casa en la gran ciudad a un pequeño pueblo fronterizo en el que entabla amistad con un caballo salvaje llamado Spirit.', 87, 'Animación.', 'img/spirit.jpg', 'Infantil', 2021),
 (34, 'La Era de Hielo', 'Hace muchos, muchos años, tantos como 20.000, una pequeña ardirata de nombre Scrat quería esconder una bellota en el hielo. Pero lo que hace es provocar una semicatástrofe que provoca que todos los animales migren hacia el sur, hacia tierras más cálidas.', 83, 'Animacion.', 'img/laeradehielo.jpg', 'Infantil', 2002),
