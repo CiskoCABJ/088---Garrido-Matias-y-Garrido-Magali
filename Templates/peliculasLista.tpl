@@ -42,7 +42,7 @@
                     <h2>{$pelicula->titulo}</h2>
                     <h3>{$pelicula->genero}</h3>
                     <h4>{$pelicula->duracion} min</h4>
-                    <a href="pelicula/{$pelicula->id}" >ver</a>
+                    <a href="pelicula/{$pelicula->id}" >VER</a>
                 </div>
             </div>
         

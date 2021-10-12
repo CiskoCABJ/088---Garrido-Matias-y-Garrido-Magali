@@ -1,11 +1,12 @@
 {include file='templates/header.tpl'}
-<div>
-    <img src="{$pelicula->img}">
-    <h1>{$pelicula->titulo}</h1>
-    <h2>{$pelicula->genero}</h2>
+<div class="contenedor-detalles">
+    <div><img src="{$pelicula->img}"></div>
+    <div class="info-pelicula"><h1>{$pelicula->titulo}</h1>
+    <h2>Genero: {$pelicula->genero}</h2>
     <p>{$pelicula->descripcion}</p>
-    <p>{$pelicula->duracion}</p>
-    <p>{$pelicula->reparto}</p>
+    <p>Duración: {$pelicula->duracion}</p>
+    <p>Reparto: {$pelicula->reparto}</p>
+</div>
 </div>
 
  {if isset($usuario) && $rol neq ""}

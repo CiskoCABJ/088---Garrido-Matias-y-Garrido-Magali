@@ -3,6 +3,23 @@ html {
     background-color: white;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.d-flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.jc-right {
+    justify-content: right;
+}
+
+
+/*CABECERA*/
+
 .cabecera-logo {
     display: flex;
     justify-content: space-between;
@@ -23,6 +40,9 @@ html {
     font-weight: 200;
 }
 
+
+/*BOTONES*/
+
 .navegador {
     background-color: black;
     display: flex;
@@ -30,34 +50,32 @@ html {
 }
 
 .navegador a {
+    margin: 0 5%;
+    padding: 15px;
+    font-size: 1.3rem;
+}
+
+.navegador a,
+.detalle-pelicula a {
     color: white;
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
-    font-size: 1.3rem;
-    margin: 0 5%;
-    padding: 15px;
+    background-color: black;
 }
 
-.navegador a:hover {
+.detalle-pelicula a {
+    font-size: 1rem;
+}
+
+.navegador a:hover,
+.detalle-pelicula a:hover {
     background-color: rgb(106, 185, 209);
-}
-
-.d-flex-row {
-    display: flex;
-    flex-direction: row;
-}
-
-.jc-right {
-    justify-content: right;
 }
 
 .icono img {
     width: 25px;
     height: 25px;
 }
-
-
-/*panel edicion es igual a nav*/
 
 .contenedor-peliculas {
     margin: 0 5%;
@@ -71,7 +89,7 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 50vh;
+    height: 60vh;
     margin: 1vh 5%;
     box-shadow: 0px 1px 24px 0px rgba(0, 0, 0, 0.31);
     -webkit-box-shadow: 0px 1px 24px 0px rgba(0, 0, 0, 0.31);
@@ -82,7 +100,8 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 30%;
+    text-align: center;
+    height: 35%;
 }
 
 .img-pelicula {
@@ -91,9 +110,27 @@ html {
     margin: 0 auto;
 }
 
-* {
-    margin: 0;
-    padding: 0;
+.contenedor-detalles {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    margin: 2vh auto;
+    background-color: white;
+    box-shadow: 0px 1px 24px 0px rgba(0, 0, 0, 0.31);
+    -webkit-box-shadow: 0px 1px 24px 0px rgba(0, 0, 0, 0.31);
+    -moz-box-shadow: 0px 1px 24px 0px rgba(0, 0, 0, 0.31);
+}
+
+.contenedor-detalles img {
+    width: 100%;
+}
+
+.info-pelicula {
+    margin: 20px;
+}
+
+.info-pelicula p {
+    margin: 10px 0;
 }
 
 .titulo-seccion {
