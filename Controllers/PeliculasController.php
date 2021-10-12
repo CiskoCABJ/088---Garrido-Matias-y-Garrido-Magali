@@ -17,27 +17,30 @@ class PeliculasController {
     function showHome(){
         $state = $this->sessionHellper->showState();
         $rol = $this->sessionHellper->showRol();
-  
+        $titulo = "Estrenos";
         $peliculasHome = $this->model->getPeliculasEstreno();
-        $this->view->renderHome($peliculasHome, $state, $rol);
+        $generos = $this->model->getGeneros();
+        $this->view->renderPeliculas($peliculasHome,$generos,$titulo, $state, $rol);
 
     }
     function showPeliculas(){
         
-     
         $state = $this->sessionHellper->showState();
         $rol = $this->sessionHellper->showRol();
+        $titulo = "Peliculas";
 
         $peliculas = $this->model->getPeliculas();
-        $this->view->renderPeliculas($peliculas, $state,$rol);
+        $generos = $this->model->getGeneros();
+        $this->view->renderPeliculas($peliculas,$generos, $titulo, $state,$rol);
 
     }
 
     function showGeneros(){
         $state = $this->sessionHellper->showState();
+        $rol = $this->sessionHellper->showRol();
 
         $generos = $this->model->getGeneros();
-        $this->view->renderGeneros($generos, $state);
+        $this->view->renderGeneros($generos, $state, $rol);
 
     }
 
@@ -45,18 +48,26 @@ class PeliculasController {
         
         $state = $this->sessionHellper->showState();
         $rol = $this->sessionHellper->showRol();
-
+        $generos = $this->model->getGeneros();
         $peliculasByGenero = $this->model->getPeliculasByGenero($genero);
-        $this->view->renderPeliculas($peliculasByGenero, $state, $rol);
+        $this->view->renderPeliculas($peliculasByGenero,$generos,$genero, $state, $rol);
        
     }
 
     function showDetalle($idpelicula){
         $state = $this->sessionHellper->showState();
+        $rol = $this->sessionHellper->showRol();
         $generos = $this->model->getGeneros();
 
         $pelicula = $this->model->getPelicula($idpelicula);
-        $this->view->renderPelicula($pelicula, $generos, $state);
+        $this->view->renderPelicula($pelicula, $generos, $state, $rol);
+    }
+
+    function addPelicula(){
+        $state = $this->sessionHellper->showState();
+        $rol = $this->sessionHellper->showRol();
+        $this->model->addPelicula($_POST['inp_img'],$_POST['inp_titulo'],$_POST['inp_genero'],$_POST['inp_descripcion'],$_POST['inp_duracion'],$_POST['inp_reparto'],$_POST['inp_estreno']);
+        $this->view->showHomeLocation();
     }
 
     function deletePelicula($idpelicula){
@@ -69,9 +80,10 @@ class PeliculasController {
 
     function updatePelicula($idpelicula){ 
         $state = $this->sessionHellper->showState();
+        $rol = $this->sessionHellper->showRol();
             $peliculaUpdate = $this->model->getPelicula($idpelicula);
             $generos = $this->model->getGeneros();
-            $this->view->renderPeliculaUpdate($peliculaUpdate, $generos, $state);
+            $this->view->renderPeliculaUpdate($peliculaUpdate, $generos, $state,$rol);
         
          //$this->view->showHomeLocation();
     }
@@ -81,7 +93,34 @@ class PeliculasController {
         $this->view->showHomeLocation();
     }
 
+    function addGenero(){
+        $state = $this->sessionHellper->showState();
+        $rol = $this->sessionHellper->showRol();
+        $this->model->addGenero($_POST['inp_genero']);
+        $this->showGeneros();
+    }
+
+    function deleteGenero($genero){
+        if($this->sessionHellper->showRol()){
+            $this->model->deleteGenero($genero);
+            
+        }
+        $this->showGeneros();    
+    }
+
+
+    function updateGenero($genero){
+        $state = $this->sessionHellper->showState();
+        $rol = $this->sessionHellper->showRol();
+        $peliculasByGenero=$this->model->getPeliculasByGenero($genero);
+        $this->view->renderGeneroUpdate($genero, $peliculasByGenero, $state, $rol);
+    }
   
+    function editGenero($genero){
+        $this->model->updateGenero($genero, $_POST['inp_genero']);
+        $this->view->showHomeLocation();
+    }
+
 
 
 

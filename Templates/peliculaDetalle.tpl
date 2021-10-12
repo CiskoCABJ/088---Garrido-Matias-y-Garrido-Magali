@@ -8,11 +8,13 @@
     <p>{$pelicula->reparto}</p>
 </div>
 
- {if isset($usuario)}
+ {if isset($usuario) && $rol neq ""}
        <form method="POST" action="edicion/{$pelicula->id}">
             <input type="text" name="inp_img" value="{$pelicula->img}">
             <input type="text" name="inp_titulo"  value="{$pelicula->titulo}">
             <select name="inp_genero" id="lista_generos">
+            <option value="{$pelicula->genero}"> {$pelicula->genero} </option>
+            <option disabled value=""> -------</option>
             {foreach from=$generos item=$genero}
                 <option value="{$genero->genero}"> {$genero->genero} </option>
             {/foreach}

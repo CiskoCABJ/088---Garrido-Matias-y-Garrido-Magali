@@ -44,6 +44,12 @@ class PeliculasModel {
         return $detallePelicula;
     }
 
+    function addPelicula($img , $titulo , $genero , $descripcion , $duracion, $reparto, $estreno){
+        $sentencia = $this->db->prepare("INSERT INTO peliculas (img,titulo,genero,descripcion,duracion,reparto,estreno) VALUES(?,?,?,?,?,?,?)");
+        $sentencia->execute(array($img, $titulo, $genero, $descripcion, $duracion, $reparto, $estreno));
+
+    }
+
     function deletePelicula($idpelicula){
         $consulta = $this->db->prepare("DELETE FROM peliculas WHERE id=?");
         $consulta->execute(array($idpelicula));
@@ -53,4 +59,22 @@ class PeliculasModel {
         $sentencia = $this->db->prepare("UPDATE peliculas SET titulo='$titulo', genero='$genero' , descripcion='$descripcion', img='$img' ,duracion='$duracion' , reparto = '$reparto' WHERE id =?");
         $sentencia->execute(array($idpelicula));
     }
+
+    function addGenero($genero){
+        $sentencia = $this->db->prepare("INSERT INTO generos (genero) VALUES(?)");
+        $sentencia->execute(array($genero));
+
+    }
+
+    function deleteGenero($genero){
+        $consulta = $this->db->prepare("DELETE FROM generos WHERE genero=?");
+        $consulta->execute(array($genero));
+    }
+
+    function updateGenero($genero, $inp_genero){
+        $sentencia = $this->db->prepare("UPDATE generos SET genero='$inp_genero' WHERE genero =?");
+        $sentencia->execute(array($genero));
+    }
+
+
 }

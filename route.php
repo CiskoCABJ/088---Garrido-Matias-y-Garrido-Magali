@@ -56,7 +56,21 @@ switch($params[0]){
     case 'edicion' :
         $peliculasController->editPelicula($params[1]);
         break;
-        
+    case 'editargenero':
+        $peliculasController->updateGenero($params[1]);   
+        break; 
+    case 'ediciongenero':
+        $peliculasController->editGenero($params[1]);
+        break; 
+    case 'borrargenero':
+        $peliculasController->deleteGenero($params[1]);
+        break;    
+    case 'agregarpelicula':
+        $peliculasController->addPelicula();
+        break;  
+    case 'agregargenero':
+        $peliculasController->addGenero();
+        break;      
     default:
         echo('404 Page not found :(');
         break;

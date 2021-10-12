@@ -1,5 +1,5 @@
 html {
-    width: 90%;
+    width: 100%;
     background-color: white;
 }
 
@@ -42,20 +42,40 @@ html {
     background-color: rgb(106, 185, 209);
 }
 
+.d-flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.jc-right {
+    justify-content: right;
+}
+
+.icono img {
+    width: 25px;
+    height: 25px;
+}
+
+
+/*panel edicion es igual a nav*/
+
 .contenedor-peliculas {
     margin: 0 5%;
-    width: 100%;
+    width: 90%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 }
 
 .pelicula {
-    width: 250px;
+    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 50vh;
-    margin: 5%;
+    margin: 1vh 5%;
+    box-shadow: 0px 1px 24px 0px rgba(0, 0, 0, 0.31);
+    -webkit-box-shadow: 0px 1px 24px 0px rgba(0, 0, 0, 0.31);
+    -moz-box-shadow: 0px 1px 24px 0px rgba(0, 0, 0, 0.31);
 }
 
 .detalle-pelicula {
@@ -66,8 +86,9 @@ html {
 }
 
 .img-pelicula {
-    width: 100%;
-    height: 70%;
+    width: 80%;
+    height: 65%;
+    margin: 0 auto;
 }
 
 * {
