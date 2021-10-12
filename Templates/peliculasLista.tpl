@@ -2,22 +2,23 @@
 
     <h1 class="titulo-seccion">{$titulo}</h1>
 
-    {if rol neq ""}
+    {if $rol neq ""}
         <h3>Agregar pelicula</h3>
         <form method="POST" action="agregarpelicula">
-                <input type="text" name="inp_img" value="" placeholder="Ruta de img" required>
-                <input type="text" name="inp_titulo"  value="" placeholder="Titulo" required>
-                <select name="inp_genero" id="lista_generos" required>
+            <input type="text" name="inp_img" value="" placeholder="Ruta de img" required>
+            <input type="text" name="inp_titulo"  value="" placeholder="Titulo" required>
 
-                {foreach from=$generos item=$genero}
-                    <option value="{$genero->genero}"> {$genero->genero} </option>
-                {/foreach}
-                <input type="text-area" name="inp_descripcion" value="" placeholder="Descripcion" required>
-                <input type="number" name="inp_duracion"  value="" placeholder="Duracion" required>
-                <input type="text" name="inp_reparto" value="" placeholder="Reparto" required>
-                <input type="number" name="inp_estreno" value="" placeholder="Estreno" required>
-                <input type="submit" value="Agregar">
-            </form>
+            <select name="inp_genero" id="lista_generos" required>
+            {foreach from=$generos item=$genero}
+                <option value="{$genero->genero}"> {$genero->genero} </option>
+            {/foreach}
+            
+            <input type="text-area" name="inp_descripcion" value="" placeholder="Descripcion" required>
+            <input type="number" name="inp_duracion"  value="" placeholder="Duracion" required>
+            <input type="text" name="inp_reparto" value="" placeholder="Reparto" required>
+            <input type="number" name="inp_estreno" value="" placeholder="Estreno" required>
+            <input type="submit" value="Agregar">
+        </form>
     {/if}
 
     <div class="contenedor-peliculas">

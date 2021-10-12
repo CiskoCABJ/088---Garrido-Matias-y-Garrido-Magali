@@ -10,13 +10,13 @@ class SessionHellper{
         $_SESSION["rol"] = $user->rol;
     }
 
-    public function logout() {
+    function logout() {
         if (session_status() != PHP_SESSION_ACTIVE)
             session_start();
         session_destroy();
     }
 
-    public function checkLoggedIn() {
+    function checkLoggedIn() {
         if (session_status() != PHP_SESSION_ACTIVE)
             session_start();
         if (isset($_SESSION['usuario'])) {
@@ -26,7 +26,7 @@ class SessionHellper{
         session_destroy();       
     }
 
-    public function getLoggedUser() {
+    function getLoggedUser() {
         if (session_status() != PHP_SESSION_ACTIVE)
             session_start();
         if(isset($_SESSION['usuario']))
@@ -47,11 +47,11 @@ class SessionHellper{
     }
     function showRol(){
         if (session_status() != PHP_SESSION_ACTIVE)
-        session_start();
+            session_start();
         if(isset($_SESSION["usuario"])){
             return $_SESSION["rol"];
         }     
-        return ;
+        return;
         
     }
 }

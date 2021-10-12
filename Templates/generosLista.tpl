@@ -1,13 +1,13 @@
 
 {include file='templates/header.tpl'}
 
- {if rol neq ""}
+ {if $rol neq ""}
         <h3>Agregar genero</h3>
         <form method="POST" action="agregargenero">
-              <input type="text" name="inp_genero" value="" placeholder="Genero" required>
-                <input type="submit" value="Agregar">
-            </form>
-    {/if}
+            <input type="text" name="inp_genero" value="" placeholder="Genero" required>
+            <input type="submit" value="Agregar">
+        </form>
+{/if}
     
 <section class="contenedor-generos">
     {foreach from=$generos item=$genero }

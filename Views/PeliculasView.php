@@ -60,7 +60,7 @@ class PeliculasView{
         $this->smarty->assign('state' , $state);
         $this->smarty->assign('rol' , $rol);
 
-        $this->smarty->display('templates/peliculaUpdate.tpl');
+        $this->smarty->display('templates/peliculaDetalle.tpl');
     }
 
     function showHomeLocation(){

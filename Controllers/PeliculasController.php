@@ -34,7 +34,6 @@ class PeliculasController {
         $this->view->renderPeliculas($peliculas,$generos, $titulo, $state,$rol);
 
     }
-
     function showGeneros(){
         $state = $this->sessionHellper->showState();
         $rol = $this->sessionHellper->showRol();
@@ -43,7 +42,6 @@ class PeliculasController {
         $this->view->renderGeneros($generos, $state, $rol);
 
     }
-
     function showGenero($genero){
         
         $state = $this->sessionHellper->showState();
@@ -53,7 +51,6 @@ class PeliculasController {
         $this->view->renderPeliculas($peliculasByGenero,$generos,$genero, $state, $rol);
        
     }
-
     function showDetalle($idpelicula){
         $state = $this->sessionHellper->showState();
         $rol = $this->sessionHellper->showRol();
@@ -62,48 +59,55 @@ class PeliculasController {
         $pelicula = $this->model->getPelicula($idpelicula);
         $this->view->renderPelicula($pelicula, $generos, $state, $rol);
     }
-
-    function addPelicula(){
-        $state = $this->sessionHellper->showState();
+    function addPelicula(){ 
         $rol = $this->sessionHellper->showRol();
-        $this->model->addPelicula($_POST['inp_img'],$_POST['inp_titulo'],$_POST['inp_genero'],$_POST['inp_descripcion'],$_POST['inp_duracion'],$_POST['inp_reparto'],$_POST['inp_estreno']);
+        $state = $this->sessionHellper->showState();
+        if($rol){       
+            $this->model->addPelicula($_POST['inp_img'],$_POST['inp_titulo'],$_POST['inp_genero'],$_POST['inp_descripcion'],$_POST['inp_duracion'],$_POST['inp_reparto'],$_POST['inp_estreno']);
+        }
         $this->view->showHomeLocation();
     }
 
     function deletePelicula($idpelicula){
         if($this->sessionHellper->showRol()){
             $this->model->deletePelicula($idpelicula);
-            
         }
         $this->view->showHomeLocation();    
     }
 
     function updatePelicula($idpelicula){ 
-        $state = $this->sessionHellper->showState();
         $rol = $this->sessionHellper->showRol();
+        $state = $this->sessionHellper->showState();
+        if($rol){  
             $peliculaUpdate = $this->model->getPelicula($idpelicula);
             $generos = $this->model->getGeneros();
             $this->view->renderPeliculaUpdate($peliculaUpdate, $generos, $state,$rol);
+        }else{
+            $this->view->showHomeLocation();
+        }
         
-         //$this->view->showHomeLocation();
+         //
     }
 
     function editPelicula($idpelicula){
-        $this->model->updatePelicula($idpelicula , $_POST['inp_img'],$_POST['inp_titulo'],$_POST['inp_genero'],$_POST['inp_descripcion'],$_POST['inp_duracion'],$_POST['inp_reparto']);
+        if($this->sessionHellper->showRol()){
+            $this->model->updatePelicula($idpelicula , $_POST['inp_img'],$_POST['inp_titulo'],$_POST['inp_genero'],$_POST['inp_descripcion'],$_POST['inp_duracion'],$_POST['inp_reparto']);
+        }
         $this->view->showHomeLocation();
     }
 
     function addGenero(){
-        $state = $this->sessionHellper->showState();
         $rol = $this->sessionHellper->showRol();
-        $this->model->addGenero($_POST['inp_genero']);
+        $state = $this->sessionHellper->showState();
+        if($rol){ 
+            $this->model->addGenero($_POST['inp_genero']);
+        }
         $this->showGeneros();
     }
 
     function deleteGenero($genero){
         if($this->sessionHellper->showRol()){
             $this->model->deleteGenero($genero);
-            
         }
         $this->showGeneros();    
     }
