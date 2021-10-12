@@ -3,8 +3,9 @@
     <h1 class="titulo-seccion">{$titulo}</h1>
 
     {if $rol neq ""}
-        <h3>Agregar pelicula</h3>
-        <form method="POST" action="agregarpelicula">
+        <div class="contenedor-agregar">
+        <h3 class="titulo-formulario">Agregar pelicula</h3>
+        <form class="form-add" method="POST" action="agregarpelicula">
             <input type="text" name="inp_img" value="" placeholder="Ruta de img" required>
             <input type="text" name="inp_titulo"  value="" placeholder="Titulo" required>
 
@@ -17,8 +18,10 @@
             <input type="number" name="inp_duracion"  value="" placeholder="Duracion" required>
             <input type="text" name="inp_reparto" value="" placeholder="Reparto" required>
             <input type="number" name="inp_estreno" value="" placeholder="Estreno" required>
-            <input type="submit" value="Agregar">
+            <input class="btn" type="submit" value="Agregar">
         </form>
+        </div>
+
     {/if}
 
     <div class="contenedor-peliculas">
@@ -42,7 +45,7 @@
                     <h2>{$pelicula->titulo}</h2>
                     <h3>{$pelicula->genero}</h3>
                     <h4>{$pelicula->duracion} min</h4>
-                    <a href="pelicula/{$pelicula->id}" >VER</a>
+                    <a class="btn" href="pelicula/{$pelicula->id}" >VER</a>
                 </div>
             </div>
         

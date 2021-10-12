@@ -2,11 +2,13 @@
 {include file='templates/header.tpl'}
 
  {if $rol neq ""}
-        <h3>Agregar genero</h3>
-        <form method="POST" action="agregargenero">
+    <div class="contenedor-agregar">
+        <h3 class="titulo-formulario">Agregar genero</h3>
+        <form class="form-genero" method="POST" action="agregargenero">
             <input type="text" name="inp_genero" value="" placeholder="Genero" required>
-            <input type="submit" value="Agregar">
+            <input class="btn" type="submit" value="Agregar">
         </form>
+    </div>
 {/if}
     
 <section class="contenedor-generos">

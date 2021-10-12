@@ -1,16 +1,19 @@
 {include file='templates/header.tpl'}
 <div class="contenedor-detalles">
-    <div><img src="{$pelicula->img}"></div>
-    <div class="info-pelicula"><h1>{$pelicula->titulo}</h1>
-    <h2>Genero: {$pelicula->genero}</h2>
-    <p>{$pelicula->descripcion}</p>
-    <p>Duración: {$pelicula->duracion}</p>
-    <p>Reparto: {$pelicula->reparto}</p>
-</div>
-</div>
+    <div>
+        <img src="{$pelicula->img}">
+    </div>
+    <div class="info-pelicula">
+        <h1>{$pelicula->titulo}</h1>
+        <h2>Genero: {$pelicula->genero}</h2>
+        <p>{$pelicula->descripcion}</p>
+        <p>Duración: {$pelicula->duracion}</p>
+        <p>Reparto: {$pelicula->reparto}</p>
+    </div>
+
 
  {if isset($usuario) && $rol neq ""}
-       <form method="POST" action="edicion/{$pelicula->id}">
+       <form class="form-edicion" method="POST" action="edicion/{$pelicula->id}">
             <input type="text" name="inp_img" value="{$pelicula->img}">
             <input type="text" name="inp_titulo"  value="{$pelicula->titulo}">
             <select name="inp_genero" id="lista_generos">
@@ -23,6 +26,8 @@
             <input type="number" name="inp_duracion"  value="{$pelicula->duracion}">
             <input type="text" name="inp_reparto" value="{$pelicula->reparto}">
 
-            <input type="submit" value="Editar">
+            <input class="btn" type="submit" value="Editar">
         </form>
 {/if}
+
+</div>
