@@ -92,7 +92,7 @@ class PeliculasController {
 
     function editPelicula($idpelicula){
         if($this->sessionHellper->showRol()){
-            $this->model->updatePelicula($idpelicula , $_POST['inp_img'],$_POST['inp_titulo'],$_POST['inp_genero'],$_POST['inp_descripcion'],$_POST['inp_duracion'],$_POST['inp_reparto']);
+            $this->model->updatePelicula($idpelicula , $_POST['inp_img'],$_POST['inp_titulo'],$_POST['inp_genero'],$_POST['inp_descripcion'],$_POST['inp_duracion'],$_POST['inp_reparto'],$_POST['inp_estreno']);
         }
         $this->view->showHomeLocation();
     }

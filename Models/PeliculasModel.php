@@ -55,8 +55,8 @@ class PeliculasModel {
         $consulta->execute(array($idpelicula));
     }
 
-    function updatePelicula($idpelicula, $img , $titulo , $genero , $descripcion , $duracion, $reparto){
-        $sentencia = $this->db->prepare("UPDATE peliculas SET titulo='$titulo', genero='$genero' , descripcion='$descripcion', img='$img' ,duracion='$duracion' , reparto = '$reparto' WHERE id =?");
+    function updatePelicula($idpelicula, $img , $titulo , $genero , $descripcion , $duracion, $reparto, $estreno){
+        $sentencia = $this->db->prepare("UPDATE peliculas SET titulo='$titulo', genero='$genero' , descripcion='$descripcion', img='$img' ,duracion='$duracion' , reparto = '$reparto' , estreno = '$estreno' WHERE id =?");
         $sentencia->execute(array($idpelicula));
     }
 
