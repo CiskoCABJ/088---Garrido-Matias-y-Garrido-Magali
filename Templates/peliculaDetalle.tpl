@@ -9,6 +9,7 @@
         <p>{$pelicula->descripcion}</p>
         <p>Duración: {$pelicula->duracion}</p>
         <p>Reparto: {$pelicula->reparto}</p>
+        <p>Año de estreno: {$pelicula->estreno}</p>
     </div>
 
 
@@ -25,6 +26,7 @@
             <input type="text" name="inp_descripcion" value="{$pelicula->descripcion}">
             <input type="number" name="inp_duracion"  value="{$pelicula->duracion}">
             <input type="text" name="inp_reparto" value="{$pelicula->reparto}">
+            <input type="number" name="inp_estreno"  value="{$pelicula->estreno}">
 
             <input class="btn" type="submit" value="Editar">
         </form>
