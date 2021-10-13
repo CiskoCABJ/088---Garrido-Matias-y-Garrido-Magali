@@ -43,8 +43,8 @@
                 <img class="img-pelicula" src="{$pelicula->img}">
                 <div class="detalle-pelicula">
                     <h2>{$pelicula->titulo}</h2>
-                    <h3>{$pelicula->genero}</h3>
-                    <h4>{$pelicula->duracion} min</h4>
+                    <h4>{$pelicula->genero}</h4>
+                    <p>{$pelicula->duracion} min</p>
                     <a class="btn" href="pelicula/{$pelicula->id}" >VER</a>
                 </div>
             </div>
