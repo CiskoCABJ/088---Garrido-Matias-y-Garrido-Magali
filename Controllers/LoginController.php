@@ -71,10 +71,12 @@ class LoginController{
             }
             else{
                 $this->model->newUser($usuario, $mail, $pass);
-                $this->view->showRegister($session,'Cuenta creada!');
+                $this->view->showLogin($session,'Cuenta creada! Logea');
             }
-        }   
-        $this->view->showRegister($this->sessionHellper->showState(),'Camplos incompletos');
+        }else{
+            $this->view->showRegister($this->sessionHellper->showState(),'Camplos incompletos');
+    
+        }
     } 
 
 }

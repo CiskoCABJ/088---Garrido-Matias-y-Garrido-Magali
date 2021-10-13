@@ -9,7 +9,7 @@
         <input type="password" name="pass" placeholder="Contraseña" value="">
         <input class="btn" type="submit" value="CREAR" >
     </form>
-    <h4>{$error}</h4>
+    <h4 class="texto-centrado">{$error}</h4>
     
     <a class="btn texto-centrado" href="Login">Ya tenes cuenta? Ingresa</a>
 </div>

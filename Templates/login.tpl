@@ -10,7 +10,7 @@
 
     </form>
     
-    <h4>{$error}</h4>
+    <h4 class="texto-centrado">{$error}</h4>
     <a class="btn texto-centrado" href="registro">CREAR CUENTA</a>
 
 </div>
