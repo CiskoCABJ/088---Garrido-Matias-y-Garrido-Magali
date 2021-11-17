@@ -24,27 +24,9 @@ class PeliculasView{
 
         $this->smarty->assign('titulo', $titulo);
         $this->smarty->assign('generos', $generos);
-        $this->smarty->display('templates/peliculasLista.tpl');
+        $this->smarty->display('Templates/peliculasLista.tpl');
     }
 
-    function renderGeneros($generos, $titulo, $state, $rol){
-        $this->smarty->assign('generos', $generos);
-        $this->smarty->assign('state' , $state);
-        $this->smarty->assign('rol' , $rol);
-        $this->smarty->assign('titulo', $titulo);
-
-        $this->smarty->display('templates/generosLista.tpl');
-    }
-
-    function renderGeneroUpdate($genero, $peliculas, $state, $rol){
-        $this->smarty->assign('genero', $genero);
-        $this->smarty->assign('peliculas', $peliculas);
-        $this->smarty->assign('state' , $state);
-        $this->smarty->assign('rol' , $rol);
-
-        $this->smarty->display('templates/updateGenero.tpl');
-
-    }
 
     function renderPelicula($pelicula,$generos, $state, $rol){
         $this->smarty->assign('pelicula', $pelicula);
@@ -52,7 +34,7 @@ class PeliculasView{
         $this->smarty->assign('generos', $generos);
         $this->smarty->assign('rol' , $rol);
         
-        $this->smarty->display('templates/peliculaDetalle.tpl');
+        $this->smarty->display('Templates/peliculaDetalle.tpl');
     }
 
     function renderPeliculaUpdate($pelicula, $generos, $state,$rol){
@@ -61,7 +43,7 @@ class PeliculasView{
         $this->smarty->assign('state' , $state);
         $this->smarty->assign('rol' , $rol);
 
-        $this->smarty->display('templates/peliculaDetalle.tpl');
+        $this->smarty->display('Templates/peliculaDetalle.tpl');
     }
 
     function showHomeLocation(){
