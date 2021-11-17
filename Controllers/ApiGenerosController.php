@@ -1,9 +1,9 @@
 
 <?php
 
-require_once './Controllers/GenerosController.php';
-require_once './Models/GenerosModel.php';
-require_once './Views/ApiView.php';
+require_once './1-Controllers/GenerosController.php';
+require_once './2-Models/GenerosModel.php';
+require_once './3-Views/ApiView.php';
 
 class ApiGenerosController{
 

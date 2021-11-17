@@ -1,7 +1,7 @@
 <?php
 require_once 'libs/Router.php';
-require_once 'Controllers/ApiPeliculasController.php';
-require_once 'Controllers/ApiGenerosController.php';
+require_once '1-Controllers/ApiPeliculasController.php';
+require_once '1-Controllers/ApiGenerosController.php';
 
 // crea el router
 $router = new Router();

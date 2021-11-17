@@ -1,6 +1,6 @@
 <?php
 require_once('./libs/smarty-3.1.39/libs/Smarty.class.php');
-require_once('./Hellpers/SessionHellper.php');
+require_once('./4-Hellpers/SessionHellper.php');
 class GenerosView{
 
     private $smarty;

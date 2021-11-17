@@ -1,9 +1,9 @@
 <?php
-require_once './Models/UserModel.php';
-require_once './Views/LoginView.php';
+require_once './2-Models/UserModel.php';
+require_once './3-Views/LoginView.php';
 
 
-require_once './Hellpers/SessionHellper.php';
+require_once './4-Hellpers/SessionHellper.php';
 
 
 

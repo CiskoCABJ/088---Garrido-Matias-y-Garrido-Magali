@@ -1,11 +1,11 @@
 <?php
 
-require_once './Models/GenerosModel.php';
-require_once './Views/GenerosView.php';
-require_once './Models/PeliculasModel.php';
-require_once './Views/PeliculasView.php';
+require_once './2-Models/GenerosModel.php';
+require_once './3-Views/GenerosView.php';
+require_once './2-Models/PeliculasModel.php';
+require_once './3-Views/PeliculasView.php';
 
-require_once './Hellpers/SessionHellper.php';
+require_once './4-Hellpers/SessionHellper.php';
 
 class GenerosController {
 
