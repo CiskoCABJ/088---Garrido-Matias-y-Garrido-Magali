@@ -3,6 +3,7 @@ define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] 
 
 
 require_once('Controllers/PeliculasController.php');
+require_once('Controllers/GenerosController.php');
 require_once('Controllers/LoginController.php');
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
@@ -12,6 +13,7 @@ if (!empty($_GET['action'])) {
 
 $loginController = new LoginController();
 $peliculasController= new PeliculasController();
+$generosController= new GenerosController();
 $params = explode('/', $action);
 
 
@@ -20,13 +22,13 @@ switch($params[0]){
         $peliculasController->showHome();
         break;
     case 'generos':
-        $peliculasController->showGeneros();
+        $generosController->showGeneros();
         break;
     case 'peliculas': 
         $peliculasController->showPeliculas();
         break;
     case 'genero':
-        $peliculasController->showGenero($params[1]);
+        $generosController->showGenero($params[1]);
         break;
     case 'pelicula':
         $peliculasController->showDetalle($params[1]);
@@ -57,19 +59,19 @@ switch($params[0]){
         $peliculasController->editPelicula($params[1]);
         break;
     case 'editargenero':
-        $peliculasController->updateGenero($params[1]);   
+        $generosController->updateGenero($params[1]);   
         break; 
     case 'ediciongenero':
-        $peliculasController->editGenero($params[1]);
+        $generosController->editGenero($params[1]);
         break; 
     case 'borrargenero':
-        $peliculasController->deleteGenero($params[1]);
+        $generosController->deleteGenero($params[1]);
         break;    
     case 'agregarpelicula':
         $peliculasController->addPelicula();
         break;  
     case 'agregargenero':
-        $peliculasController->addGenero();
+        $generosController->addGenero();
         break;      
     default:
         echo('404 Page not found :(');
