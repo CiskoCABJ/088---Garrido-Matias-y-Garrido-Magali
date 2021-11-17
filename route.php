@@ -5,6 +5,7 @@ define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] 
 require_once('1-Controllers/PeliculasController.php');
 require_once('1-Controllers/GenerosController.php');
 require_once('1-Controllers/LoginController.php');
+require_once('1-Controllers/AdminController.php');
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 } else {
@@ -14,6 +15,7 @@ if (!empty($_GET['action'])) {
 $loginController = new LoginController();
 $peliculasController= new PeliculasController();
 $generosController= new GenerosController();
+$adminController =  new AdminController();
 $params = explode('/', $action);
 
 
@@ -72,7 +74,10 @@ switch($params[0]){
         break;  
     case 'agregargenero':
         $generosController->addGenero();
-        break;      
+        break;   
+    case 'admin':
+        $adminController->mainAdmin();   
+        break;
     default:
         echo('404 Page not found :(');
         break;

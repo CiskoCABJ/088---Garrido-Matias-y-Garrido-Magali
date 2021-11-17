@@ -1,6 +1,5 @@
 <?php
 
-require_once './1-Controllers/GenerosController.php';
 require_once './2-Models/PeliculasModel.php';
 require_once './3-Views/ApiView.php';
 

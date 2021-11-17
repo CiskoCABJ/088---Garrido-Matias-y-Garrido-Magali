@@ -3,7 +3,6 @@
 require_once './2-Models/GenerosModel.php';
 require_once './2-Models/PeliculasModel.php';
 require_once './3-Views/PeliculasView.php';
-
 require_once './4-Hellpers/SessionHellper.php';
 class PeliculasController {
     private $genero;

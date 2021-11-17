@@ -16,6 +16,12 @@ class UserModel{
     $user = $consulta->fetch(PDO :: FETCH_OBJ);
     return $user;
    }
+   function getUsers(){
+    $consulta = $this->db->prepare('SELECT * FROM usuarios');
+    $consulta->execute();
+    $users = $consulta->fetchAll(PDO :: FETCH_OBJ);
+    return $users;
+   }
 
    function newUser($usuario, $mail, $pass){
        $consulta = $this->db->prepare('INSERT INTO usuarios (id_usuario, usuario, mail, pass) VALUES (?, ? ,?, ? )');

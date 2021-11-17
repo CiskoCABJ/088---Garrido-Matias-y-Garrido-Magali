@@ -18,7 +18,7 @@
     <div class="cabecera-logo"> 
     <h1>Play Movie</h1>
     {if isset($usuario)}
-        <h2> Hola {$usuario}!</h2>
+        <a href="admin"> Hola {$usuario}!</a>
     {/if}
     </div>
     <nav class="navegador">
