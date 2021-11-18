@@ -1,74 +1,34 @@
-cambiar de login a logout y viseversa en el nav.
-// lo resolvi llamando en todos los renderizados a la funcion showState de.
-//StateHellper en Hellpers en donde consulto si existe una session activa, 
-//de ser asi retorno Logout como string para renderizar en nuestro nav, log 
-//in en caso de que no haya una session activa.
-
-
-impedir que puedan logiar una vez logiados COMPLETADA
-
-
-darle importancia a los roles de los usuarios
-    rol 1 adm/ todos los derechos
-
-    rol null users / solo ver ATRIBUTO NULL = SIN PERMISOS
-
-
-
-stylos
+PARTE II
 
 
 
 
+CONSIGNAS::
 
-PAUTAS:
+Modificacion MVC - 
 
-deben existir diferentes secciones donde se muestre el contendio dinamicamente
-desde la base de datos.
-COMPLETADA
+Cambiar borrado en db 
 
-ACCESO PUBLICO :
+Al crear una cuenta se loguea automaticamente
 
-estas secciones pueden ser accedidas de manera publica, sin necesidad de 
-logearse
+Agregar funcionalidad al administrador para 
+asignar o quitar permisos y eliminar usuarios
 
-listado de items.
-detelle de item
-listadod de categorias
-listado de item por categorias
+Los registrados pueden comentar y puntuar los items
+ del 1 al 5
 
-COMPLETADA
+Adminisrtador puede eliminar comentarios
 
-IMPORTANTE  en cada item debe mostrarse el mombre de la categorias
+OPTATIVAS:
+Imagenes -. Listo
 
-//cambie la tabla de generos, como la teniamos armada no podiamos acceder al nombre del genero
-solo teniamos el ID desde la tabla peliculas,y para mostrarlo junto al detalle de cada pelicula no 
-nos servia, por eso la cambie xD
+Paginado para recorrer las imagenes. 
 
-COMPLETADA
+Busqueda avanzada de los items
 
+ordenar comentarios por antiguedad o puntaje asc o desc
 
-ACCESO ADMINISTRADOR DE DATOS:
-
-seccion solo accedida a los usuarios administrador.
-el adm debe logearse con usuario y pass
-se puede deslogear
-solo los logeados pueden modificar las categorias y los items
-ABM para los adm de items y de categorias
-
-FALTA
-
-DEMAS: 
-
-Todos los HTML deben mostrarse con Smarty
-
-patron MVC 
-
-URL semantica
-
-Archivo sql para instalar la base de datos
-
-POR AHORA TODO EN ORDEN
+filtar los comentarios por cantidad de puntos
 
 
-
+Armar panel admin
