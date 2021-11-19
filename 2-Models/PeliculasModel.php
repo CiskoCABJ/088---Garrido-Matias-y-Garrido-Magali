@@ -22,6 +22,12 @@ class PeliculasModel {
         $peliculasEstreno = $consulta->fetchAll(PDO::FETCH_OBJ);
         return $peliculasEstreno;
     }
+    function getPeliculasByGenero($genero){
+        $consulta = $this->db->prepare("SELECT * FROM peliculas WHERE genero=?");
+        $consulta->execute(array($genero));
+        $peliculasByGenero = $consulta->fetchAll(PDO::FETCH_OBJ);
+        return $peliculasByGenero;
+    }
 
   
 

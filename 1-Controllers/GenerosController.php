@@ -8,34 +8,34 @@ require_once './4-Hellpers/SessionHellper.php';
 
 class GenerosController {
 
-    private $model;
-    private $view;
+    private $generosModel;
+    private $generosView;
     private $sessionHellper;
     private $peliculasModel;
     private $peliculasView;
 
     function __construct(){
-        $this->model = new GenerosModel();
-        $this->view = new GenerosView();
+        $this->generosModel = new GenerosModel();
+        $this->generosView = new GenerosView();
         $this->peliculasModel = new PeliculasModel();
         $this->peliculasView = new PeliculasView();
         $this->sessionHellper = new SessionHellper();
     }
 
-    function showGeneros(){
+    function showGeneros($mensaje){
         $state = $this->sessionHellper->showState();
         $rol = $this->sessionHellper->showRol();
         $titulo = "Generos";
-        $generos = $this->model->getGeneros();
-        $this->view->renderGeneros($generos, $titulo, $state, $rol);
+        $generos = $this->generosModel->getGeneros();
+        $this->generosView->renderGeneros($generos, $titulo, $state, $rol, $mensaje);
     }
 
     function showGenero($genero){
         
         $state = $this->sessionHellper->showState();
         $rol = $this->sessionHellper->showRol();
-        $generos = $this->model->getGeneros();
-        $peliculasByGenero = $this->model->getPeliculasByGenero($genero);
+        $generos = $this->generosModel->getGeneros();
+        $peliculasByGenero = $this->peliculasModel->getPeliculasByGenero($genero);
         $this->peliculasView->renderPeliculas($peliculasByGenero,$generos,$genero, $state, $rol);
        
     }
@@ -44,19 +44,27 @@ class GenerosController {
         $rol = $this->sessionHellper->showRol();
         $state = $this->sessionHellper->showState();
         if($rol){ 
-            $this->model->addGenero($_POST['inp_genero']);
-            $this->showGeneros();
+            $this->generosModel->addGenero($_POST['inp_genero']);
+            $mensaje = "Nuevo genero agregado: " . $_POST['inp_genero'] ;
+            $this->showGeneros($mensaje);
         }else{
-            $this->view->showHomeLocation();
+            $this->generosView->showHomeLocation();
         }
     }
 
     function deleteGenero($genero){
         if($this->sessionHellper->showRol()){
-            $this->model->deleteGenero($genero);
-            $this->showGeneros();
+            $peliculasByGenero = $this->peliculasModel->getPeliculasByGenero($genero);
+            if($peliculasByGenero){
+                $mensaje = "No se puede borrar el genero ya que posee peliculas asociadas";
+                $this->showGeneros($mensaje);
+            }else{
+                $this->generosModel->deleteGenero($genero);
+                $mensaje = "Genero eliminado :" . $genero;
+                $this->showGeneros($mensaje);
+            }
         }else{
-            $this->view->showHomeLocation();    
+            $this->generosView->showHomeLocation();    
 
         }
     }
@@ -67,14 +75,21 @@ class GenerosController {
         $rol = $this->sessionHellper->showRol();
         if($rol){ 
             $peliculasByGenero=$this->peliculasModel->getPeliculasByGenero($genero);
-            $this->view->renderGeneroUpdate($genero, $peliculasByGenero, $state, $rol);
+            $this->generosView->renderGeneroUpdate($genero, $peliculasByGenero, $state, $rol);
         }else{
-            $this->view->showHomeLocation();
+            $this->generosView->showHomeLocation();
         }
     }
   
     function editGenero($genero){
-        $this->model->updateGenero($genero, $_POST['inp_genero']);
-        $this->view->showHomeLocation();
+        $state = $this->sessionHellper->showState();
+        $rol = $this->sessionHellper->showRol();
+        if($rol){ 
+            $mensaje = $genero . " cambio a :" . $_POST['inp_genero'].
+            $this->generosModel->updateGenero($genero, $_POST['inp_genero']);
+            $this->showGeneros($mensaje);
+        }else{
+            $this->generosView->showHomeLocation();
+        }
     }
 }

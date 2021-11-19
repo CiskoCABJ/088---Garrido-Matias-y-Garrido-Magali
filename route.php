@@ -24,7 +24,7 @@ switch($params[0]){
         $peliculasController->showHome();
         break;
     case 'generos':
-        $generosController->showGeneros();
+        $generosController->showGeneros($mensaje = "");
         break;
     case 'peliculas': 
         $peliculasController->showPeliculas();

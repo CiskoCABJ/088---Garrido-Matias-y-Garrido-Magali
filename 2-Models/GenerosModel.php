@@ -21,12 +21,7 @@ class GenerosModel {
         return $genero;
     }
 
-    function getPeliculasByGenero($genero){
-        $consulta = $this->db->prepare("SELECT * FROM peliculas WHERE genero='$genero'");
-        $consulta->execute();
-        $peliculasByGenero = $consulta->fetchAll(PDO::FETCH_OBJ);
-        return $peliculasByGenero;
-    }
+ 
 
     function addGenero($genero){
         $sentencia = $this->db->prepare("INSERT INTO generos (genero) VALUES(?)");
@@ -40,7 +35,7 @@ class GenerosModel {
     }
 
     function updateGenero($genero, $inp_genero){
-        $sentencia = $this->db->prepare("UPDATE generos SET genero='$inp_genero' WHERE genero =?");
-        $sentencia->execute(array($genero));
+        $sentencia = $this->db->prepare("UPDATE generos SET genero=? WHERE genero =?");
+        $sentencia->execute(array($inp_genero,$genero));
     }
 }

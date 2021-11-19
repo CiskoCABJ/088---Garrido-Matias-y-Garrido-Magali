@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-10-2021 a las 06:06:10
+-- Tiempo de generación: 19-11-2021 a las 01:23:25
 -- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.6
+-- Versión de PHP: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,6 +40,7 @@ INSERT INTO `generos` (`genero`) VALUES
 ('Ciencia Ficcion'),
 ('Comedia'),
 ('Drama'),
+('Genero Para Borrar 12'),
 ('Infantil'),
 ('Romance'),
 ('Suspenso'),
@@ -67,7 +68,6 @@ CREATE TABLE `peliculas` (
 --
 
 INSERT INTO `peliculas` (`id`, `titulo`, `descripcion`, `duracion`, `reparto`, `img`, `genero`, `estreno`) VALUES
-(4, 'Parasite', 'Anto Gi Taek (Song Kang Ho) como su familia están sin trabajo. Cuando su hijo mayor, Gi Woo (Choi Woo Shik), empieza a recibir clases particulares en casa de Park (Lee Sun Gyun), las dos familias, que tienen mucho en común pese a pertenecer a dos mundos totalmente distintos, comienzan una interrelac', 132, 'Andreas Fronk, Anna Elisabeth Rihlmann, Chang Hyae-jin, Cho Yeo-jeong.', 'img/parasite.jpg', 'Drama', 2019),
 (5, 'Toy Story 4', 'Las aventuras de este dúo tan carismático les obligarán de nuevo salir al extraño y gigantesco mundo exterior, en una nueva misión imposible. Con la ayuda de sus amigos, pondrán todo su empeño en cumplir su objetivo y volver a casa sanos y salvos. Protegiéndose y apoyándose unos en otros, juntos con', 90, 'Alan Oppenheimer, Ally Maki, Annie Potts, Betty White.', 'img/toystory4.jpeg', 'Infantil', 2019),
 (6, 'Godzilla vs Kong', 'Godzilla y Kong, dos de las fuerzas más poderosas de un planeta habitado por todo tipo de aterradoras criaturas, se enfrentan en un espectacular combate que sacude los cimientos de la humanidad.', 113, 'Alexander Skarsgård, Benjamin Rigby, Brad McMurray, Bradd Buckley.', 'img/godzilla.jpg', 'Ciencia Ficcion', 2021),
 (7, 'Avengers Endgame', 'Tras los sucesos de “Vengadores: Infinity War”, los superhéroes que sobrevivieron a Thanos se reunen para poner en práctica un plan definitivo que podría acabar con el villano definitivamente. No saben si funcionará, pero es su única oportunidad de intentarlo. Cuarta entrega de la saga “Vengadores”', 182, 'Alexa Whitaker, Alexandra Rachael Rabe, Ami Fujimoto, Angela Bassett.', 'img/avengersendgame.jpg', 'Ciencia Ficcion', 2019),
@@ -131,7 +131,8 @@ INSERT INTO `peliculas` (`id`, `titulo`, `descripcion`, `duracion`, `reparto`, `
 (78, 'Meteor Moon', 'Cuando un meteoro choca contra la luna y cambia su eje, la gravedad de la Tierra empuja a la luna hacia el camino del planeta. Ahora, un grupo de científicos debe descubrir cómo evitar que la luna golpee la Tierra ', 88, 'Chris Boudreaux , Michael Broderick , Anna Harr.', 'img/meteormoon.jpg', 'Ciencia Ficcion', 2020),
 (79, 'Infinite', 'Un hombre descubre que sus alucinaciones son en realidad visiones de vidas pasadas.', 106, 'Mark Wahlberg , Chiwetel Ejiofor , Dylan O\'Brien.', 'img/infinite.jpg', 'Ciencia Ficcion', 2021),
 (80, 'Skylines', 'Cuando un virus amenaza con convertir a los híbridos alienígenas amistosos que ahora habitan en la Tierra contra los humanos, la capitana Rose Corley debe liderar un equipo de mercenarios de élite en una misión al mundo alienígena.', 110, 'Alexander Siddig , Daniel Bernhardt , Giedre Mockeliunaite.', 'img/skylines.jpg', 'Ciencia Ficcion', 2020),
-(81, 'I am Mother', 'Una adolescente (Rugaard) es criada es un refugio subterráneo por una madre robot que ha sido diseñada para repoblar la Tierra en caso de que se produjese una catástrofe. ', 115, 'Clara Rugaard , Hilary Swank , Luke Hawker.', 'img/iammother.jpg', 'Ciencia Ficcion', 2019);
+(81, 'I am Mother', 'Una adolescente (Rugaard) es criada es un refugio subterráneo por una madre robot que ha sido diseñada para repoblar la Tierra en caso de que se produjese una catástrofe. ', 115, 'Clara Rugaard , Hilary Swank , Luke Hawker.', 'img/iammother.jpg', 'Ciencia Ficcion', 2019),
+(82, 'test', 'awdwqeaqeqweqweqweqeqeqweqwe', 100, 'Chris ODowd, Daveed Diggs, Don McManus, Edi Patterson.', 'img/cruella.jpg', 'Genero Para Borrar 12', 111);
 
 -- --------------------------------------------------------
 
@@ -172,7 +173,8 @@ INSERT INTO `usuarios` (`id_usuario`, `usuario`, `mail`, `pass`, `rol`) VALUES
 (18, 'Magali', 'garridomagali@hotmail.com', '$2y$10$pY0rcGjB.YzRK9YydSguHO/RiF16ARqmPglepk3HqptT2bqmVc8we', NULL),
 (19, 'Magui', 'contactodgeme@gmail.com', '$2y$10$Pj77ThQiqUHqCA1Ob77lTep6efZFLtuKakAzBNq.egE.2zjXWE.qG', NULL),
 (20, 'Renata2021', 'garridomagali@hotmail.com', '$2y$10$LMB4GS6i5mXDIkv9wXO79ukSvZVsL0sNObCaLMga9GOfwmoV4aWL6', NULL),
-(21, 'Lola', 'contactodgeme@gmail.com', '$2y$10$J0ifgmTEpNSIfNhF45r/LO6G/bjJcP7nqziGn7lK1FIokkyC4jBES', NULL);
+(21, 'Lola', 'contactodgeme@gmail.com', '$2y$10$J0ifgmTEpNSIfNhF45r/LO6G/bjJcP7nqziGn7lK1FIokkyC4jBES', NULL),
+(22, '3', '3', '$2y$10$92irXjkKyGttoVv44SSJ7upVXNR/2hKA6YRMWHKNEdRwJXjCSbBhW', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -205,13 +207,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `peliculas`
 --
 ALTER TABLE `peliculas`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Restricciones para tablas volcadas
@@ -221,7 +223,7 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `peliculas`
 --
 ALTER TABLE `peliculas`
-  ADD CONSTRAINT `tipo_genero` FOREIGN KEY (`genero`) REFERENCES `generos` (`genero`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tipo_genero` FOREIGN KEY (`genero`) REFERENCES `generos` (`genero`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

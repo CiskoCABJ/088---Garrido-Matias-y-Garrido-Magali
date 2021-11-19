@@ -13,11 +13,12 @@ class GenerosView{
         $this->smarty->assign('usuario',$userLogged);
     }
 
-    function renderGeneros($generos, $titulo, $state, $rol){
+    function renderGeneros($generos, $titulo, $state, $rol, $mensaje){
         $this->smarty->assign('generos', $generos);
         $this->smarty->assign('state' , $state);
         $this->smarty->assign('rol' , $rol);
         $this->smarty->assign('titulo', $titulo);
+        $this->smarty->assign('mensaje',$mensaje);
 
         $this->smarty->display('Templates/generosLista.tpl');
     }

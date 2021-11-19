@@ -42,9 +42,20 @@ html {
 /*CABECERA*/
 
 .cabecera-logo {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 0 15px;
+}
+
+.titulo-cabecera {
+    width: 70%;
+}
+
+.panel-user {
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .cabecera-logo h1 {
@@ -261,4 +272,9 @@ form {
 
 table {
     width: 100%;
+}
+
+.contenedor-panelAdmin {
+    margin: 0 auto;
+    width: 50%;
 }

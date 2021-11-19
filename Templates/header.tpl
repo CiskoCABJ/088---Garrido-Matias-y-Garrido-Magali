@@ -16,11 +16,22 @@
 </head>
 <header>
     <div class="cabecera-logo"> 
-    <h1>Play Movie</h1>
-    {if isset($usuario)}
-        <a href="admin"> Hola {$usuario}!</a>
-    {/if}
+        <div class="titulo-cabecera">
+            <h1>Play Movie</h1>
+        </div>
+
+        <div class="panel-user">
+            {if isset($usuario)}
+                {if $rol neq ""}
+                    <a href="admin"> Panel Administrador</a>
+                {/if}
+
+                <h3> Hola {$usuario}!</h3>
+            {/if}
+        </div>
+
     </div>
+
     <nav class="navegador">
     
         <a href="home">Inicio</a>

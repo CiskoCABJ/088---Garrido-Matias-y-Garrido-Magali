@@ -5,14 +5,14 @@
 
  {if $rol neq ""}
     <div class="contenedor-agregar">
-        <h3 class="titulo-formulario">Agregar genero</h3>
+        <h3 class="titulo-seccion">Agregar genero</h3>
         <form class="form-genero" method="POST" action="agregargenero">
             <input class="inp-genero" type="text" name="inp_genero" value="" placeholder="Genero" required>
             <input class="btn" type="submit" value="Agregar">
         </form>
     </div>
 {/if}
-    
+    <h2 class="titulo-seccion">{$mensaje}</h2>
 <section class="contenedor-generos">
     {foreach from=$generos item=$genero }
       <div class="d-flex-row jc-sb genero">

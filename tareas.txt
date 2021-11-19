@@ -7,7 +7,7 @@ CONSIGNAS::
 
 Modificacion MVC - 
 
-Cambiar borrado en db 
+Cambiar borrado en db // LISTO
 
 Al crear una cuenta se loguea automaticamente
 
