@@ -2,8 +2,7 @@
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
 
-require_once('1-Controllers/PeliculasController.php');
-require_once('1-Controllers/GenerosController.php');
+require_once('1-Controllers/MoviesController.php');
 require_once('1-Controllers/LoginController.php');
 require_once('1-Controllers/AdminController.php');
 if (!empty($_GET['action'])) {
@@ -13,28 +12,38 @@ if (!empty($_GET['action'])) {
 }
 
 $loginController = new LoginController();
-$peliculasController= new PeliculasController();
-$generosController= new GenerosController();
+
+$MoviesController= new MoviesController();
+
 $adminController =  new AdminController();
+
 $params = explode('/', $action);
 
 
 switch($params[0]){
     case 'home':
-        $peliculasController->showHome();
+        $MoviesController->showHome();
         break;
+
     case 'generos':
-        $generosController->showGeneros($mensaje = "");
+        $MoviesController->showGeneros($mensaje = "");
         break;
     case 'peliculas': 
-        $peliculasController->showPeliculas();
+        $MoviesController->showPeliculas();
         break;
+    case 'usuarios':
+        $adminController->showUsuarios();   
+        break;
+
     case 'genero':
-        $generosController->showGenero($params[1]);
+        $MoviesController->showGenero($params[1]);
         break;
     case 'pelicula':
-        $peliculasController->showDetalle($params[1]);
+        $MoviesController->showDetalle($params[1]);
         break;
+    case 'usuario':
+        $adminController->showUsuario($params[1]); 
+
     case 'Login':
         $loginController->login();
         break;
@@ -50,34 +59,43 @@ switch($params[0]){
     case 'verifyregister':
         $loginController->verifyRegister();
         break;   
-    case 'borrar':
-        $peliculasController->deletePelicula($params[1]);
+
+    case 'agregarpelicula':
+        $MoviesController->addPelicula();
+        break;  
+    case 'borrarpelicula':
+        $MoviesController->deletePelicula($params[1]);
         break;   
-    case 'editar':
-        $peliculasController->updatePelicula($params[1]);
-        //function igual con showDetalle ver si simplifico o dejamos ambas entradas
+    case 'editarpelicula':
+        $MoviesController->updatePelicula($params[1]);
         break;   
-    case 'edicion' :
-        $peliculasController->editPelicula($params[1]);
+    case 'edicionpelicula' :
+        $MoviesController->editPelicula($params[1]);
         break;
+
+    case 'agregargenero':
+        $MoviesController->addGenero();
+        break;
+    case 'borrargenero':
+        $MoviesController->deleteGenero($params[1]);
+        break; 
     case 'editargenero':
-        $generosController->updateGenero($params[1]);   
+        $MoviesController->updateGenero($params[1]);   
         break; 
     case 'ediciongenero':
-        $generosController->editGenero($params[1]);
+        $MoviesController->editGenero($params[1]);
         break; 
-    case 'borrargenero':
-        $generosController->deleteGenero($params[1]);
-        break;    
-    case 'agregarpelicula':
-        $peliculasController->addPelicula();
-        break;  
-    case 'agregargenero':
-        $generosController->addGenero();
-        break;   
-    case 'admin':
-        $adminController->mainAdmin();   
+    
+    case 'borrarusuario':
+        $adminController->deleteUsuario($params[1]);   
         break;
+    case 'daradmin':
+        $adminController->upgrade($params[1]);   
+        break; 
+    case 'quitaradmin':
+        $adminController->downgrade($params[1]);
+        break; 
+     
     default:
         echo('404 Page not found :(');
         break;

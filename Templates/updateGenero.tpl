@@ -15,14 +15,14 @@
                 <td>Genero</td>
                 <td>Estreno</td>
             </tr>
-        {foreach from=$peliculas item=$pelicula}
-            <tr>
-                <td>{$pelicula->titulo}</td>
-                <td>{$pelicula->genero}</td>
-                <td>{$pelicula->estreno}</td>
-            </tr>
-            
-        {/foreach}
+            {foreach from=$peliculas item=$pelicula}
+                <tr>
+                    <td>{$pelicula->titulo}</td>
+                    <td>{$pelicula->genero}</td>
+                    <td>{$pelicula->estreno}</td>
+                </tr>
+                
+            {/foreach}
         </table>
     </div> 
 </div>

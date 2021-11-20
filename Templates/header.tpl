@@ -23,9 +23,8 @@
         <div class="panel-user">
             {if isset($usuario)}
                 {if $rol neq ""}
-                    <a href="admin"> Panel Administrador</a>
+                    <a href="usuarios"> Panel Administrador</a>
                 {/if}
-
                 <h3> Hola {$usuario}!</h3>
             {/if}
         </div>

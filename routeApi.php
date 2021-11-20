@@ -1,22 +1,22 @@
 <?php
 require_once 'libs/Router.php';
-require_once '1-Controllers/ApiPeliculasController.php';
-require_once '1-Controllers/ApiGenerosController.php';
+require_once '1-Controllers/ApiMoviesController.php';
+
 
 // crea el router
 $router = new Router();
 
 // define la tabla de ruteo
-$router->addRoute('peliculas', 'GET', 'ApiPeliculasController', 'getPeliculas');
-$router->addRoute('peliculas/:ID', 'GET', 'ApiPeliculasController', 'getPelicula');
-$router->addRoute('peliculas', 'POST', 'ApiPeliculasController', 'addPelicula');
-$router->addRoute('peliculas/:ID', 'DELETE', 'ApiPeliculasController', 'deletePelicula');
+$router->addRoute('peliculas', 'GET', 'ApiMoviesController', 'getPeliculas');
+$router->addRoute('peliculas/:ID', 'GET', 'ApiMoviesController', 'getPelicula');
+$router->addRoute('peliculas', 'POST', 'ApiMoviesController', 'addPelicula');
+$router->addRoute('peliculas/:ID', 'DELETE', 'ApiMoviesController', 'deletePelicula');
 
 
-$router->addRoute('generos', 'GET', 'ApiGenerosController', 'getGeneros');
-$router->addRoute('generos/:ID', 'GET', 'ApiGenerosController', 'getGenero');
-$router->addRoute('generos', 'POST', 'ApiGenerosController', 'addGenero');
-$router->addRoute('generos/:ID', 'DELETE', 'ApiGenerosController', 'deleteGenero');
+$router->addRoute('generos', 'GET', 'ApiMoviesController', 'getGeneros');
+$router->addRoute('generos/:ID', 'GET', 'ApiMoviesController', 'getGenero');
+$router->addRoute('generos', 'POST', 'ApiMoviesController', 'addGenero');
+$router->addRoute('generos/:ID', 'DELETE', 'ApiMoviesController', 'deleteGenero');
 
 
 // rutea

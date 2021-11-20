@@ -9,30 +9,37 @@
         <tr>
             <td>Usuario</td>
             <td>e-mail</td>
-            <td>Rol</td>
             <td>Borrar</td>
             <td>Admin</td>
             
         <tr>
 
         {foreach from=$users item=$user}  
-        <tr>
-                <td>{$user->usuario}</td>
-                <td>{$user->mail}</td>
-                <td>{$user->rol}</td>
-                <td>
-                    <a class="icono" href="">
-                        <img src="./img/eliminar.png" >
-                    </a>
-                </td>
+            {if $user->usuario != $usuario}
+                <tr>
+                    <td>{$user->usuario}</td>
+                    <td>{$user->mail}</td>
 
-                <td>
-                    <a class="icono" href="">
-                        <img src="./img/editar.png" >
-                    </a>
-                </td>
-            </tr>
+                    <td>
+                        <a class="icono" href="borrarusuario/{$user->id_usuario}">
+                            <img src="./img/eliminar.png" >
+                        </a>
+                    </td>
 
+                    <td>                    
+                        {if $user->rol}
+                            <a class="icono" href="quitaradmin/{$user->id_usuario}">
+                                <img src="./img/quitarAdmin.png" >
+                            </a>
+                        {else}
+                            <a class="icono" href="daradmin/{$user->id_usuario}">
+                                <img src="./img/darAdmin.png" >
+                            </a>
+                            
+                        {/if}
+                    </td>
+                </tr>
+            {/if}
         {/foreach}
     </table>
 </div>

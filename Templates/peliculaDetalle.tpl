@@ -13,8 +13,8 @@
     </div>
 
 
- {if isset($usuario) && $rol neq ""}
-       <form class="form-edicion" method="POST" action="edicion/{$pelicula->id}">
+    {if isset($usuario) && $rol neq ""}
+        <form class="form-edicion" method="POST" action="edicionpelicula/{$pelicula->id}">
             <input type="text" name="inp_img" value="{$pelicula->img}">
             <input type="text" name="inp_titulo"  value="{$pelicula->titulo}">
             <select name="inp_genero" id="lista_generos">
@@ -30,6 +30,6 @@
 
             <input class="btn" type="submit" value="Editar">
         </form>
-{/if}
+    {/if}
 
 </div>
