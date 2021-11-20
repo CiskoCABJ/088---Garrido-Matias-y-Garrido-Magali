@@ -43,7 +43,10 @@ class AdminController{
         $state = $this->sessionHellper->showState();
         if($state){
             if($rol){
-                $this->userModel->deleteUsuario($idUsuario);
+                $userName = $this->userModel->getUser($idUsuario);
+                if($this->sessionHellper->getLoggedUser()!= $userName->usuario){
+                    $this->userModel->deleteUsuario($idUsuario);
+                }
                 $this->moviesView->showLocation("usuarios");
             }else{
                 $this->moviesView->showHomeLocation();  
@@ -75,7 +78,10 @@ class AdminController{
         $state = $this->sessionHellper->showState();
         if($state){
             if($rol){
-                $this->userModel->downgrade($idUsuario);
+                $userName = $this->userModel->getUser($idUsuario);
+                if($this->sessionHellper->getLoggedUser()!= $userName->usuario){
+                    $this->userModel->downgrade($idUsuario);          
+                }
                 $this->moviesView->showLocation("usuarios");
             }else{
                 $this->moviesView->showHomeLocation();  
