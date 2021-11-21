@@ -19,5 +19,11 @@ $router->addRoute('generos', 'POST', 'ApiMoviesController', 'addGenero');
 $router->addRoute('generos/:ID', 'DELETE', 'ApiMoviesController', 'deleteGenero');
 
 
+
+
+$router->addRoute('comentarios', 'POST', 'ApiMoviesController', 'addComentario');
+$router->addRoute('comentarios/:ID', 'GET', 'ApiMoviesController', 'getComentarios');
+
+
 // rutea
 $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);

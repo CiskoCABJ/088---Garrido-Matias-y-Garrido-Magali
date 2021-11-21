@@ -1,4 +1,5 @@
 <?php
+require_once './1-Controllers/ApiMoviesController.php'; // por ahora para probar
 require_once './2-Models/GenerosModel.php';
 require_once './2-Models/PeliculasModel.php';
 require_once './3-Views/MoviesView.php';
@@ -9,12 +10,14 @@ class MoviesController {
     private $peliculasModel;
     private $moviesView;
     private $sessionHellper;
+    private $api;
 
     function __construct(){
         $this->peliculasModel = new PeliculasModel();
         $this->moviesView = new MoviesView();
         $this->generosModel = new GenerosModel();
         $this->sessionHellper = new SessionHellper();
+        $this->api = new ApiMoviesController();
     }
 
     function showHome(){
@@ -40,7 +43,8 @@ class MoviesController {
         $rol = $this->sessionHellper->showRol();
         $generos = $this->generosModel->getGeneros();
         $pelicula = $this->peliculasModel->getPelicula($idpelicula);
-        $this->moviesView->renderPelicula($pelicula, $generos, $state, $rol);
+        //$comentarios = $this->api->getComentarios($idpelicula); // para probar
+        $this->moviesView->renderPelicula($pelicula, $generos, $state, $rol,$comentarios); // para probar
     }
 
     function addPelicula(){ 

@@ -52,11 +52,12 @@ class MoviesView{
     }
 
 
-    function renderPelicula($pelicula,$generos, $state, $rol){
+    function renderPelicula($pelicula,$generos, $state, $rol,$comentarios){ // para probar
         $this->smarty->assign('pelicula', $pelicula);
         $this->smarty->assign('state' , $state);
         $this->smarty->assign('generos', $generos);
         $this->smarty->assign('rol' , $rol);
+        $this->smarty->assign('comentarios', $comentarios); // para probar
         
         $this->smarty->display('Templates/peliculaDetalle.tpl');
     }

@@ -11,12 +11,8 @@ Cambiar borrado en db // LISTO
 
 Al crear una cuenta se loguea automaticamente
 
-
-PanelAdmin
-
-Agregar funcionalidad al administrador para 
-asignar o quitar permisos y eliminar usuarios
-
+Agregar funcionalidad al administrador para //
+asignar o quitar permisos y eliminar usuarios  // esta lista
 
 
 Los registrados pueden comentar y puntuar los items
