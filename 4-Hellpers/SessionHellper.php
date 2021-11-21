@@ -31,6 +31,7 @@ class SessionHellper{
             session_start();
         if(isset($_SESSION['usuario']))
             return $_SESSION['usuario'];
+        return null;
     }
 
 

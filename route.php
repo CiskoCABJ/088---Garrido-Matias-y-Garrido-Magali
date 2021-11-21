@@ -13,7 +13,7 @@ if (!empty($_GET['action'])) {
 
 $loginController = new LoginController();
 
-$MoviesController= new MoviesController();
+$moviesController= new MoviesController();
 
 $adminController =  new AdminController();
 
@@ -22,24 +22,24 @@ $params = explode('/', $action);
 
 switch($params[0]){
     case 'home':
-        $MoviesController->showHome();
+        $moviesController->showHome();
         break;
 
     case 'generos':
-        $MoviesController->showGeneros($mensaje = "");
+        $moviesController->showGeneros($mensaje = "");
         break;
     case 'peliculas': 
-        $MoviesController->showPeliculas();
+        $moviesController->showPeliculas();
         break;
     case 'usuarios':
         $adminController->showUsuarios();   
         break;
 
     case 'genero':
-        $MoviesController->showGenero($params[1]);
+        $moviesController->showGenero($params[1]);
         break;
     case 'pelicula':
-        $MoviesController->showDetalle($params[1]);
+        $moviesController->showDetalle($params[1]);
         break;
     case 'usuario':
         $adminController->showUsuario($params[1]); 
@@ -61,29 +61,29 @@ switch($params[0]){
         break;   
 
     case 'agregarpelicula':
-        $MoviesController->addPelicula();
+        $moviesController->addPelicula();
         break;  
     case 'borrarpelicula':
-        $MoviesController->deletePelicula($params[1]);
+        $moviesController->deletePelicula($params[1]);
         break;   
     case 'editarpelicula':
-        $MoviesController->updatePelicula($params[1]);
+        $moviesController->updatePelicula($params[1]);
         break;   
     case 'edicionpelicula' :
-        $MoviesController->editPelicula($params[1]);
+        $moviesController->editPelicula($params[1]);
         break;
 
     case 'agregargenero':
-        $MoviesController->addGenero();
+        $moviesController->addGenero();
         break;
     case 'borrargenero':
-        $MoviesController->deleteGenero($params[1]);
+        $moviesController->deleteGenero($params[1]);
         break; 
     case 'editargenero':
-        $MoviesController->updateGenero($params[1]);   
+        $moviesController->updateGenero($params[1]);   
         break; 
     case 'ediciongenero':
-        $MoviesController->editGenero($params[1]);
+        $moviesController->editGenero($params[1]);
         break; 
     
     case 'borrarusuario':
@@ -95,7 +95,9 @@ switch($params[0]){
     case 'quitaradmin':
         $adminController->downgrade($params[1]);
         break; 
-     
+
+ 
+
     default:
         echo('404 Page not found :(');
         break;

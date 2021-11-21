@@ -9,11 +9,11 @@ Modificacion MVC -
 
 Cambiar borrado en db // LISTO
 
-Al crear una cuenta se loguea automaticamente
-
 Agregar funcionalidad al administrador para //
 asignar o quitar permisos y eliminar usuarios  // esta lista
 
+
+Al crear una cuenta se loguea automaticamente
 
 Los registrados pueden comentar y puntuar los items
  del 1 al 5

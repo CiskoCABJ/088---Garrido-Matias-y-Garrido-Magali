@@ -40,10 +40,11 @@
 
     {if isset($usuario)}
         <div>
-            <h3 class="texto-centrado">Califique esta pelicula!</h3>
+            <h3 class="texto-centrado">Hola {$usuario} puede calificar {$pelicula->titulo}</h3>
            
-                <form method="post" action="comentario">
+                <form class="form-calificacion" method="post" action="api/comentarios/{$pelicula->id}">
                     <select name="inp-calificacion" required>
+                        <option disabled selected > CALIFIQUE</option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -54,22 +55,18 @@
                     <input type="submit" value="Comentar">
                 </form>
 
-        </div
-
-        <div class="contenedor-comentarios">
-            <h2>Comentarios</h2>
-
-            <div class="comentarios" id="div-comentarios">
-            {foreach from=$comentarios item=$comentario}
-                <p>{$comentario->id_pelicula}</p>
-                
-            {/foreach}
-
-            </div>
-
-        </div
+        </div>
+           
+        <div class="comentarios-div" id="{$pelicula->id}">
+            {include file='templates/vue/comentariosList.tpl'}
+        </div>
 
     {/if}
 </div>
+
+
+<script src="./js/apiComentarios.js"></script>
+
+{include file='templates/footer.tpl'}
 
 

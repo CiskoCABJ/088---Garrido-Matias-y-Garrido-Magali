@@ -2,6 +2,7 @@
 require_once './1-Controllers/ApiMoviesController.php'; // por ahora para probar
 require_once './2-Models/GenerosModel.php';
 require_once './2-Models/PeliculasModel.php';
+require_once './2-Models/ComentariosModel.php';
 require_once './3-Views/MoviesView.php';
 require_once './4-Hellpers/SessionHellper.php';
 
@@ -11,12 +12,17 @@ class MoviesController {
     private $moviesView;
     private $sessionHellper;
     private $api;
+    private $comentariosModel;
 
     function __construct(){
         $this->peliculasModel = new PeliculasModel();
-        $this->moviesView = new MoviesView();
         $this->generosModel = new GenerosModel();
+        $this->comentariosModel = new ComentariosModel();
+
+        $this->moviesView = new MoviesView();
+
         $this->sessionHellper = new SessionHellper();
+
         $this->api = new ApiMoviesController();
     }
 
@@ -43,7 +49,9 @@ class MoviesController {
         $rol = $this->sessionHellper->showRol();
         $generos = $this->generosModel->getGeneros();
         $pelicula = $this->peliculasModel->getPelicula($idpelicula);
-        //$comentarios = $this->api->getComentarios($idpelicula); // para probar
+        $comentarios =$this->comentariosModel->getComentarios($idpelicula);//esta esta hecha desde el servidor,piden api rest
+        //puedo renderizar desde javascript
+ 
         $this->moviesView->renderPelicula($pelicula, $generos, $state, $rol,$comentarios); // para probar
     }
 
@@ -155,4 +163,37 @@ class MoviesController {
             $this->moviesView->showHomeLocation();
         }
     }
+
+    function addComentario($idPelicula){
+        $usuario =$this->sessionHellper->getLoggedUser();
+        if($usuario){
+
+            if( isset($_POST['inp-calificacion']) && isset($_POST['inp-comentario'])){
+                $calificacion = $_POST['inp-calificacion'];
+                $comentario =$_POST['inp-comentario'];
+                $this->comentariosModel->addComentario($usuario,$idPelicula, $calificacion, $comentario); 
+                $this->showDetalle($idPelicula);               
+
+            }
+        }
+    }
+
+    function deleteComentario($idComentario){
+        $rol =$this->sessionHellper->showRol();
+        if($rol){
+            $comentario = $this->comentariosModel->getComentario($idComentario);
+            if($comentario){
+                $idPelicula = $comentario->id_pelicula;
+                $this->comentariosModel->deleteComentario($idComentario);
+                $this->showDetalle($idPelicula);  
+            }
+          
+        }
+    }
+    // function getComentarios($idPelicula){
+    //     $state = $this->sessionHellper->showState();
+    //     if($state){
+    //         $this->comentariosModel->getComentarios($idPelicula);
+    //     }
+    // }
 }
