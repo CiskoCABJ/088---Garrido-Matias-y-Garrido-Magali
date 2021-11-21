@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2021 a las 01:23:25
+-- Tiempo de generación: 21-11-2021 a las 20:53:33
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.7
 
@@ -24,6 +24,43 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `id_comentario` int(10) NOT NULL,
+  `usuario` varchar(20) NOT NULL,
+  `id_pelicula` int(10) NOT NULL,
+  `calificacion` int(1) NOT NULL,
+  `comentario` varchar(400) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`id_comentario`, `usuario`, `id_pelicula`, `calificacion`, `comentario`) VALUES
+(3, '2', 6, 3, 'epica'),
+(4, '2', 6, 5, 'de nuevo'),
+(5, '2', 6, 5, 'ghjghj'),
+(6, '2', 6, 1, 'ultimo'),
+(7, '2', 6, 1, 'ultimolast'),
+(8, '2', 6, 1, 'elmasultimo'),
+(9, '2', 6, 1, 'elmasultimoffdg'),
+(10, '2', 6, 1, 'nose'),
+(11, '2', 6, 1, 'asdaaaaa'),
+(12, '2', 6, 4, 'alta'),
+(14, '2', 6, 1, 'estraaa'),
+(16, 'MatiasGarrido', 6, 1, 'asdaaaaa'),
+(17, 'MatiasGarrido', 6, 5, 'yooooooo'),
+(18, 'MatiasGarrido', 6, 3, 'otra vez yo'),
+(19, 'MatiasGarrido', 14, 1, 'asdaaaaa'),
+(20, 'MatiasGarrido', 6, 2, 'ultimoultmo'),
+(21, '1', 14, 5, 'curse');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `generos`
 --
 
@@ -40,7 +77,6 @@ INSERT INTO `generos` (`genero`) VALUES
 ('Ciencia Ficcion'),
 ('Comedia'),
 ('Drama'),
-('Genero Para Borrar 12'),
 ('Infantil'),
 ('Romance'),
 ('Suspenso'),
@@ -131,8 +167,7 @@ INSERT INTO `peliculas` (`id`, `titulo`, `descripcion`, `duracion`, `reparto`, `
 (78, 'Meteor Moon', 'Cuando un meteoro choca contra la luna y cambia su eje, la gravedad de la Tierra empuja a la luna hacia el camino del planeta. Ahora, un grupo de científicos debe descubrir cómo evitar que la luna golpee la Tierra ', 88, 'Chris Boudreaux , Michael Broderick , Anna Harr.', 'img/meteormoon.jpg', 'Ciencia Ficcion', 2020),
 (79, 'Infinite', 'Un hombre descubre que sus alucinaciones son en realidad visiones de vidas pasadas.', 106, 'Mark Wahlberg , Chiwetel Ejiofor , Dylan O\'Brien.', 'img/infinite.jpg', 'Ciencia Ficcion', 2021),
 (80, 'Skylines', 'Cuando un virus amenaza con convertir a los híbridos alienígenas amistosos que ahora habitan en la Tierra contra los humanos, la capitana Rose Corley debe liderar un equipo de mercenarios de élite en una misión al mundo alienígena.', 110, 'Alexander Siddig , Daniel Bernhardt , Giedre Mockeliunaite.', 'img/skylines.jpg', 'Ciencia Ficcion', 2020),
-(81, 'I am Mother', 'Una adolescente (Rugaard) es criada es un refugio subterráneo por una madre robot que ha sido diseñada para repoblar la Tierra en caso de que se produjese una catástrofe. ', 115, 'Clara Rugaard , Hilary Swank , Luke Hawker.', 'img/iammother.jpg', 'Ciencia Ficcion', 2019),
-(82, 'test', 'awdwqeaqeqweqweqweqeqeqweqwe', 100, 'Chris ODowd, Daveed Diggs, Don McManus, Edi Patterson.', 'img/cruella.jpg', 'Genero Para Borrar 12', 111);
+(81, 'I am Mother', 'Una adolescente (Rugaard) es criada es un refugio subterráneo por una madre robot que ha sido diseñada para repoblar la Tierra en caso de que se produjese una catástrofe. ', 115, 'Clara Rugaard , Hilary Swank , Luke Hawker.', 'img/iammother.jpg', 'Ciencia Ficcion', 2019);
 
 -- --------------------------------------------------------
 
@@ -141,7 +176,6 @@ INSERT INTO `peliculas` (`id`, `titulo`, `descripcion`, `duracion`, `reparto`, `
 --
 
 CREATE TABLE `usuarios` (
-  `id_usuario` int(10) NOT NULL,
   `usuario` varchar(20) NOT NULL,
   `mail` varchar(40) NOT NULL,
   `pass` varchar(400) NOT NULL,
@@ -152,33 +186,30 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `usuario`, `mail`, `pass`, `rol`) VALUES
-(1, '1', 'maatigarrido@gmail.com', '$2y$10$bKOaPaeslD9r4Cwu5WcGC.kbHyERnLs6SDS1A3T.9m4TAlU4WLerq', 1),
-(2, '2', 'maatigarrido@gmail.comA', '$2y$10$OAgj2Caq50zh9j1uitAsjeohGxKqjAiMPDguUZTLAh5LZtZO5yCXS', 10),
-(3, '123', '123', '$2y$10$DPtGt.eytSC5b5Dz1L7NkepscIgfWEKW6W2.HTEHAmF52b9JtkuPm', NULL),
-(4, '111', '111', '$2y$10$RHsHF7S1Cx6lEeN1bjqMI.Q.DnJr6Yx3JH4vR7OncStSfRo/oSE3m', NULL),
-(5, '222', '222', '$2y$10$lxI2xoAtb7U/z6Yk08/JGea8yHc964NPq5t0o6sHhA2EmWtsGuce2', NULL),
-(6, '333', '333', '$2y$10$.UkOWggXdV5A8XVp2QQLIuzvFV9fnsm8bjaOoPrWeZoGRBkLM5ybW', NULL),
-(7, '555', '4445', '$2y$10$mBAgexsNY5vSyeGKRyrwN.frpDqeY95xio0C/1ksgyJ/ET9TkeMQm', NULL),
-(8, 'aaa', 'aaa', '$2y$10$pNLy4jeAayTyFlfzkFNX4OHb0E3TWayNiyxQaFQnSeaDoncctjyyO', NULL),
-(9, 'zzz', 'zzz', '$2y$10$cWKB6glr9yZYGwT6tuNuxu7ynccv9JH82szH2ZFaU6JJfjqG8MrV2', NULL),
-(10, 'sss', 'sss', '$2y$10$bZr2EAMOO2bW6sE3KyfI4.X3nEXMRN6cmngHVQJVyqIAFj2j9MnWO', NULL),
-(11, 'fff', 'fff', '$2y$10$pIdh89HZH9b6rvHNDvu/AOnOr/Egls8kZF9T5/AJsuQIN20R/Ay5a', NULL),
-(12, 'asdaa', 'asdasdasd', '$2y$10$dkU06eG3nHxO9bQqpeeEdujNMwm5QA5lTHD1c4XyWBhzCaSS3PTxG', NULL),
-(13, 'qwer', 'maatigarrido@gmail.com', '$2y$10$Rw7NbijHFc6U68G88JGtkOCJ2Hd5yJ6MXd2KcktR6oOGW6LB.dZaS', NULL),
-(14, '123123', '123123123', '$2y$10$WGUE.KA.SZF7bt7iz4isIOZ3SWaZAWFD2dajBjPlZXUZDVU7yICWS', NULL),
-(15, 'za', 'zazaza', '$2y$10$DGI5rrgIW3lz638u2Hw8Tu43KVFxlBknBnqmzQPUQWlqrE1S5Ahbe', NULL),
-(16, '1111', '1212111', '$2y$10$rYei6MWac7j0oLtRF88Z4OxNWbkpNFSyfwFQ58LrOC42s7EecIOui', NULL),
-(17, 'Matias', 'maatigarrido@gmail.com', '$2y$10$mkdNkj1bjgFrGStBnRW8K.XgoL3eihYeBmm8dJETqW0SdGuCyCBCG', NULL),
-(18, 'Magali', 'garridomagali@hotmail.com', '$2y$10$pY0rcGjB.YzRK9YydSguHO/RiF16ARqmPglepk3HqptT2bqmVc8we', NULL),
-(19, 'Magui', 'contactodgeme@gmail.com', '$2y$10$Pj77ThQiqUHqCA1Ob77lTep6efZFLtuKakAzBNq.egE.2zjXWE.qG', NULL),
-(20, 'Renata2021', 'garridomagali@hotmail.com', '$2y$10$LMB4GS6i5mXDIkv9wXO79ukSvZVsL0sNObCaLMga9GOfwmoV4aWL6', NULL),
-(21, 'Lola', 'contactodgeme@gmail.com', '$2y$10$J0ifgmTEpNSIfNhF45r/LO6G/bjJcP7nqziGn7lK1FIokkyC4jBES', NULL),
-(22, '3', '3', '$2y$10$92irXjkKyGttoVv44SSJ7upVXNR/2hKA6YRMWHKNEdRwJXjCSbBhW', NULL);
+INSERT INTO `usuarios` (`usuario`, `mail`, `pass`, `rol`) VALUES
+('1', 'maatigarrido@gmail.com', '$2y$10$bKOaPaeslD9r4Cwu5WcGC.kbHyERnLs6SDS1A3T.9m4TAlU4WLerq', 1),
+('1111', '1212111', '$2y$10$rYei6MWac7j0oLtRF88Z4OxNWbkpNFSyfwFQ58LrOC42s7EecIOui', NULL),
+('2', 'maatigarrido@gmail.comA', '$2y$10$OAgj2Caq50zh9j1uitAsjeohGxKqjAiMPDguUZTLAh5LZtZO5yCXS', NULL),
+('3', '3', '$2y$10$92irXjkKyGttoVv44SSJ7upVXNR/2hKA6YRMWHKNEdRwJXjCSbBhW', 1),
+('333', '333', '$2y$10$.UkOWggXdV5A8XVp2QQLIuzvFV9fnsm8bjaOoPrWeZoGRBkLM5ybW', 1),
+('555', '4445', '$2y$10$mBAgexsNY5vSyeGKRyrwN.frpDqeY95xio0C/1ksgyJ/ET9TkeMQm', NULL),
+('Lola', 'contactodgeme@gmail.com', '$2y$10$J0ifgmTEpNSIfNhF45r/LO6G/bjJcP7nqziGn7lK1FIokkyC4jBES', 1),
+('MatiasGarrido', 'asdfasf', '$2y$10$5kAD7vMU3KYjaleE28IN9ewW977HOxynQkPmuM19UvNhA8W/KiU4q', NULL),
+('Renata2021', 'garridomagali@hotmail.com', '$2y$10$LMB4GS6i5mXDIkv9wXO79ukSvZVsL0sNObCaLMga9GOfwmoV4aWL6', NULL),
+('sss', 'sss', '$2y$10$bZr2EAMOO2bW6sE3KyfI4.X3nEXMRN6cmngHVQJVyqIAFj2j9MnWO', NULL),
+('zzz', 'zzz', '$2y$10$cWKB6glr9yZYGwT6tuNuxu7ynccv9JH82szH2ZFaU6JJfjqG8MrV2', NULL);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id_comentario`),
+  ADD KEY `id_pelicula` (`id_pelicula`),
+  ADD KEY `usuario` (`usuario`);
 
 --
 -- Indices de la tabla `generos`
@@ -197,27 +228,34 @@ ALTER TABLE `peliculas`
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id_usuario`);
+  ADD PRIMARY KEY (`usuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id_comentario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
 -- AUTO_INCREMENT de la tabla `peliculas`
 --
 ALTER TABLE `peliculas`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
-
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`id_pelicula`) REFERENCES `peliculas` (`id`),
+  ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`usuario`);
 
 --
 -- Filtros para la tabla `peliculas`
