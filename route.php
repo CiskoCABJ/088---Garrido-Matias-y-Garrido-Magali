@@ -1,5 +1,6 @@
 <?php
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
+define('ITEM_POR_PAGINA', 10);
 
 
 require_once('1-Controllers/MoviesController.php');
@@ -29,7 +30,7 @@ switch($params[0]){
         $moviesController->showGeneros($mensaje = "");
         break;
     case 'peliculas': 
-        $moviesController->showPeliculas();
+        $moviesController->showPeliculas($params);
         break;
     case 'usuarios':
         $adminController->showUsuarios();   

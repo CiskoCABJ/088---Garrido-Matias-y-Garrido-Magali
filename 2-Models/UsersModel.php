@@ -24,21 +24,21 @@ class UsersModel{
     }
 
     function newUser($usuario, $mail, $pass){
-        $consulta = $this->db->prepare('INSERT INTO usuarios (id_usuario, usuario, mail, pass) VALUES (?, ? ,?, ? )');
-        $consulta->execute(["",$usuario, $mail, $pass]);
+        $consulta = $this->db->prepare('INSERT INTO usuarios (usuario, mail, pass) VALUES (?, ? ,? )');
+        $consulta->execute([$usuario, $mail, $pass]);
     }
 
-    function deleteUsuario($idUsuario){
-        $consulta = $this->db->prepare("DELETE FROM usuarios WHERE id_usuario=?");
-        $consulta->execute(array($idUsuario));
+    function deleteUsuario($usuario){
+        $consulta = $this->db->prepare("DELETE FROM usuarios WHERE usuario=?");
+        $consulta->execute(array($usuario));
     }
 
-    function upgrade($idUsuario){
-        $consulta = $this->db->prepare("UPDATE usuarios SET rol=? WHERE id_usuario=?");
-        $consulta->execute(array(1,$idUsuario));
+    function upgrade($usuario){
+        $consulta = $this->db->prepare("UPDATE usuarios SET rol=? WHERE usuario=?");
+        $consulta->execute(array(1,$usuario));
     }
-    function downgrade($idUsuario){
-        $consulta = $this->db->prepare("UPDATE usuarios SET rol=? WHERE id_usuario=?");
-        $consulta->execute(array(null,$idUsuario));
+    function downgrade($usuario){
+        $consulta = $this->db->prepare("UPDATE usuarios SET rol=? WHERE usuario=?");
+        $consulta->execute(array(null,$usuario));
     }
 }

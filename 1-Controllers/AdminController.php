@@ -24,7 +24,7 @@ class AdminController{
     
     function showUsuarios(){
         $rol = $this->sessionHellper->showRol();
-        $state = $this->sessionHellper->showState();
+        $state = $this->sessionHellper->isLogged();
         if($state){
             if($rol){
                 $users = $this->userModel->getUsers();
@@ -40,7 +40,7 @@ class AdminController{
 
     function deleteUsuario($idUsuario){
         $rol = $this->sessionHellper->showRol();
-        $state = $this->sessionHellper->showState();
+        $state = $this->sessionHellper->isLogged();
         if($state){
             if($rol){
                 $userName = $this->userModel->getUser($idUsuario);
@@ -59,7 +59,7 @@ class AdminController{
 
     function upgrade($idUsuario){
         $rol = $this->sessionHellper->showRol();
-        $state = $this->sessionHellper->showState();
+        $state = $this->sessionHellper->isLogged();
         if($state){
             if($rol){
                 $this->userModel->upgrade($idUsuario);
@@ -75,7 +75,7 @@ class AdminController{
 
     function downgrade($idUsuario){
         $rol = $this->sessionHellper->showRol();
-        $state = $this->sessionHellper->showState();
+        $state = $this->sessionHellper->isLogged();
         if($state){
             if($rol){
                 $userName = $this->userModel->getUser($idUsuario);

@@ -13,7 +13,7 @@ Agregar funcionalidad al administrador para //
 asignar o quitar permisos y eliminar usuarios  // esta lista
 
 
-Al crear una cuenta se loguea automaticamente
+Al crear una cuenta se loguea automaticamente // listo
 
 Los registrados pueden comentar y puntuar los items
  del 1 al 5//listo
@@ -23,7 +23,8 @@ Adminisrtador puede eliminar comentarios //listo
 OPTATIVAS:
 Imagenes -. Listo
 
-Paginado para recorrer las imagenes. 
+Paginado para recorrer las imagenes. //listo
+
 
 Busqueda avanzada de los items
 
@@ -32,4 +33,23 @@ ordenar comentarios por antiguedad o puntaje asc o desc
 filtar los comentarios por cantidad de puntos
 
 
-Armar panel admin
+Armar panel admin /listo
+
+
+
+
+7. Como usuario quiero poder navegar los listados de ítems en forma paginada.
+Se debe generar una paginación del lado del servidor para recorrer los listados en forma
+paginada.//listo
+
+8. Como usuario quiero poder realizar búsquedas avanzadas de los ítems.
+Se debe incluir un formulario de búsquedas avanzadas donde se filtren los ítems
+dependiendo de los atributos internos. Esta búsqueda se debe resolver del lado del
+servidor.
+
+9. Como usuario quiero poder ordenar los comentarios por antigüedad o puntaje,
+ascendente o descendente.
+Se debe ordenar del lado del servidor.
+
+10. Como usuario quiero poder filtrar los comentarios por cantidad de puntos.
+Se debe filtrar del lado del servidor

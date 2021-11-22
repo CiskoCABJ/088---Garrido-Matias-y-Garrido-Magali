@@ -7,12 +7,25 @@ class PeliculasModel {
         $this->db = new PDO('mysql:host=localhost;'.'dbname=tpe_web2;charset=utf8', 'root', '');
     }
 
-    function getPeliculas(){
-        $consulta = $this->db->prepare('SELECT * FROM peliculas');
+    function getPeliculas($pagina){
+        $consulta = $this->db->prepare('SELECT * FROM peliculas LIMIT ?, ?' );
+        $consulta->bindParam(1, $pagina, PDO::PARAM_INT);
+        $porPagina = ITEM_POR_PAGINA;
+        $consulta->bindParam(2, $porPagina, PDO::PARAM_INT);
         $consulta->execute();
         $peliculas = $consulta->fetchAll(PDO::FETCH_OBJ);
   
         return $peliculas;
+    }
+    function getAllPeliculas(){
+        $consulta = $this->db->prepare('SELECT * FROM peliculas' );
+        $consulta->execute();
+        $peliculas = $consulta->fetchAll(PDO::FETCH_OBJ);  
+        return $peliculas;
+    }
+
+    function getPeliculasFiltradas(){
+        
     }
 
     function getPeliculasEstreno(){
@@ -54,6 +67,11 @@ class PeliculasModel {
         $sentencia->execute(array($idpelicula));
     }
 
+    function countPeliculas(){
+        $consulta = $this->db->prepare('SELECT COUNT(*) as total FROM peliculas');
+        $consulta->execute();
+        return ($consulta->fetchColumn());
+    }
   
 
   

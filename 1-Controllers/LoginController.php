@@ -20,12 +20,12 @@ class LoginController{
 
     function logout(){ 
         $this->sessionHellper->logout();
-        $this->loginView->showLogin($this->sessionHellper->showState());
+        $this->loginView->showLogin($this->sessionHellper->isLogged());
     }
 
     function login(){
         $this->sessionHellper->checkLoggedIn();
-        $this->loginView->showLogin($this->sessionHellper->showState());
+        $this->loginView->showLogin($this->sessionHellper->isLogged());
     }
 
     function verify(){
@@ -45,13 +45,13 @@ class LoginController{
             }  
         }
         else {
-            $this->loginView->showLogin($this->sessionHellper->showState(),'Camplos incompletos');
+            $this->loginView->showLogin($this->sessionHellper->isLogged(),'Camplos incompletos');
         }
     }
 
     function register(){
         $this->sessionHellper->checkLoggedIn();
-        $this->loginView->showRegister($this->sessionHellper->showState());
+        $this->loginView->showRegister($this->sessionHellper->isLogged());
         
     }
 
@@ -63,17 +63,18 @@ class LoginController{
             $mail = $_POST['mail'];
 
             $user = $this->userModel->getUser($usuario);
-            $session = $this->sessionHellper->showState();
+            $session = $this->sessionHellper->isLogged();
                
             if ($user){
                 $this->loginView->showRegister($session,'El usuario ya esta en uso');
             }
             else{
                 $this->userModel->newUser($usuario, $mail, $pass);
-                $this->loginView->showLogin($session,'Cuenta creada! Logea');
+                $this->verify();
+              //  $this->loginView->showLogin($session,'Cuenta creada! Logea');
             }
         }else{
-            $this->loginView->showRegister($this->sessionHellper->showState(),'Camplos incompletos');
+            $this->loginView->showRegister($this->sessionHellper->isLogged(),'Camplos incompletos');
     
         }
     } 

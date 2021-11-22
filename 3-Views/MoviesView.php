@@ -15,20 +15,20 @@ class MoviesView{
     }
 
     function renderGeneros($generos, $titulo, $state, $rol, $mensaje){
-        $this->smarty->assign('generos', $generos);
         $this->smarty->assign('state' , $state);
         $this->smarty->assign('rol' , $rol);
         $this->smarty->assign('titulo', $titulo);
+        $this->smarty->assign('generos', $generos);
         $this->smarty->assign('mensaje',$mensaje);
 
         $this->smarty->display('Templates/generosLista.tpl');
     }
 
     function renderGeneroUpdate($genero, $peliculas, $state, $rol){
-        $this->smarty->assign('genero', $genero);
-        $this->smarty->assign('peliculas', $peliculas);
         $this->smarty->assign('state' , $state);
         $this->smarty->assign('rol' , $rol);
+        $this->smarty->assign('genero', $genero);
+        $this->smarty->assign('peliculas', $peliculas);
 
         $this->smarty->display('Templates/updateGenero.tpl');
 
@@ -41,32 +41,34 @@ class MoviesView{
         header("Location: ".BASE_URL."home");
     }
 
-    function renderPeliculas($peliculas, $generos, $titulo , $state , $rol){
-        $this->smarty->assign('peliculas', $peliculas);
+    function renderPeliculas($peliculas, $generos, $titulo , $state , $rol,$mostrarDesde,$pagina,$paginas){
         $this->smarty->assign('state' , $state);
         $this->smarty->assign('rol' , $rol);
-
         $this->smarty->assign('titulo', $titulo);
+        $this->smarty->assign('peliculas', $peliculas);
         $this->smarty->assign('generos', $generos);
+        $this->smarty->assign('desde', $mostrarDesde);
+        $this->smarty->assign('pagina', $pagina);
+        $this->smarty->assign('paginas', $paginas);
+
         $this->smarty->display('Templates/peliculasLista.tpl');
     }
 
 
-    function renderPelicula($pelicula,$generos, $state, $rol,$comentarios){ // para probar
-        $this->smarty->assign('pelicula', $pelicula);
+    function renderPelicula($pelicula,$generos, $state, $rol){ 
         $this->smarty->assign('state' , $state);
-        $this->smarty->assign('generos', $generos);
         $this->smarty->assign('rol' , $rol);
-        $this->smarty->assign('comentarios', $comentarios); // para probar
+        $this->smarty->assign('pelicula', $pelicula);
+        $this->smarty->assign('generos', $generos);
         
         $this->smarty->display('Templates/peliculaDetalle.tpl');
     }
 
     function renderPeliculaUpdate($pelicula, $generos, $state,$rol){
-        $this->smarty->assign('pelicula', $pelicula);
-        $this->smarty->assign('generos', $generos);
         $this->smarty->assign('state' , $state);
         $this->smarty->assign('rol' , $rol);
+        $this->smarty->assign('pelicula', $pelicula);
+        $this->smarty->assign('generos', $generos);
 
         $this->smarty->display('Templates/peliculaDetalle.tpl');
     }

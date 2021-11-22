@@ -24,8 +24,16 @@
         </div>
     {/if}
 
-    <div class="contenedor-peliculas">
+    {if $pagina}
+        <div class="d-flex-row jc-center">
+            <a href="peliculas/{$pagina-1}"><<</a>  
+            <p>Pagina {$pagina} de {$paginas}</p>
+            <a href="peliculas/{$pagina+1}">>></a>  
+        </div>        
+    {/if}
+    
 
+    <div class="contenedor-peliculas">
         {foreach from=$peliculas item=$pelicula}
             <div class="pelicula">
 
@@ -47,7 +55,17 @@
                     <a class="btn" href="pelicula/{$pelicula->id}" >VER</a>
                 </div>
             </div>        
-        {/foreach}
+        {/foreach}       
     </div>
+    
+
+    {if $pagina}
+        <div class="d-flex-row jc-center">
+            <a href="peliculas/{$pagina-1}"><<</a>  
+            <p>Pagina {$pagina} de {$paginas}</p>
+            <a href="peliculas/{$pagina+1}">>></a>  
+        </div>        
+    {/if}
+
 
     

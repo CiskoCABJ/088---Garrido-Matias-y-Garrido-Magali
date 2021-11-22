@@ -36,13 +36,13 @@ class SessionHellper{
 
 
 
-    function showState(){
+    function isLogged(){
         if (session_status() != PHP_SESSION_ACTIVE)
             session_start();
         if (isset($_SESSION['usuario'])){
-            return "Logout";
+            return true;
         }else{
-            return "Login";
+            return false;
         }
         
     }

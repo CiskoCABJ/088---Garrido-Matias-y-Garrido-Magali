@@ -38,8 +38,11 @@
         <a href="home">Inicio</a>
         <a href="generos">Generos</a>
         <a href="peliculas">Peliculas</a>
-        
-        <a href='{$state}'>{$state}</a>
+        {if $state}
+            <a href="Logout"> Logout</a>
+        {else}
+             <a href="Login"> Login</a>
+        {/if}
       
     </nav>
 </header>

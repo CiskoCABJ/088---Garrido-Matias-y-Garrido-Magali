@@ -1,4 +1,6 @@
 <?php
+
+
 require_once './1-Controllers/ApiMoviesController.php'; // por ahora para probar
 require_once './2-Models/GenerosModel.php';
 require_once './2-Models/PeliculasModel.php';
@@ -7,6 +9,7 @@ require_once './3-Views/MoviesView.php';
 require_once './4-Hellpers/SessionHellper.php';
 
 class MoviesController {
+
     private $generosModel;
     private $peliculasModel;
     private $moviesView;
@@ -27,25 +30,51 @@ class MoviesController {
     }
 
     function showHome(){
-        $state = $this->sessionHellper->showState();
+        $state = $this->sessionHellper->isLogged();
         $rol = $this->sessionHellper->showRol();
         $titulo = "Estrenos";
         $peliculasHome = $this->peliculasModel->getPeliculasEstreno();
         $generos = $this->generosModel->getGeneros();
-        $this->moviesView->renderPeliculas($peliculasHome,$generos,$titulo, $state, $rol);
+        $this->moviesView->renderPeliculas($peliculasHome,$generos,$titulo, $state, $rol,null,null,null);
     }
 
-    function showPeliculas(){
-        $state = $this->sessionHellper->showState();
+    function showPeliculas($params = null){
+
+        $state = $this->sessionHellper->isLogged();
         $rol = $this->sessionHellper->showRol();
         $titulo = "Peliculas";
-        $peliculas = $this->peliculasModel->getPeliculas();
         $generos = $this->generosModel->getGeneros();
-        $this->moviesView->renderPeliculas($peliculas,$generos, $titulo, $state,$rol);
+
+        if( $state){
+            $paginas =$this->peliculasModel->countPeliculas()/ITEM_POR_PAGINA;
+            if(($paginas - round($paginas) ) != 0){
+                $paginas =(round($this->peliculasModel->countPeliculas()/ITEM_POR_PAGINA));
+            }
+            $mostrarDesde = 0;
+            $pagina =1;
+            if(isset($params[1])){
+                if($params[1] >$paginas || $params[1]<=0 ){
+                    header("Location: ".BASE_URL."peliculas");
+                }else{
+                    $pagina=$params[1];
+                }
+                $mostrarDesde= intval($pagina)*ITEM_POR_PAGINA;
+            }
+           
+            $peliculas = $this->peliculasModel->getPeliculas($mostrarDesde);
+          
+            $this->moviesView->renderPeliculas($peliculas,$generos, $titulo, $state,$rol,$mostrarDesde,$pagina,$paginas);
+        }else{
+            $peliculas = $this->peliculasModel->getAllPeliculas();          
+            $this->moviesView->renderPeliculas($peliculas,$generos,$titulo, $state, $rol,null,null,null);
+        }
+
+        
+       
     }
    
     function showDetalle($idpelicula){
-        $state = $this->sessionHellper->showState();
+        $state = $this->sessionHellper->isLogged();
         $rol = $this->sessionHellper->showRol();
         $generos = $this->generosModel->getGeneros();
         $pelicula = $this->peliculasModel->getPelicula($idpelicula);
@@ -57,12 +86,22 @@ class MoviesController {
 
     function addPelicula(){ 
         $rol = $this->sessionHellper->showRol();
-        $state = $this->sessionHellper->showState();
+        $state = $this->sessionHellper->isLogged();
         if($rol){       
-            $this->peliculasModel->addPelicula($_POST['inp_img'],$_POST['inp_titulo'],$_POST['inp_genero'],$_POST['inp_descripcion'],$_POST['inp_duracion'],$_POST['inp_reparto'],$_POST['inp_estreno']);
-            $this->moviesView->showGenero($_POST['inp_genero']);
+            if( isset($_POST['inp_img']) && isset($_POST['inp_titulo']) && isset($_POST['inp_genero']) && isset($_POST['inp_descripcion']) && isset($_POST['inp_duracion']) && isset($_POST['inp_reparto']) && isset($_POST['inp_estreno']) ){
+                $this->peliculasModel->addPelicula($_POST['inp_img'],$_POST['inp_titulo'],$_POST['inp_genero'],$_POST['inp_descripcion'],$_POST['inp_duracion'],$_POST['inp_reparto'],$_POST['inp_estreno']);
+                $this->moviesView->showGenero($_POST['inp_genero']);
+            }
         }else{
             $this->moviesView->showHomeLocation();
+        }
+    }
+
+    function showPeliculasFiltradas(){
+        $rol = $this->sessionHellper->showRol();
+        $state = $this->sessionHellper->isLogged();
+        if($state){
+
         }
     }
 
@@ -75,7 +114,7 @@ class MoviesController {
 
     function updatePelicula($idpelicula){ 
         $rol = $this->sessionHellper->showRol();
-        $state = $this->sessionHellper->showState();
+        $state = $this->sessionHellper->isLogged();
         if($rol){  
             $peliculaUpdate = $this->peliculasModel->getPelicula($idpelicula);
             $generos = $this->generosModel->getGeneros();
@@ -95,24 +134,27 @@ class MoviesController {
     //Generos
 
     function showGeneros($mensaje){
-        $state = $this->sessionHellper->showState();
+        $state = $this->sessionHellper->isLogged();
         $rol = $this->sessionHellper->showRol();
         $titulo = "Generos";
         $generos = $this->generosModel->getGeneros();
         $this->moviesView->renderGeneros($generos, $titulo, $state, $rol, $mensaje);
     }
 
-    function showGenero($genero){        
-        $state = $this->sessionHellper->showState();
+    function showGenero($genero){  
+    
+        $state = $this->sessionHellper->isLogged();
         $rol = $this->sessionHellper->showRol();
         $generos = $this->generosModel->getGeneros();
         $peliculasByGenero = $this->peliculasModel->getPeliculasByGenero($genero);
-        $this->moviesView->renderPeliculas($peliculasByGenero,$generos,$genero, $state, $rol);    
+     
+        $this->moviesView->renderPeliculas($peliculasByGenero,$generos,$genero, $state, $rol,null,null,null);  
+        
     }
    
     function addGenero(){
         $rol = $this->sessionHellper->showRol();
-        $state = $this->sessionHellper->showState();
+        $state = $this->sessionHellper->isLogged();
         if($rol){ 
             $this->generosModel->addGenero($_POST['inp_genero']);
             $mensaje = "Nuevo genero agregado: " . $_POST['inp_genero'] ;
@@ -140,7 +182,7 @@ class MoviesController {
     }
 
     function updateGenero($genero){
-        $state = $this->sessionHellper->showState();
+        $state = $this->sessionHellper->isLogged();
         $rol = $this->sessionHellper->showRol();
         if($rol){ 
             $peliculasByGenero=$this->peliculasModel->getPeliculasByGenero($genero);
@@ -151,7 +193,7 @@ class MoviesController {
     }
   
     function editGenero($genero){
-        $state = $this->sessionHellper->showState();
+        $state = $this->sessionHellper->isLogged();
         $rol = $this->sessionHellper->showRol();
         if($rol){ 
             $mensaje = $genero . " cambio a :" . $_POST['inp_genero'].
@@ -191,7 +233,7 @@ class MoviesController {
         }
     }
     // function getComentarios($idPelicula){
-    //     $state = $this->sessionHellper->showState();
+    //     $state = $this->sessionHellper->isLogged();
     //     if($state){
     //         $this->comentariosModel->getComentarios($idPelicula);
     //     }
