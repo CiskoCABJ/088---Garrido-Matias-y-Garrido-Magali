@@ -23,7 +23,7 @@ $router->addRoute('generos/:ID', 'DELETE', 'ApiMoviesController', 'deleteGenero'
 
 $router->addRoute('comentarios', 'GET', 'ApiMoviesController', 'getComentarios');
 $router->addRoute('comentarios/:ID', 'GET', 'ApiMoviesController', 'getComentariosPelicula');
-$router->addRoute('comentarios/:ID', 'POST', 'ApiMoviesController', 'addComentario');
+$router->addRoute('comentarios', 'POST', 'ApiMoviesController', 'addComentario');
 $router->addRoute('comentarios/:ID', 'DELETE', 'ApiMoviesController', 'deleteComentario');
 
 

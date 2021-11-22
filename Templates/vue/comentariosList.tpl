@@ -1,23 +1,23 @@
 {literal}
-<div id="app">
-  
+<div class="d-flex-column" v-for="comentario in comentarios" v-if="comentario.id_pelicula == pelicula">
+    
+    <div class="d-flex-row jc-sb">
+        <h3 class="autor texto-centrado">{{comentario.usuario}} </h3>
 
-    <table>
-        <tr>
-            <td>Usuario</td>
-            <td>Calificacion</td>
-            <td>Comentario</td>
-        </tr>
-        <tr v-for="comentario in comentarios" v-if="comentario.id_pelicula == pelicula">
-            <td>{{comentario.usuario}} </td>
-            <td>{{comentario.calificacion}} </td>
-            <td>{{comentario.comentario}} </td>
-            <td v-if="admin==0">
-                <button id:comentario.id_comentario class="btn-borrar">Borrar</button>
-            </td>
-        </tr>
-    </table>
-  
+        <div class="d-flex-row calificacion jc-center">
+            <div class="icono" v-for="i in parseInt(comentario.calificacion)" >
+                <img src="./img/estrella.png">
+            </div>
+        </div>
+    </div>
+    
+    <p class="texto-centrado">{{comentario.comentario}} </p>
+
+        <button class="btn" v-if="admin" v-on:click="deleteComentario(comentario.id_comentario)" class="btn-borrar">
+            Borrar
+        </button>
+
+
 
 </div>
 {/literal}

@@ -76,18 +76,20 @@ class ApiMoviesController{
         $this->apiView->response($comentarios,200);
     }
 
-    function addComentario($params = null){
-        $idPelicula = $params[":ID"];
-        $usuario =$this->sessionHellper->getLoggedUser();
-        if($usuario){
+    function addComentario(){      
 
-            if( isset($_POST['inp-calificacion']) && isset($_POST['inp-comentario'])){
-                $calificacion = $_POST['inp-calificacion'];
-                $comentario =$_POST['inp-comentario'];
-                $this->comentariosModel->addComentario($usuario,$idPelicula, $calificacion, $comentario);  
-                 
-            }
-        }
+           $comentarioPost = json_decode(file_get_contents('php://input'), true);
+
+                $idPelicula = $comentarioPost["id_pelicula"];
+                $idUser = $comentarioPost["usuario"];
+                $calificacion = $comentarioPost["calificacion"];
+                $comentario =$comentarioPost["comentario"];
+
+                $this->comentariosModel->addComentario($idUser,$idPelicula, $calificacion, $comentario);  
+                $comentarios = $this->comentariosModel->getComentariosPelicula($idPelicula);  
+                $this->apiView->response($comentarios,404);               
+          
+        
     }
 
     function deleteComentario($params = null){
@@ -98,9 +100,10 @@ class ApiMoviesController{
             if($comentario){
                 $idPelicula = $comentario->id_pelicula;
                 $this->comentariosModel->deleteComentario($idComentario);
-                $this->showDetalle($idPelicula);  
+                $comentarios = $this->comentariosModel->getComentariosPelicula($idPelicula);
+                $this->apiView->response($comentarios,200);
+                  
             }
-          
         }
     }
 

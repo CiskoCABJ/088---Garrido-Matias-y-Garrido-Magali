@@ -1,7 +1,7 @@
 {include file='templates/header.tpl'}
 <div class="contenedor-detalles">
     <div>
-        <img src="{$pelicula->img}">
+        <img class="img-detalle" src="{$pelicula->img}">
     </div>
     <div class="info-pelicula">
         <h1>{$pelicula->titulo}</h1>
@@ -36,32 +36,19 @@
     
 
 </div>
-<div class="contenedor-detalles d-flex-column">
+
+<div class="vueApp contenedor-detalles d-flex-column">
 
     {if isset($usuario)}
-        <div>
-            <h3 class="texto-centrado">Hola {$usuario} puede calificar {$pelicula->titulo}</h3>
-           
-                <form class="form-calificacion" method="post" action="api/comentarios/{$pelicula->id}">
-                    <select name="inp-calificacion" required>
-                        <option disabled selected > CALIFIQUE</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                    <input type="text" name="inp-comentario" placeholder="Comentario">
-                    <input type="submit" value="Comentar">
-                </form>
-
+        <div id="{$usuario}" class="userLogged">
+            {include file='templates/vue/formCalificacion.tpl'}
         </div>
-           
-        <div class="comentarios-div" id="{$pelicula->id}">
-            {include file='templates/vue/comentariosList.tpl'}
-        </div>
-
     {/if}
+  
+    <div class="idpelicula d-flex-column" id="{$pelicula->id}">
+        {include file='templates/vue/comentariosList.tpl'}
+    </div>
+
 </div>
 
 

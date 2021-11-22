@@ -27,15 +27,17 @@ class ComentariosModel{
     }
 
     function getComentario($idComentario){
-        $consulta = $this->db->prepare('SELECT * FROM comentarios WHERE id_comentario=? ');
+        $consulta = $this->db->prepare('SELECT * FROM comentarios WHERE id_comentario=?');
         $consulta->execute([$idComentario]);
         $comentario = $consulta->fetch(PDO :: FETCH_OBJ);
         return $comentario;
     }
 
     function deleteComentario($idComentario){
+        var_dump($idComentario);
         $consulta = $this->db->prepare("DELETE FROM comentarios WHERE id_comentario=?");
         $consulta->execute(array($idComentario));
+        return 4;
     }
 
    
