@@ -1,6 +1,7 @@
 {literal}
-    <div>
-        <form method="post">
+   
+    <form class="form-calificacion d-flex-column centrar-contenido"  method="post">
+        <div class="d-flex-row jc-center">
             <input id="inp-user" type="text" :value="usuario"  readonly onmousedown="return false;" />
             <select id="inp-calificacion" name="inp-calificacion" required>
                 <option disabled selected > CALIFIQUE</option>
@@ -11,9 +12,9 @@
                 <option value="5">5</option>
             </select>
             <input id="inp-comentario" type="text" name="inp-comentario" placeholder="Comentario">
-            <button class="btn" id="btn-nuevo" >
-                cargar
-            </button>
-        </form>
-    </div>
+        </div>
+        <button class="btn-comentario" id="btn-nuevo" >
+            Comentar
+        </button>
+    </form>
 {/literal}

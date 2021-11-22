@@ -24,8 +24,15 @@ class PeliculasModel {
         return $peliculas;
     }
 
-    function getPeliculasFiltradas(){
-        
+    function getPeliculasFiltradas($filtro){
+        $consulta = $this->db->prepare('SELECT * FROM peliculas WHERE titulo LIKE ? OR
+                                                                      descripcion LIKE ? OR
+                                                                      duracion LIKE ? OR
+                                                                      genero LIKE ? OR
+                                                                      estreno LIKE ?' );
+        $consulta->execute(array("%$filtro%","%$filtro%","%$filtro%","%$filtro%","%$filtro%"));
+        $peliculas = $consulta->fetchAll(PDO::FETCH_OBJ);  
+        return $peliculas;
     }
 
     function getPeliculasEstreno(){

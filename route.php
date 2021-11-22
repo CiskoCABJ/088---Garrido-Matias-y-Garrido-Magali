@@ -32,6 +32,10 @@ switch($params[0]){
     case 'peliculas': 
         $moviesController->showPeliculas($params);
         break;
+    case 'filtrarpelicula':
+        $moviesController->showPeliculasFiltradas();
+        break;
+        
     case 'usuarios':
         $adminController->showUsuarios();   
         break;

@@ -101,6 +101,14 @@ class MoviesController {
         $rol = $this->sessionHellper->showRol();
         $state = $this->sessionHellper->isLogged();
         if($state){
+            if($_POST["inp-busqueda"] != ""){
+                $titulo = "Filtrado por ". $_POST["inp-busqueda"];
+                $peliculasFiltradas = $this->peliculasModel->getPeliculasFiltradas($_POST["inp-busqueda"]);
+                $generos = $this->generosModel->getGeneros();
+                $this->moviesView->renderPeliculas($peliculasFiltradas,$generos,$titulo, $state, $rol,null,null,null);
+            }else{
+                $this->moviesView->showHomeLocation();
+            }
 
         }
     }

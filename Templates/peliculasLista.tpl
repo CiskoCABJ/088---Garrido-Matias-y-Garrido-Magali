@@ -2,8 +2,18 @@
 
     <h1 class="titulo-seccion">{$titulo}</h1>
 
+    {if $state}
+        <div class="contenedor-filtro ">
+            <form class="d-flex-row jc-center" method="post" action="filtrarpelicula">
+                <input type="text" name="inp-busqueda" value="" placeholder="" >
+              
+                <input class="btn-filtro" type="submit" value="Filtrar">
+            </form>
+        </div>
+    {/if}
+
     {if $rol neq ""}
-        <div class="contenedor-agregar">
+        <div class="contenedor-agregar ">
             <h3 class="titulo-formulario">Agregar pelicula</h3>
             
             <form class="form-add" method="POST" action="agregarpelicula">

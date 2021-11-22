@@ -30,6 +30,10 @@ html {
     justify-content: center;
 }
 
+.centrar-contenido {
+    align-items: center;
+}
+
 .texto-centrado {
     text-align: center;
 }
@@ -89,7 +93,9 @@ html {
 }
 
 .navegador a,
-.btn {
+.btn,
+.btn-filtro,
+.btn-comentario {
     color: white;
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
@@ -115,7 +121,9 @@ html {
 }
 
 .navegador a:hover,
-.btn:hover {
+.btn:hover,
+.btn-filtro:hover,
+.btn-comentario:hover {
     background-color: rgb(106, 185, 209);
 }
 
@@ -249,7 +257,8 @@ html {
 .form-edicion select,
 .form-add input,
 .form-add select,
-.form-genero input {
+.form-genero input,
+.form-calificacion input {
     padding: 10px 5px;
 }
 
@@ -285,4 +294,26 @@ table {
 
 .btn-borrar-comentario {
     width: 30%;
+}
+
+.contenedor-filtro {
+    margin: 0 auto;
+    width: 30%;
+}
+
+.btn-filtro {
+    width: 40%;
+    padding: 10px 0;
+    font-size: 1rem;
+}
+
+.caja-comentario {
+    margin: 2px 0;
+    border: solid 1px;
+}
+
+.btn-comentario {
+    width: 40%;
+    padding: 10px 0;
+    font-size: 1rem;
 }
