@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2021 a las 21:10:35
+-- Tiempo de generación: 23-11-2021 a las 01:18:17
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.7
 
@@ -40,23 +40,18 @@ CREATE TABLE `comentarios` (
 --
 
 INSERT INTO `comentarios` (`id_comentario`, `usuario`, `id_pelicula`, `calificacion`, `comentario`) VALUES
-(3, '2', 6, 3, 'epica'),
-(4, '2', 6, 5, 'de nuevo'),
-(5, '2', 6, 5, 'ghjghj'),
-(6, '2', 6, 1, 'ultimo'),
-(7, '2', 6, 1, 'ultimolast'),
-(8, '2', 6, 1, 'elmasultimo'),
-(9, '2', 6, 1, 'elmasultimoffdg'),
-(10, '2', 6, 1, 'nose'),
-(11, '2', 6, 1, 'asdaaaaa'),
-(12, '2', 6, 4, 'alta'),
-(14, '2', 6, 1, 'estraaa'),
-(16, 'MatiasGarrido', 6, 1, 'asdaaaaa'),
-(17, 'MatiasGarrido', 6, 5, 'yooooooo'),
 (18, 'MatiasGarrido', 6, 3, 'otra vez yo'),
-(19, 'MatiasGarrido', 14, 1, 'asdaaaaa'),
-(20, 'MatiasGarrido', 6, 2, 'ultimoultmo'),
-(21, '1', 14, 5, 'curse');
+(28, '1', 6, 1, 'asdd'),
+(30, '2', 6, 3, 'sdfff'),
+(31, '1', 6, 2, 'asd'),
+(32, '1', 6, 2, 'asdaa'),
+(33, '1', 6, 2, 'seeii'),
+(34, '1', 6, 5, 'asd'),
+(35, '3', 14, 4, 'sdf'),
+(36, 'autologin', 6, 1, 'asd'),
+(38, '2', 6, 3, 'anda'),
+(39, '2', 14, 3, 'sdf'),
+(40, '2', 6, 3, 'asfasf');
 
 -- --------------------------------------------------------
 
@@ -193,6 +188,9 @@ INSERT INTO `usuarios` (`usuario`, `mail`, `pass`, `rol`) VALUES
 ('3', '3', '$2y$10$92irXjkKyGttoVv44SSJ7upVXNR/2hKA6YRMWHKNEdRwJXjCSbBhW', 1),
 ('333', '333', '$2y$10$.UkOWggXdV5A8XVp2QQLIuzvFV9fnsm8bjaOoPrWeZoGRBkLM5ybW', 1),
 ('555', '4445', '$2y$10$mBAgexsNY5vSyeGKRyrwN.frpDqeY95xio0C/1ksgyJ/ET9TkeMQm', NULL),
+('7777', 'asdaa', '$2y$10$nZLKafrLuoNkFHlmViJMUeTmVQwfC5RKEV5W3A60Ze69jrSUSeIv.', NULL),
+('autologin', '1123', '$2y$10$49XwIs6QFGEF/CiCN8K2Bu0COc3rBaTd0AeUL3QsPJRphZsXpw9mm', NULL),
+('k', 'kk', '$2y$10$ViTvKitJgsTnb05P9SGaDu7/3eyc1x7IFT52X2KwhD73fLcBe2W62', NULL),
 ('Lola', 'contactodgeme@gmail.com', '$2y$10$J0ifgmTEpNSIfNhF45r/LO6G/bjJcP7nqziGn7lK1FIokkyC4jBES', 1),
 ('MatiasGarrido', 'asdfasf', '$2y$10$5kAD7vMU3KYjaleE28IN9ewW977HOxynQkPmuM19UvNhA8W/KiU4q', NULL),
 ('Renata2021', 'garridomagali@hotmail.com', '$2y$10$LMB4GS6i5mXDIkv9wXO79ukSvZVsL0sNObCaLMga9GOfwmoV4aWL6', NULL),
@@ -238,7 +236,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_comentario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `peliculas`

@@ -70,10 +70,21 @@ class ApiMoviesController{
         $comentarios = $this->comentariosModel->getComentarios();
         $this->apiView->response($comentarios,200);
     }
+
     function getComentariosPelicula($params = null){
-        $idComentario = $params[":ID"];
-        $comentarios = $this->comentariosModel->getComentariosPelicula($idComentario);
-        $this->apiView->response($comentarios,200);
+        $idPelicula = $params[":ID"];
+
+        if(isset($_GET["sort"]) && isset($_GET["order"])){
+            $sort = $_GET["sort"];
+            $order = $_GET["order"];
+            $comentarios = $this->comentariosModel->getComentariosPeliculaOrden($idPelicula,$sort,$order);
+            $this->apiView->response($comentarios,200);
+        }else{
+            $comentarios = $this->comentariosModel->getComentariosPelicula($idPelicula);
+            $this->apiView->response($comentarios,200);
+        }   
+        
+     
     }
 
     function addComentario(){      

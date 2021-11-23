@@ -22,7 +22,7 @@ let app = new Vue({
         comentarios: [],
         pelicula: peli,
         usuario: user,
-        admin: adminRol
+        admin: adminRol,
     },
     methods: {
 
@@ -39,6 +39,18 @@ let app = new Vue({
             } catch (error) {
                 console.log(error);
                 console.log(e);
+            }
+        },
+
+        orderBy: async function(sort, order) {
+
+
+            try {
+                let response = await fetch(`${url}/${app.pelicula}?sort=${sort}&order=${order}`);
+                let json = await response.json();
+                app.comentarios = json;
+            } catch (error) {
+                console.log(error);
             }
         }
     }

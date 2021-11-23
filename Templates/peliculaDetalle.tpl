@@ -44,7 +44,8 @@
             {include file='templates/vue/formCalificacion.tpl'}
         </div>
     {/if}
-  
+   
+
     <div class="idpelicula d-flex-column" id="{$pelicula->id}">
         {include file='templates/vue/comentariosList.tpl'}
     </div>

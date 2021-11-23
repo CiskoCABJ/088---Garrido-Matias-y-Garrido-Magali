@@ -14,9 +14,10 @@ class ComentariosModel{
         return $comentarios;
     }
 
-    function getComentariosPelicula($pelicula){
+    function getComentariosPelicula($idPelicula){
         $consulta = $this->db->prepare("SELECT * FROM comentarios WHERE id_pelicula=?");
-        $consulta->execute([$pelicula]);
+        $consulta->bindParam(1, $idPelicula, PDO::PARAM_INT);
+        $consulta->execute();
         $comentarios = $consulta->fetchAll(PDO :: FETCH_OBJ);
         return $comentarios;
     }
@@ -31,6 +32,14 @@ class ComentariosModel{
         $consulta->execute([$idComentario]);
         $comentario = $consulta->fetch(PDO :: FETCH_OBJ);
         return $comentario;
+    }
+
+    function getComentariosPeliculaOrden($idPelicula,$sort,$order){
+        $consulta = $this->db->prepare("SELECT * FROM comentarios WHERE id_pelicula =? ORDER BY $sort $order");
+        $consulta->bindParam(1, $idPelicula, PDO::PARAM_INT);
+        $consulta->execute();
+        $comentarios = $consulta->fetchAll(PDO::FETCH_OBJ);
+        return $comentarios;
     }
 
     function deleteComentario($idComentario){
