@@ -20,6 +20,13 @@
             </a>
            
         </div>
+         <div class="d-flex-row">
+            <p>Restablecer</p>
+            <a class="icono" v-on:click="sinOrder()">
+                <img src="./img/reiniciar2.png"  > 
+            </a>
+           
+        </div>
         
 
     </div>

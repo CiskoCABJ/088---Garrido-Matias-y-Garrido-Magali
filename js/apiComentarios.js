@@ -52,6 +52,10 @@ let app = new Vue({
             } catch (error) {
                 console.log(error);
             }
+        },
+
+        sinOrder: function() {
+            getComentarios();
         }
     }
 });
