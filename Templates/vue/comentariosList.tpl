@@ -1,5 +1,5 @@
 {literal}
-     <div class="d-flex-row jc-center">
+     <div class="d-flex-row jc-center" v-if="usuario!=null">
 
         <div class="d-flex-row">
             <p>Calificacion</p>
