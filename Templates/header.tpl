@@ -12,8 +12,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
-<!-- development version, includes helpful console warnings -->
-<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <title>Play Movie</title>
 </head>
 <header>
@@ -25,7 +28,7 @@
         <div class="panel-user">
             {if isset($usuario)}
                 {if $rol neq ""}
-                    <a id="{$rol}" class="rol" href="usuarios"> Panel Administrador</a>
+                    <a class="btn-admin rol" id="{$rol}" href="usuarios"> Panel Administrador</a>
                 {/if}
                 <h3> Hola {$usuario}!</h3>
             {/if}

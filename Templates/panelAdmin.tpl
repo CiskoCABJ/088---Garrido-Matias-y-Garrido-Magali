@@ -3,6 +3,8 @@
 <h1 class="titulo-seccion">Panel Admin </h1>
 
 <div class="contenedor-panelAdmin">
+    
+    <h2 class="texto-centrado">{$mensaje}</h2>
 
     <table>
 
@@ -21,18 +23,18 @@
                     <td>{$user->mail}</td>
 
                     <td>
-                        <a class="icono" href="borrarusuario/{$user->id_usuario}">
+                        <a class="icono" href="borrarusuario/{$user->usuario}">
                             <img src="./img/eliminar.png" >
                         </a>
                     </td>
 
                     <td>                    
                         {if $user->rol}
-                            <a class="icono" href="quitaradmin/{$user->id_usuario}">
+                            <a class="icono" href="quitaradmin/{$user->usuario}">
                                 <img src="./img/quitarAdmin.png" >
                             </a>
                         {else}
-                            <a class="icono" href="daradmin/{$user->id_usuario}">
+                            <a class="icono" href="daradmin/{$user->usuario}">
                                 <img src="./img/darAdmin.png" >
                             </a>
                             

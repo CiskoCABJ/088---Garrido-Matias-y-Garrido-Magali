@@ -1,11 +1,7 @@
 <?php
 require_once './2-Models/UsersModel.php';
 require_once './3-Views/LoginView.php';
-
-
 require_once './4-Hellpers/SessionHellper.php';
-
-
 
 class LoginController{
     private $userModel;

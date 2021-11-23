@@ -21,6 +21,12 @@ class ComentariosModel{
         $comentarios = $consulta->fetchAll(PDO :: FETCH_OBJ);
         return $comentarios;
     }
+    function getComentariosByUsuario($usuario){
+        $consulta = $this->db->prepare('SELECT * FROM comentarios WHERE usuario=?');
+        $consulta->execute(array($usuario));
+        $comentarios = $consulta->fetchAll(PDO :: FETCH_OBJ);
+        return $comentarios;
+    }
 
     function addComentario($usuario,$idPelicula, $calificacion ,$comentario){
         $sentencia = $this->db->prepare("INSERT INTO comentarios (usuario, id_pelicula , calificacion, comentario) VALUES(?,?,?,?)");

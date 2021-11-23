@@ -15,10 +15,12 @@ class AdminView{
         $this->smarty->assign('usuario',$userLogged);
     }
 
-    function showUsers($users,$state,$rol){
+    function showUsers($users,$state,$rol,$mensaje){
         $this->smarty->assign('state' , $state);
         $this->smarty->assign('rol' , $rol);
         $this->smarty->assign("users",$users);
+        $this->smarty->assign("mensaje",$mensaje);
+        
         $this->smarty->display("Templates/panelAdmin.tpl");
 
     }

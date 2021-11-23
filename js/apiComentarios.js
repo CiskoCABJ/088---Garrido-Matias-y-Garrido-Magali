@@ -56,28 +56,27 @@ let app = new Vue({
     }
 });
 
-if (document.querySelector("#btn-nuevo") != null) {
+if (document.querySelectorAll(".btn-estrella") != null) {
 
-    let btnNuevo = document.querySelector("#btn-nuevo");
-    btnNuevo.addEventListener("click", generarComentario);
+    let btnNuevo = document.querySelectorAll(".btn-estrella");
+    btnNuevo.forEach(b => b.addEventListener("click", generarComentario));
 }
-
-
-
 
 getComentarios();
 
-
-
 function generarComentario(e) {
     e.preventDefault();
-
-    let usuario = document.getElementById("inp-user").value;
-    let calificacion = document.getElementById("inp-calificacion").value;
-    let inpcomentario = document.getElementById("inp-comentario").value;
+    let arrCalificacion = this.getAttribute("id");
+    let inpcomentario;
+    if (document.getElementById("inp-comentario").value != "")
+        inpcomentario = document.getElementById("inp-comentario").value;
+    else {
+        getComentarios();
+    }
+    let calificacion = arrCalificacion.split("-")[1];
 
     let comentario = {
-        "usuario": usuario,
+        "usuario": app.usuario,
         "id_pelicula": app.pelicula,
         "calificacion": calificacion,
         "comentario": inpcomentario,
