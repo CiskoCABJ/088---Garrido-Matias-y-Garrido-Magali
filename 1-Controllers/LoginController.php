@@ -1,27 +1,31 @@
 <?php
 require_once './2-Models/UsersModel.php';
+
 require_once './3-Views/LoginView.php';
-require_once './4-Hellpers/SessionHellper.php';
+
+require_once './4-Helpers/SessionHelper.php';
 
 class LoginController{
     private $userModel;
+
     private $loginView;
-    private $sessionHellper;
+
+    private $sessionHelper;
 
     function __construct(){
         $this->userModel = new UsersModel();
         $this->loginView = new LoginView();
-        $this->sessionHellper = new SessionHellper();
+        $this->sessionHelper = new SessionHelper();
     }
 
     function logout(){ 
-        $this->sessionHellper->logout();
-        $this->loginView->showLogin($this->sessionHellper->isLogged());
+        $this->sessionHelper->logout();
+        $this->loginView->showLogin($this->sessionHelper->isLogged());
     }
 
     function login(){
-        $this->sessionHellper->checkLoggedIn();
-        $this->loginView->showLogin($this->sessionHellper->isLogged());
+        $this->sessionHelper->checkLoggedIn();
+        $this->loginView->showLogin($this->sessionHelper->isLogged());
     }
 
     function verify(){
@@ -31,9 +35,7 @@ class LoginController{
 
             $user = $this->userModel->getUser($usuario);
             if ($user && password_verify($pass, ($user->pass))){
-
-                $this->sessionHellper->login($user);
-             
+                $this->sessionHelper->login($user);             
                 $this->loginView->showHomeLocation();
             }  
             else{
@@ -41,13 +43,13 @@ class LoginController{
             }  
         }
         else {
-            $this->loginView->showLogin($this->sessionHellper->isLogged(),'Camplos incompletos');
+            $this->loginView->showLogin($this->sessionHelper->isLogged(),'Camplos incompletos');
         }
     }
 
     function register(){
-        $this->sessionHellper->checkLoggedIn();
-        $this->loginView->showRegister($this->sessionHellper->isLogged());
+        $this->sessionHelper->checkLoggedIn();
+        $this->loginView->showRegister($this->sessionHelper->isLogged());
         
     }
 
@@ -59,7 +61,7 @@ class LoginController{
             $mail = $_POST['mail'];
 
             $user = $this->userModel->getUser($usuario);
-            $session = $this->sessionHellper->isLogged();
+            $session = $this->sessionHelper->isLogged();
                
             if ($user){
                 $this->loginView->showRegister($session,'El usuario ya esta en uso');
@@ -70,7 +72,7 @@ class LoginController{
               //  $this->loginView->showLogin($session,'Cuenta creada! Logea');
             }
         }else{
-            $this->loginView->showRegister($this->sessionHellper->isLogged(),'Camplos incompletos');
+            $this->loginView->showRegister($this->sessionHelper->isLogged(),'Camplos incompletos');
     
         }
     } 

@@ -36,3 +36,5 @@ filtar los comentarios por cantidad de puntos //falta
 Armar panel admin /listo
 
 
+FALTA MANDAR MENSAJE CUANDO SE INTENTA BORRAR UNA PELICULA Q TIENE COMENTARIOS
+

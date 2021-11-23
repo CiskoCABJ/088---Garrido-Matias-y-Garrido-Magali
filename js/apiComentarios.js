@@ -1,7 +1,5 @@
 "use strict"
-
 const url = "http://127.0.0.1/PROYECTOS/088%20-%20Garrido%20Matias%20y%20Garrido%20Magali/api/comentarios";
-
 
 let peli = document.querySelector(".idpelicula").getAttribute("id");
 let user = null;
@@ -13,8 +11,6 @@ let adminRol = null;
 if (document.querySelector(".rol") != null) {
     adminRol = document.querySelector(".rol").getAttribute("id");
 };
-
-
 
 let app = new Vue({
     el: ".vueApp",
@@ -114,6 +110,9 @@ async function getComentarios() {
         let json = await res.json();
 
         app.comentarios = json;
+        if (res.ok) {
+            console.log(res);
+        }
 
     } catch (error) {
         console.log(error);

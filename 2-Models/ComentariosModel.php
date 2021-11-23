@@ -1,6 +1,4 @@
 <?php
-
-
 class ComentariosModel{
     private $db;
 
@@ -53,7 +51,5 @@ class ComentariosModel{
         $consulta = $this->db->prepare("DELETE FROM comentarios WHERE id_comentario=?");
         $consulta->execute(array($idComentario));
         return 4;
-    }
-
-   
+    }   
 }

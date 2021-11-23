@@ -1,17 +1,16 @@
 <?php
 require_once('./libs/smarty-3.1.39/libs/Smarty.class.php');
-require_once('./4-Hellpers/SessionHellper.php');
+require_once('./4-Helpers/SessionHelper.php');
 class MoviesView{
 
     private $smarty;
 
     function __construct(){
-        $sessionHellper = new SessionHellper();
-        $userLogged = $sessionHellper->getLoggedUser();
+        $sessionHelper = new SessionHelper();
+        $userLogged = $sessionHelper->getLoggedUser();
 
         $this->smarty = new Smarty();
         $this->smarty->assign('usuario',$userLogged);
-
     }
 
     function renderGeneros($generos, $titulo, $state, $rol, $mensaje){
@@ -31,12 +30,12 @@ class MoviesView{
         $this->smarty->assign('peliculas', $peliculas);
 
         $this->smarty->display('Templates/updateGenero.tpl');
-
     }
 
     function showLocation($location){
         header("Location: ".BASE_URL.$location);
     }
+
     function showHomeLocation(){
         header("Location: ".BASE_URL."home");
     }
@@ -53,7 +52,6 @@ class MoviesView{
 
         $this->smarty->display('Templates/peliculasLista.tpl');
     }
-
 
     function renderPelicula($pelicula,$generos, $state, $rol){ 
         $this->smarty->assign('state' , $state);

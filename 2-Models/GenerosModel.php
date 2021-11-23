@@ -1,5 +1,4 @@
 <?php
-
 class GenerosModel {
     private $db;
 
@@ -19,9 +18,7 @@ class GenerosModel {
         $consulta->execute(array($id));
         $genero = $consulta->fetchAll(PDO::FETCH_OBJ);
         return $genero;
-    }
-
- 
+    } 
 
     function addGenero($genero){
         $sentencia = $this->db->prepare("INSERT INTO generos (genero) VALUES(?)");

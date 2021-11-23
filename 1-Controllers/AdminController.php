@@ -1,18 +1,22 @@
 <?php
 require_once './2-Models/UsersModel.php';
 require_once './2-Models/ComentariosModel.php';
+
 require_once './3-Views/AdminView.php';
 require_once './3-Views/LoginView.php';
 require_once './3-Views/MoviesView.php';
-require_once './4-Hellpers/SessionHellper.php';
+
+require_once './4-Helpers/SessionHelper.php';
 
 class AdminController{
-    private $sessionHellper;
     private $userModel;
     private $comentariosModel;
+
     private $adminView;
     private $loginView;
     private $moviesView;
+    
+    private $sessionHelper;
 
     function __construct(){
         $this->userModel = new UsersModel();
@@ -22,12 +26,12 @@ class AdminController{
         $this->loginView = new LoginView();
         $this->moviesView = new MoviesView();
 
-        $this->sessionHellper = new SessionHellper();
+        $this->sessionHelper = new SessionHelper();
     }
     
     function showUsuarios($mensaje = null){
-        $rol = $this->sessionHellper->showRol();
-        $state = $this->sessionHellper->isLogged();
+        $rol = $this->sessionHelper->showRol();
+        $state = $this->sessionHelper->isLogged();
 
         if($state){
             if($rol){
@@ -43,8 +47,8 @@ class AdminController{
     }
 
     function deleteUsuario($idUsuario){
-        $rol = $this->sessionHellper->showRol();
-        $state = $this->sessionHellper->isLogged();
+        $rol = $this->sessionHelper->showRol();
+        $state = $this->sessionHelper->isLogged();
 
         $mensaje = $idUsuario." fue borrado";
         if($state){
@@ -52,13 +56,13 @@ class AdminController{
                 $userName = $this->userModel->getUser($idUsuario);
                 $comentariosDeUsuario = $this->comentariosModel->getComentariosByUsuario($idUsuario);
                 if($comentariosDeUsuario){
-                    if($this->sessionHellper->getLoggedUser()== $userName->usuario){
+                    if($this->sessionHelper->getLoggedUser()== $userName->usuario){
                         $mensaje = "No puedes borrarte a ti mismo!";
                     }else{
                         $mensaje = $idUsuario." tiene comentarios registrados";
                     }                    
                 }else{                   
-                    if($this->sessionHellper->getLoggedUser()!= $userName->usuario){
+                    if($this->sessionHelper->getLoggedUser()!= $userName->usuario){
                         $this->userModel->deleteUsuario($idUsuario);
                     }else{
                         $mensaje = "No puedes borrarte a ti mismo!";
@@ -75,15 +79,15 @@ class AdminController{
     }
 
     function upgrade($idUsuario){
-        $rol = $this->sessionHellper->showRol();
-        $state = $this->sessionHellper->isLogged();
+        $rol = $this->sessionHelper->showRol();
+        $state = $this->sessionHelper->isLogged();
 
         $mensaje = $idUsuario." ahora es administrador";
 
         if($state){
             if($rol){
                 $userName = $this->userModel->getUser($idUsuario);
-                if($this->sessionHellper->getLoggedUser()!= $userName->usuario){
+                if($this->sessionHelper->getLoggedUser()!= $userName->usuario){
                     $this->userModel->upgrade($idUsuario);
                     $this->showUsuarios($mensaje);
                 }else{
@@ -101,14 +105,14 @@ class AdminController{
     }
 
     function downgrade($idUsuario){
-        $rol = $this->sessionHellper->showRol();
-        $state = $this->sessionHellper->isLogged();
+        $rol = $this->sessionHelper->showRol();
+        $state = $this->sessionHelper->isLogged();
 
         $mensaje = $idUsuario." ya no es administrador";
         if($state){
             if($rol){
                 $userName = $this->userModel->getUser($idUsuario);
-                if($this->sessionHellper->getLoggedUser()!= $userName->usuario){
+                if($this->sessionHelper->getLoggedUser()!= $userName->usuario){
                     $this->userModel->downgrade($idUsuario); 
                     $this->showUsuarios($mensaje);         
                 }else{

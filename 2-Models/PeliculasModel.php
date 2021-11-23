@@ -1,5 +1,4 @@
 <?php
-
 class PeliculasModel {
     private $db;
 
@@ -13,8 +12,7 @@ class PeliculasModel {
         $porPagina = ITEM_POR_PAGINA;
         $consulta->bindParam(2, $porPagina, PDO::PARAM_INT);
         $consulta->execute();
-        $peliculas = $consulta->fetchAll(PDO::FETCH_OBJ);
-  
+        $peliculas = $consulta->fetchAll(PDO::FETCH_OBJ);  
         return $peliculas;
     }
     function getAllPeliculas(){
@@ -47,9 +45,7 @@ class PeliculasModel {
         $consulta->execute(array($genero));
         $peliculasByGenero = $consulta->fetchAll(PDO::FETCH_OBJ);
         return $peliculasByGenero;
-    }
-
-  
+    } 
 
     function getPelicula($idpelicula){
         $consulta = $this->db->prepare("SELECT * FROM peliculas WHERE id=?");

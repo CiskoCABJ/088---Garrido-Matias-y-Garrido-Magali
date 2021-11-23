@@ -1,8 +1,7 @@
 <?php
-class SessionHellper{
+class SessionHelper{
     function __construct(){
     }
-
 
     function login($user){
         session_start();
@@ -34,8 +33,6 @@ class SessionHellper{
         return null;
     }
 
-
-
     function isLogged(){
         if (session_status() != PHP_SESSION_ACTIVE)
             session_start();
@@ -43,16 +40,15 @@ class SessionHellper{
             return true;
         }else{
             return false;
-        }
-        
+        }        
     }
+
     function showRol(){
         if (session_status() != PHP_SESSION_ACTIVE)
             session_start();
         if(isset($_SESSION["usuario"])){
             return $_SESSION["rol"];
         }     
-        return;
-        
+        return;        
     }
 }

@@ -1,15 +1,13 @@
 <?php
 require_once('./libs/smarty-3.1.39/libs/Smarty.class.php');
-require_once('./4-Hellpers/SessionHellper.php');
+require_once('./4-Helpers/SessionHelper.php');
 
 class AdminView{
     private $smarty;
 
-
-    function __construct(){
-        
-       $sessionHellper = new SessionHellper();
-        $userLogged = $sessionHellper->getLoggedUser();
+    function __construct(){        
+       $sessionHelper = new SessionHelper();
+        $userLogged = $sessionHelper->getLoggedUser();
 
         $this->smarty = new Smarty();
         $this->smarty->assign('usuario',$userLogged);
@@ -22,7 +20,6 @@ class AdminView{
         $this->smarty->assign("mensaje",$mensaje);
         
         $this->smarty->display("Templates/panelAdmin.tpl");
-
     }
 }
     

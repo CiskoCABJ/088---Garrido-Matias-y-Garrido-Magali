@@ -1,5 +1,4 @@
 <?php
-
 define ('ROL', '10');
 
 class UsersModel{
