@@ -72,9 +72,10 @@ function generarComentario(e) {
     e.preventDefault();
     let arrCalificacion = this.getAttribute("id");
     let inpcomentario;
-    if (document.getElementById("inp-comentario").value != "")
+    if (document.getElementById("inp-comentario").value != "") {
         inpcomentario = document.getElementById("inp-comentario").value;
-    else {
+        document.getElementById("inp-comentario").value = "";
+    } else {
         getComentarios();
     }
     let calificacion = arrCalificacion.split("-")[1];

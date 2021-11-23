@@ -25,12 +25,13 @@
             <h1>Play Movie</h1>
         </div>
 
-        <div class="panel-user">
+        <div class="panel-user d-flex-column">
             {if isset($usuario)}
+            <h3> Hola {$usuario}!</h3>
                 {if $rol neq ""}
                     <a class="btn-admin rol" id="{$rol}" href="usuarios"> Panel Administrador</a>
                 {/if}
-                <h3> Hola {$usuario}!</h3>
+                
             {/if}
         </div>
 

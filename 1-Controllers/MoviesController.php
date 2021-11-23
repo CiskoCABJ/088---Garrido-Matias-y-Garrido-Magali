@@ -90,7 +90,7 @@ class MoviesController {
         if($rol){       
             if( isset($_POST['inp_img']) && isset($_POST['inp_titulo']) && isset($_POST['inp_genero']) && isset($_POST['inp_descripcion']) && isset($_POST['inp_duracion']) && isset($_POST['inp_reparto']) && isset($_POST['inp_estreno']) ){
                 $this->peliculasModel->addPelicula($_POST['inp_img'],$_POST['inp_titulo'],$_POST['inp_genero'],$_POST['inp_descripcion'],$_POST['inp_duracion'],$_POST['inp_reparto'],$_POST['inp_estreno']);
-                $this->moviesView->showGenero($_POST['inp_genero']);
+                $this->showGenero($_POST['inp_genero']);
             }
         }else{
             $this->moviesView->showHomeLocation();

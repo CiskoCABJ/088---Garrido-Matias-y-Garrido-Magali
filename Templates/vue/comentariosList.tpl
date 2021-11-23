@@ -1,7 +1,7 @@
 {literal}
      <div class="d-flex-row jc-center" v-if="usuario!=null">
 
-        <div class="d-flex-row">
+        <div class="jc-center btn-filtro d-flex-row">
             <p>Calificacion</p>
             <a class="icono" v-on:click="orderBy('calificacion','DESC')">
                 <img src="./img/flechaarriba.png" >
@@ -10,7 +10,7 @@
                 <img src="./img/flechaabajo.png" >
             </a>
         </div>
-        <div class="d-flex-row">
+        <div class="jc-center btn-filtro d-flex-row">
             <p>Fecha</p>
             <a class="icono" v-on:click="orderBy('id_comentario', 'DESC')">
                 <img src="./img/flechaarriba.png"  > 
@@ -20,7 +20,7 @@
             </a>
            
         </div>
-         <div class="d-flex-row">
+         <div class="jc-center btn-filtro d-flex-row">
             <p>Restablecer</p>
             <a class="icono" v-on:click="sinOrder()">
                 <img src="./img/reiniciar2.png"  > 
@@ -32,9 +32,9 @@
     </div>
 
 
-    <div class="d-flex-column caja-comentario" v-for="comentario in comentarios" v-if="comentario.id_pelicula == pelicula">
+    <div class="d-flex-row caja-comentario" v-for="comentario in comentarios" v-if="comentario.id_pelicula == pelicula">
         
-        <div class="d-flex-row jc-sb">
+        <div class="dato-comentario d-flex-row jc-sb">
             <a class="icono" v-on:click="deleteComentario(comentario.id_comentario)" v-if="admin">
                 <img src="./img/eliminar.png" >
             </a>
@@ -48,7 +48,7 @@
 
 
         </div>
-        <p class="texto-centrado">{{comentario.comentario}} </p>
+        <p class="dato-comentario texto-justificado">{{comentario.comentario}} </p>
         
     
     </div>

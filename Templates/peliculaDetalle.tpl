@@ -6,9 +6,9 @@
     <div class="info-pelicula">
         <h1>{$pelicula->titulo}</h1>
         <h2>Genero: {$pelicula->genero}</h2>
-        <p>{$pelicula->descripcion}</p>
+        <p class="texto-justificado">{$pelicula->descripcion}</p>
         <p>Duración: {$pelicula->duracion}</p>
-        <p>Reparto: {$pelicula->reparto}</p>
+        <p class="texto-justificado">Reparto: {$pelicula->reparto}</p>
         <p>Año de estreno: {$pelicula->estreno}</p>
 
     </div>

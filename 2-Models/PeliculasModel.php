@@ -37,8 +37,8 @@ class PeliculasModel {
 
     function getPeliculasEstreno(){
         $date = date("Y");
-        $consulta = $this->db->prepare("SELECT * FROM peliculas WHERE estreno='$date'");
-        $consulta->execute();
+        $consulta = $this->db->prepare("SELECT * FROM peliculas WHERE estreno=?");
+        $consulta->execute(array($date));
         $peliculasEstreno = $consulta->fetchAll(PDO::FETCH_OBJ);
         return $peliculasEstreno;
     }
@@ -70,8 +70,8 @@ class PeliculasModel {
     }
 
     function updatePelicula($idpelicula, $img , $titulo , $genero , $descripcion , $duracion, $reparto, $estreno){
-        $sentencia = $this->db->prepare("UPDATE peliculas SET titulo='$titulo', genero='$genero' , descripcion='$descripcion', img='$img' ,duracion='$duracion' , reparto = '$reparto' , estreno = '$estreno' WHERE id =?");
-        $sentencia->execute(array($idpelicula));
+        $sentencia = $this->db->prepare("UPDATE peliculas SET titulo=?, genero=? , descripcion=?, img=? ,duracion=? , reparto =? , estreno = ? WHERE id =?");
+        $sentencia->execute(array($titulo, $genero, $descripcion, $img, $duracion, $reparto, $estreno,$idpelicula));
     }
 
     function countPeliculas(){
