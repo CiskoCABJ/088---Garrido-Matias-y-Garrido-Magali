@@ -89,7 +89,7 @@ class ApiMoviesController{
 
     function addComentario(){      
 
-           $comentarioPost = json_decode(file_get_contents('php://input'), true);
+           $comentarioPost = $this->getBody();
 
                 $idPelicula = $comentarioPost["id_pelicula"];
                 $idUser = $comentarioPost["usuario"];
@@ -116,6 +116,10 @@ class ApiMoviesController{
                   
             }
         }
+    }
+
+    private function getBody(){
+        return  json_decode(file_get_contents('php://input'), true);
     }
 
    
