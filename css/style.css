@@ -137,6 +137,10 @@ html {
     cursor: pointer;
 }
 
+.icono img:hover {
+    transform: scale(1.1);
+}
+
 .contenedor-peliculas {
     margin: 0 auto;
     width: 95%;
@@ -390,4 +394,25 @@ button:nth-child(5):hover~button {
 .dato-comentario {
     width: 50%;
     align-items: center;
+    font-family: 'Outfit', sans-serif;
+}
+
+.tabla-admin td {
+    color: rgb(106, 185, 209);
+    font-weight: bold;
+}
+
+.paginado {
+    font-family: 'Outfit', sans-serif;
+}
+
+.paginado a {
+    text-decoration: none;
+    color: black;
+    margin: 0 10px;
+}
+
+.paginado a:hover {
+    color: rgb(106, 185, 209);
+    font-weight: bold;
 }

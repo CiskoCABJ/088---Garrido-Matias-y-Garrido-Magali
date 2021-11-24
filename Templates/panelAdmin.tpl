@@ -8,7 +8,7 @@
 
     <table>
 
-        <tr>
+        <tr class="tabla-admin">
             <td>Usuario</td>
             <td>e-mail</td>
             <td>Borrar</td>
