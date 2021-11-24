@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2021 a las 01:18:17
+-- Tiempo de generación: 24-11-2021 a las 16:31:50
 -- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.7
+-- Versión de PHP: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,17 +41,25 @@ CREATE TABLE `comentarios` (
 
 INSERT INTO `comentarios` (`id_comentario`, `usuario`, `id_pelicula`, `calificacion`, `comentario`) VALUES
 (18, 'MatiasGarrido', 6, 3, 'otra vez yo'),
-(28, '1', 6, 1, 'asdd'),
 (30, '2', 6, 3, 'sdfff'),
 (31, '1', 6, 2, 'asd'),
 (32, '1', 6, 2, 'asdaa'),
 (33, '1', 6, 2, 'seeii'),
 (34, '1', 6, 5, 'asd'),
-(35, '3', 14, 4, 'sdf'),
 (36, 'autologin', 6, 1, 'asd'),
 (38, '2', 6, 3, 'anda'),
-(39, '2', 14, 3, 'sdf'),
-(40, '2', 6, 3, 'asfasf');
+(40, '2', 6, 3, 'asfasf'),
+(42, '1', 7, 5, 'Excelente!!! '),
+(43, '1', 5, 4, 'Esta buena, es divertida'),
+(44, '2', 14, 2, 'No me gusto mucho'),
+(45, 'Reni', 14, 3, 'Hay mejores seguro'),
+(46, 'Reni', 7, 5, 'Perfecta!! la volveria a ver'),
+(47, '2', 7, 4, 'Muy buena como siempre!!'),
+(48, 'Roco', 14, 4, 'No es de las mejores pero esta buena'),
+(49, 'Roco', 7, 5, 'Me gusto'),
+(50, 'Roco', 5, 4, 'Buenaa'),
+(51, '1', 27, 5, 'Muy buenaa'),
+(52, '1', 8, 4, 'safaa');
 
 -- --------------------------------------------------------
 
@@ -194,6 +202,8 @@ INSERT INTO `usuarios` (`usuario`, `mail`, `pass`, `rol`) VALUES
 ('Lola', 'contactodgeme@gmail.com', '$2y$10$J0ifgmTEpNSIfNhF45r/LO6G/bjJcP7nqziGn7lK1FIokkyC4jBES', 1),
 ('MatiasGarrido', 'asdfasf', '$2y$10$5kAD7vMU3KYjaleE28IN9ewW977HOxynQkPmuM19UvNhA8W/KiU4q', NULL),
 ('Renata2021', 'garridomagali@hotmail.com', '$2y$10$LMB4GS6i5mXDIkv9wXO79ukSvZVsL0sNObCaLMga9GOfwmoV4aWL6', NULL),
+('Reni', 'reni@gmai.com', '$2y$10$88uHxv3U6ZV1OxcQAAZj.ODkZijR7EBckSKvbCuV6818M/T8voM.2', NULL),
+('Roco', 'roco@g.com', '$2y$10$x/Y9OPIYT.m6KbbdluKsMeRDPteEUxg6H/l7FR1.Ukm6w3Q2YcGqS', NULL),
 ('sss', 'sss', '$2y$10$bZr2EAMOO2bW6sE3KyfI4.X3nEXMRN6cmngHVQJVyqIAFj2j9MnWO', NULL),
 ('zzz', 'zzz', '$2y$10$cWKB6glr9yZYGwT6tuNuxu7ynccv9JH82szH2ZFaU6JJfjqG8MrV2', NULL);
 
@@ -236,7 +246,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_comentario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT de la tabla `peliculas`
