@@ -35,7 +35,7 @@
     {/if}
 
     {if $pagina}
-        <div class="d-flex-row jc-center">
+        <div class="paginado d-flex-row jc-center">
             <a href="peliculas/{$pagina-1}"><<</a>  
             <p>Pagina {$pagina} de {$paginas}</p>
             <a href="peliculas/{$pagina+1}">>></a>  
@@ -70,7 +70,7 @@
     
 
     {if $pagina}
-        <div class="d-flex-row jc-center">
+        <div class="paginado d-flex-row jc-center">
             <a href="peliculas/{$pagina-1}"><<</a>  
             <p>Pagina {$pagina} de {$paginas}</p>
             <a href="peliculas/{$pagina+1}">>></a>  
