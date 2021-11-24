@@ -1,6 +1,7 @@
 "use strict"
 const url = "api/comentarios";
 
+
 let peli = document.querySelector(".idpelicula").getAttribute("id");
 let user = null;
 if (document.querySelector(".userLogged")) {
@@ -20,6 +21,7 @@ let app = new Vue({
         usuario: user,
         admin: adminRol,
     },
+
     methods: {
 
         deleteComentario: async function(id) {
@@ -39,6 +41,8 @@ let app = new Vue({
         },
 
         orderBy: async function(sort, order) {
+
+
             try {
                 let response = await fetch(`${url}/${app.pelicula}?sort=${sort}&order=${order}`);
                 let json = await response.json();
@@ -105,12 +109,7 @@ async function getComentarios() {
     try {
         let res = await fetch(`${url}/${app.pelicula}`);
         let json = await res.json();
-
         app.comentarios = json;
-        if (res.ok) {
-            console.log(res);
-        }
-
     } catch (error) {
         console.log(error);
     }

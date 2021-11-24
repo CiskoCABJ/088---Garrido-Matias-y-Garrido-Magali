@@ -11,13 +11,16 @@ class ApiView {
     function _requestStatus($code){
         $status = array(
             200 => "OK",
-            201 => "Created",
-            204 => "No Content", //peticion con exito pero sin contenido
-            400 => "Bad Request", //peticion invalida
+            204 => "No Content", 
+            400 => "Bad Request", 
             404 => "Not Fount",
             500 => "Internal Server Error",
-            511 => "Network Authentication Required",
+            511 => "Network Authentication Required"
         );
-        return (isset($status[$code]))? $status[$code] : $status[500];
+
+        if(isset($status[$code])){
+            return  $code;
+        }else return  500;
+         
     }
 }

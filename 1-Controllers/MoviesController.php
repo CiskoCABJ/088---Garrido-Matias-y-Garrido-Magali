@@ -1,6 +1,7 @@
 <?php
 require_once './2-Models/GenerosModel.php';
 require_once './2-Models/PeliculasModel.php';
+require_once './2-Models/ComentariosModel.php';
 
 require_once './3-Views/MoviesView.php';
 
@@ -17,6 +18,7 @@ class MoviesController {
     function __construct(){
         $this->peliculasModel = new PeliculasModel();
         $this->generosModel = new GenerosModel();
+        $this->comentariosModel = new ComentariosModel();
 
         $this->moviesView = new MoviesView();
 
@@ -100,8 +102,14 @@ class MoviesController {
     }
 
     function deletePelicula($idpelicula){
-        if($this->sessionHelper->showRol()){
-            $this->peliculasModel->deletePelicula($idpelicula);
+        $rol = $this->sessionHelper->showRol();
+        if($rol){
+            $comentarios=$this->comentariosModel->getComentariosPelicula($idpelicula);
+            if($comentarios){
+                $this->moviesView->showHomeLocation();
+            }else{
+                $this->peliculasModel->deletePelicula($idpelicula);
+            }
         }
         $this->moviesView->showHomeLocation();            
     }

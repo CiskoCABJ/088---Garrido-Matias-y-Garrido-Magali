@@ -27,9 +27,9 @@ class ApiMoviesController{
     function getComentarios(){
         $comentarios = $this->comentariosModel->getComentarios();
         if($comentarios){
-            $this->apiView->response($comentarios,"OK");
+            $this->apiView->response($comentarios,200);
         }else{
-            $this->apiView->response($comentarios,"No Content");
+            $this->apiView->response($comentarios,204);
         }
     }
 
@@ -46,52 +46,55 @@ class ApiMoviesController{
         } 
 
         if($comentarios){
-            $this->apiView->response($comentarios,"OK");
+            $this->apiView->response($comentarios,200);
         }else{
             if($this->peliculasModel->getPelicula($idPelicula))
-                $this->apiView->response($comentarios,"No Content");
+                $this->apiView->response($comentarios,204);
             else 
-             $this->apiView->response($comentarios,"Not Fount");
+             $this->apiView->response($comentarios,404);
         }
     }
 
-    function addComentario(){      
+    function addComentario(){ 
+        $state =$this->sessionHelper->isLogged();
+        if($state){
+            $comentarioPost = $this->getBody();
 
-        $comentarioPost = $this->getBody();
+            $idPelicula = $comentarioPost["id_pelicula"];
+            $idUser = $comentarioPost["usuario"];
+            $calificacion = $comentarioPost["calificacion"];
+            $comentario =$comentarioPost["comentario"];
 
-        $idPelicula = $comentarioPost["id_pelicula"];
-        $idUser = $comentarioPost["usuario"];
-        $calificacion = $comentarioPost["calificacion"];
-        $comentario =$comentarioPost["comentario"];
+            $comentarios = $this->comentariosModel->getComentariosPelicula($idPelicula);  
 
-        $comentarios = $this->comentariosModel->getComentariosPelicula($idPelicula);  
-
-        if($idPelicula && $idUser &&  $calificacion && $comentario){
-            $this->comentariosModel->addComentario($idUser,$idPelicula, $calificacion, $comentario);  
-            $comentarios = $this->comentariosModel->getComentariosPelicula($idPelicula); 
-            $this->apiView->response($comentarios,"OK"); 
+            if($idPelicula && $idUser &&  $calificacion && $comentario){
+                    $this->comentariosModel->addComentario($idUser,$idPelicula, $calificacion, $comentario);  
+                    $comentarios = $this->comentariosModel->getComentariosPelicula($idPelicula); 
+                    $this->apiView->response($comentarios,200); 
+            }else{
+                $this->apiView->response($comentarios,400);        
+            }  
         }else{
-            $this->apiView->response($comentarios,"Bad Request");        
-        }    
+            $this->apiView->response($comentarios,511);
+        }          
     }
 
     function deleteComentario($params = null){
         $idComentario= $params[":ID"];
-        $comentario = $this->comentariosModel->getComentario($idComentario);
-        if($comentario){
-            $idPelicula = $comentario->id_pelicula;
-            $comentarios = $this->comentariosModel->getComentariosPelicula($idPelicula);
 
-            $rol =$this->sessionHelper->showRol();
-            if($rol){                   
+        $rol =$this->sessionHelper->showRol();
+        if($rol){  
+            $comentario = $this->comentariosModel->getComentario($idComentario);
+            if($comentario){
+                $idPelicula = $comentario->id_pelicula;
+                $comentarios = $this->comentariosModel->getComentariosPelicula($idPelicula);                            
                 $this->comentariosModel->deleteComentario($idComentario);
-                $this->apiView->response($comentarios,"OK");                    
-                
+                $this->apiView->response($comentarios,200);                            
             }else{
-                $this->apiView->response($comentarios,"Network Authentication Required");
+                $this->apiView->response(null,404);
             }
         }else{
-            $this->apiView->response(null,"Not Fount");
+            $this->apiView->response($comentarios,511);
         }
     }
 
