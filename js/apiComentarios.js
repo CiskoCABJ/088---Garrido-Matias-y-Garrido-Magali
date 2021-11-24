@@ -1,5 +1,5 @@
 "use strict"
-const url = "http://127.0.0.1/PROYECTOS/088%20-%20Garrido%20Matias%20y%20Garrido%20Magali/api/comentarios";
+const url = "api/comentarios";
 
 let peli = document.querySelector(".idpelicula").getAttribute("id");
 let user = null;
@@ -39,8 +39,6 @@ let app = new Vue({
         },
 
         orderBy: async function(sort, order) {
-
-
             try {
                 let response = await fetch(`${url}/${app.pelicula}?sort=${sort}&order=${order}`);
                 let json = await response.json();
@@ -101,7 +99,6 @@ async function cargarComentario(comentario) {
     } catch (error) {
         console.log(error);
     }
-
 }
 
 async function getComentarios() {
